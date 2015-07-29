@@ -52,10 +52,12 @@ namespace LuaParser.Parser
                 var nextChar = (char)next;
                 if (IsNonToken(nextChar))
                     break;
-                if (IsToken(nextChar))
+                if (IsToken(nextChar) && sb.Length > 0)
                     break;
                 sb.Append(nextChar);
                 reader.Read();
+                if (IsToken(nextChar) && sb.Length == 1) // now after adding the new char the length is 1 
+                    break;
             } while (true);
             return sb.ToString();
         }
