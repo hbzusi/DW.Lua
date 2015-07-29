@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using LuaCodeEditor.Properties;
 using LuaParser;
+using LuaParser.Parser;
 
 namespace LuaCodeEditor
 {
@@ -17,8 +19,10 @@ namespace LuaCodeEditor
             var script = codeBox.Text;
             try
             {
-                var block = SyntaxParser.Parse(script);
-                parserStatusLabel.Text = Resources.Text_Status_OK;
+                var reader = new StringReader(script);
+                var tokenEnumerator = Tokenizer.Parse(reader);
+                //var block = SyntaxParser.Parse(script);
+                parserStatusLabel.Text = "Tokens: " + string.Join(", ",tokenEnumerator);
             }
             catch (Exception ex)
             {

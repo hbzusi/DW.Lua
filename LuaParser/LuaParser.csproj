@@ -44,6 +44,8 @@
     <Compile Include="Parser\AssignmentStatementParser.cs" />
     <Compile Include="Parser\IfStatementParser.cs" />
     <Compile Include="Parser\StatementParserDiscriminator.cs" />
+    <Compile Include="Parser\TokenEnumerator.cs" />
+    <Compile Include="Parser\Tokenizer.cs" />
     <Compile Include="Parser\WhileStatementParser.cs" />
     <Compile Include="SyntaxParser.cs" />
     <Compile Include="Syntax\Control\BreakStatement.cs" />
