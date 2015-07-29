@@ -7,29 +7,29 @@ namespace LuaParser
 {
     public static class SyntaxParser
     {
-        public static Block Parse(string s)
+        public static StatementBlock Parse(string s)
         {
-            var rootBlock = new Block();
+            var rootBlock = new StatementBlock();
             var reader = new StringReader(s);
+            var tokenEnumerator = Tokenizer.Parse(reader);
 
-            while (reader.Peek() != -1)
+            while (!tokenEnumerator.Finished)
             {
-                var statement = ReadStatement(reader);
+                var statement = ReadStatement(tokenEnumerator);
                 rootBlock.Statements.Add(statement);
             }
 
             return rootBlock;
         }
 
-        private static Statement ReadStatement(TextReader reader)
+        private static Statement ReadStatement(TokenEnumerator tokenEnumerator)
         {
-            reader.SkipWhitespace();
-            var word = reader.ReadWord();
-            if (string.IsNullOrEmpty(word))
+            var token = tokenEnumerator.Current;
+            if (string.IsNullOrEmpty(token)) 
                 return new EmptyStatement();
             var statementDiscriminator = new StatementParserDiscriminator();
-            var statementParser = statementDiscriminator.Identify(word);
-            return statementParser.Parse(reader);
+            var statementParser = statementDiscriminator.Identify(token);
+            return statementParser.Parse(tokenEnumerator);
         }
     }
 }

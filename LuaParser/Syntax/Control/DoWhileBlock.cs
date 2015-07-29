@@ -10,6 +10,6 @@ namespace LuaParser.Control
     class DoWhileBlock : Statement
     {
         public Expression Condition { get; set; }
-        public Block Block { get; set; }
+        public StatementBlock StatementBlock { get; set; }
     }
 }

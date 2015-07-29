@@ -5,7 +5,7 @@ namespace LuaParser.Parser
 {
     internal class IfStatementParser : StatementParser
     {
-        public override Statement Parse(TextReader reader)
+        public override Statement Parse(TokenEnumerator reader)
         {
             throw new System.NotImplementedException();
         }

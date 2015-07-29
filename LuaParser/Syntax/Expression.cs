@@ -23,9 +23,9 @@ namespace LuaParser.Syntax
         public bool Local { get; set; }
     }
 
-    public class Block : Statement
+    public class StatementBlock : Statement
     {
-        public Block()
+        public StatementBlock()
         {
             Statements = new List<Statement>();
         }
@@ -52,7 +52,7 @@ namespace LuaParser.Syntax
     {
     }
 
-    class FunctionDeclaration : Block
+    class FunctionDeclaration : StatementBlock
     {
         
     }

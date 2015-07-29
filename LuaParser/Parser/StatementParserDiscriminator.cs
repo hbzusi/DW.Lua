@@ -29,6 +29,6 @@ namespace LuaParser.Parser
 
     internal abstract class StatementParser
     {
-        public abstract Statement Parse(TextReader reader);
+        public abstract Statement Parse(TokenEnumerator reader);
     }
 }

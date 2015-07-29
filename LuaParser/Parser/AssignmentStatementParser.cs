@@ -15,7 +15,7 @@ namespace LuaParser.Parser
             this._initialToken = initialToken;
         }
 
-        public override Statement Parse(TextReader reader)
+        public override Statement Parse(TokenEnumerator reader)
         {
             bool local = false;
             var variablesStringBuilder = new StringBuilder();
@@ -25,18 +25,12 @@ namespace LuaParser.Parser
             else
                 variablesStringBuilder.Append(_initialToken);
 
-            for (int next; (next = reader.Read()) != EqualsSignCode;)
-            {
-                if (next == -1)
-                    throw new EndOfFileException();
-                variablesStringBuilder.Append((char)next);
-            }
+            while (reader.Current != EqualsSign)
+                variablesStringBuilder.Append(reader.GetAndAdvance());
 
-            for (int next; (next = reader.Read()) >= 0; )
+            while (reader.Current != Semicolon && reader.Current != "\n")
             {
-                if (next == '\n' || next == SemicolonCode)
-                    break;
-                expressionsStringBuilder.Append((char)next);
+                expressionsStringBuilder.Append(reader.GetAndAdvance());
             }
             var variables = variablesStringBuilder.ToString().Split(',');
             var expressions = expressionsStringBuilder.ToString().Split(',');
@@ -48,8 +42,9 @@ namespace LuaParser.Parser
             };
         }
 
-        private const int EqualsSignCode = '=';
-        private const int SemicolonCode = ';';
+        private const string EqualsSign = "=";
+
+        private const string Semicolon = ";";
     }
 
     internal class EndOfFileException : Exception
