@@ -40,12 +40,4 @@ namespace LuaParser
             return expressionParser.Parse(reader);
         }
     }
-
-    public class BracketedExpressionParser : ExpressionParser
-    {
-        public override Expression Parse(TokenEnumerator reader)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
 }

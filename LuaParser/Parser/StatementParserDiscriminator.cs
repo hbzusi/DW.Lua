@@ -1,6 +1,4 @@
-using System;
 using System.IO;
-using LuaParser.Syntax;
 
 namespace LuaParser.Parser
 {
@@ -17,18 +15,5 @@ namespace LuaParser.Parser
             }
             return new AssignmentStatementParser();
         }
-    }
-
-    internal class UnknownTokenException : Exception
-    {
-        public UnknownTokenException(string message) : base(message)
-        {
-
-        }
-    }
-
-    internal abstract class StatementParser
-    {
-        public abstract Statement Parse(TokenEnumerator reader);
     }
 }

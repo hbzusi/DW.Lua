@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using LuaParser.Parser;
 using LuaParser.Syntax;
 
@@ -24,14 +23,6 @@ namespace LuaParser
             if (reader.Current != ")")
                 throw new UnexpectedTokenException(reader.Current);
             return expression;
-        }
-    }
-
-    public class ExpressionListParser
-    {
-        public IList<Expression> Parse(TokenEnumerator reader)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
