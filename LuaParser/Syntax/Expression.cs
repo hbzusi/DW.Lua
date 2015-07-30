@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LuaParser.Syntax
 {
@@ -12,8 +13,13 @@ namespace LuaParser.Syntax
         public string Name;
     }
 
-    public class Statement
+    public abstract class Statement : Unit
     {
+    }
+
+    public abstract class Unit
+    {
+        public abstract IEnumerable<Unit> Children { get; }
     }
 
     class Assignment : Statement
@@ -21,6 +27,11 @@ namespace LuaParser.Syntax
         public IList<Variable> Variables { get; set; }
         public IList<Expression> Expressions { get; set; }
         public bool Local { get; set; }
+
+        public override IEnumerable<Unit> Children
+        {
+            get { return (Expressions ?? new Expression[0]); }
+        }
     }
 
     public class StatementBlock : Statement
@@ -31,25 +42,49 @@ namespace LuaParser.Syntax
         }
 
         public IList<Statement> Statements { get; private set; }
+
+        public override IEnumerable<Unit> Children
+        {
+            get { return Statements; }
+        }
     }
 
-    class Expression
+    public abstract class Expression : Unit
     {
     }
 
     class FunctionCallExpression : Expression
     {
-        
+        public override IEnumerable<Unit> Children
+        {
+            get { throw new System.NotImplementedException(); }
+        }
+
+        public string FunctionName { get; set; }
+        public IList<Expression> Parameters { get; set; }
     }
 
-    class FunctionCallStatement : Statement { }
+    class FunctionCallStatement : Statement {
+        public override IEnumerable<Unit> Children
+        {
+            get { return new Unit[0]; }
+        }
+    }
 
     class BinaryOperation : Expression
     {
+        public override IEnumerable<Unit> Children
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 
     class UnaryOperation : Expression
     {
+        public override IEnumerable<Unit> Children
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 
     class FunctionDeclaration : StatementBlock

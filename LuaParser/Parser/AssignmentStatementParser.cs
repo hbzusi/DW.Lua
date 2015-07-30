@@ -1,4 +1,7 @@
-using System;
+using System.CodeDom;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,11 +11,8 @@ namespace LuaParser.Parser
 {
     internal class AssignmentStatementParser : StatementParser
     {
-        private readonly string _initialToken;
-
-        public AssignmentStatementParser(string initialToken)
+        public AssignmentStatementParser()
         {
-            this._initialToken = initialToken;
         }
 
         public override Statement Parse(TokenEnumerator reader)
@@ -20,34 +20,57 @@ namespace LuaParser.Parser
             bool local = false;
             var variablesStringBuilder = new StringBuilder();
             var expressionsStringBuilder = new StringBuilder();
-            if (_initialToken == "local")
-                local = true;
-            else
-                variablesStringBuilder.Append(_initialToken);
-
-            while (reader.Current != EqualsSign)
-                variablesStringBuilder.Append(reader.GetAndAdvance());
-
-            while (reader.Current != Semicolon && reader.Current != "\n")
+            if (reader.Current == "local")
             {
-                expressionsStringBuilder.Append(reader.GetAndAdvance());
+                local = true;
+                reader.Advance();
             }
-            var variables = variablesStringBuilder.ToString().Split(',');
-            var expressions = expressionsStringBuilder.ToString().Split(',');
+
+            var variables = ReadDeclarations(reader);
+            if (reader.Current != Token.EqualsSign)
+                throw new UnexpectedTokenException(reader.Current, Token.EqualsSign);
+            reader.Advance();
+            var expressions = ReadExpressions(reader);
 
             return new Assignment
             {
                 Local = local,
-                Variables = variables.Select(s => new Variable {Name = s}).ToList()
+                Variables = variables
             };
         }
 
-        private const string EqualsSign = "=";
+        private IList<Expression> ReadExpressions(TokenEnumerator reader)
+        {
+            var result = new List<Expression>();
+            while (reader.Next != null)
+            {
+                var expression = SyntaxParser.ReadExpression(reader);
+                result.Add(expression);
+                reader.Advance();
+                if (reader.Current != "\n" && reader.Current != Token.Colon && reader.Current != Token.Semicolon)
+                    throw new UnexpectedTokenException(reader.Current);
+                if (reader.Current == "\n" || reader.Current == Token.Semicolon)
+                    break;
+                reader.Advance();
+            }
+            return result;
+        }
 
-        private const string Semicolon = ";";
-    }
-
-    internal class EndOfFileException : Exception
-    {
+        private IList<Variable> ReadDeclarations(TokenEnumerator reader)
+        {
+            var result = new List<Variable>();
+            while (reader.Next != null)
+            {
+                var variable = new Variable {Name = reader.Current};
+                result.Add(variable);
+                reader.Advance();
+                if (reader.Current != Token.Colon && reader.Current != Token.EqualsSign)
+                    throw new UnexpectedTokenException(reader.Current);
+                if (reader.Current == Token.EqualsSign)
+                    break;
+                reader.Advance();
+            }
+            return result;
+        }
     }
 }

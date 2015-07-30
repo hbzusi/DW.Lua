@@ -6,16 +6,16 @@ namespace LuaParser.Parser
 {
     internal class StatementParserDiscriminator
     {
-        public StatementParser Identify(string word)
+        public StatementParser Identify(TokenEnumerator reader)
         {
-            switch (word)
+            switch (reader.Current)
             {
                 case "if":
                     return new IfStatementParser();
                 case "while":
                     return new WhileStatementParser();
             }
-            return new AssignmentStatementParser(word);
+            return new AssignmentStatementParser();
         }
     }
 

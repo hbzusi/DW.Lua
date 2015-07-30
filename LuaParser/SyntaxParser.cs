@@ -22,14 +22,30 @@ namespace LuaParser
             return rootBlock;
         }
 
-        private static Statement ReadStatement(TokenEnumerator tokenEnumerator)
+        private static Statement ReadStatement(TokenEnumerator reader)
         {
-            var token = tokenEnumerator.Current;
+            var token = reader.Current;
             if (string.IsNullOrEmpty(token)) 
                 return new EmptyStatement();
             var statementDiscriminator = new StatementParserDiscriminator();
-            var statementParser = statementDiscriminator.Identify(token);
-            return statementParser.Parse(tokenEnumerator);
+            var statementParser = statementDiscriminator.Identify(reader);
+            return statementParser.Parse(reader);
+        }
+
+
+        public static Expression ReadExpression(TokenEnumerator reader)
+        {
+            var expressionDiscriminator = new ExpressionParserDiscriminator();
+            var expressionParser = expressionDiscriminator.Identify(reader);
+            return expressionParser.Parse(reader);
+        }
+    }
+
+    public class BracketedExpressionParser : ExpressionParser
+    {
+        public override Expression Parse(TokenEnumerator reader)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

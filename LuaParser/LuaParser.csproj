@@ -39,20 +39,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryOperationExpressionParser.cs" />
     <Compile Include="EmptyStatement.cs" />
+    <Compile Include="ExpressionParser.cs" />
+    <Compile Include="ExpressionParserDiscriminator.cs" />
     <Compile Include="Extensions\StringReaderExtensions.cs" />
+    <Compile Include="FunctionCallExpressionParser.cs" />
     <Compile Include="Parser\AssignmentStatementParser.cs" />
+    <Compile Include="Parser\EndOfFileException.cs" />
     <Compile Include="Parser\IfStatementParser.cs" />
     <Compile Include="Parser\StatementParserDiscriminator.cs" />
     <Compile Include="Parser\TokenEnumerator.cs" />
     <Compile Include="Parser\Tokenizer.cs" />
+    <Compile Include="Parser\UnexpectedTokenException.cs" />
     <Compile Include="Parser\WhileStatementParser.cs" />
+    <Compile Include="SingleVariableExpressionParser.cs" />
     <Compile Include="SyntaxParser.cs" />
     <Compile Include="Syntax\Control\BreakStatement.cs" />
     <Compile Include="Syntax\Control\DoWhileBlock.cs" />
     <Compile Include="Syntax\Control\RepeatUntilBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syntax\Expression.cs" />
+    <Compile Include="Syntax\Token.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

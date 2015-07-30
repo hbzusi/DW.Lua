@@ -23,13 +23,14 @@ namespace LuaParser.Parser
         public void Advance()
         {
             _index++;
+            if (_index >= _tokens.Count)
+                throw new EndOfFileException();
+
             if (_index > 0)
                 Previous = _tokens[_index - 1];
-            Current = _tokens[_index];
-            if (_index < _tokens.Count - 1)
-                Next = _tokens[_index];
-            else
-                Next = null;
+                Current = _tokens[_index];
+
+            Next = _index < _tokens.Count - 1 ? _tokens[_index+1] : null;
         }
 
         public string GetAndAdvance()
