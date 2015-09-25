@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using LuaParser.Extensions;
-using LuaParser.Parser;
+using LuaParser.Parsers;
+using LuaParser.Parsers.Expression;
+using LuaParser.Parsers.Statement;
 using LuaParser.Syntax;
 
 namespace LuaParser
@@ -11,7 +13,7 @@ namespace LuaParser
         {
             var rootBlock = new StatementBlock();
             var reader = new StringReader(s);
-            var tokenEnumerator = Tokenizer.Parse(reader);
+            ITokenEnumerator tokenEnumerator = Tokenizer.Parse(reader);
 
             while (!tokenEnumerator.Finished)
             {
@@ -22,7 +24,7 @@ namespace LuaParser
             return rootBlock;
         }
 
-        private static Statement ReadStatement(TokenEnumerator reader)
+        private static Statement ReadStatement(ITokenEnumerator reader)
         {
             var token = reader.Current;
             if (string.IsNullOrEmpty(token)) 
@@ -33,7 +35,7 @@ namespace LuaParser
         }
 
 
-        public static Expression ReadExpression(TokenEnumerator reader)
+        public static Expression ReadExpression(ITokenEnumerator reader)
         {
             var expressionDiscriminator = new ExpressionParserDiscriminator();
             var expressionParser = expressionDiscriminator.Identify(reader);

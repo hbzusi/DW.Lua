@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaParser", "LuaParser\LuaParser.csproj", "{6B3D591A-A8C1-460B-9E84-23DC5897B073}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaParserTests", "LuaParserTests\LuaParserTests.csproj", "{A5A00275-2E17-43AB-87BD-B0F4BD4DFE30}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaCodeEditor", "LuaCodeEditor\LuaCodeEditor.csproj", "{02414A3E-3FA8-4EE3-AF40-E5EBB3A89D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaParserUnitTests", "LuaParserUnitTests\LuaParserUnitTests.csproj", "{E4EBE5A5-8EC2-4221-BC42-62EC443EFB44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{6B3D591A-A8C1-460B-9E84-23DC5897B073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B3D591A-A8C1-460B-9E84-23DC5897B073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B3D591A-A8C1-460B-9E84-23DC5897B073}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5A00275-2E17-43AB-87BD-B0F4BD4DFE30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5A00275-2E17-43AB-87BD-B0F4BD4DFE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5A00275-2E17-43AB-87BD-B0F4BD4DFE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5A00275-2E17-43AB-87BD-B0F4BD4DFE30}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02414A3E-3FA8-4EE3-AF40-E5EBB3A89D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02414A3E-3FA8-4EE3-AF40-E5EBB3A89D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02414A3E-3FA8-4EE3-AF40-E5EBB3A89D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02414A3E-3FA8-4EE3-AF40-E5EBB3A89D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4EBE5A5-8EC2-4221-BC42-62EC443EFB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4EBE5A5-8EC2-4221-BC42-62EC443EFB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4EBE5A5-8EC2-4221-BC42-62EC443EFB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4EBE5A5-8EC2-4221-BC42-62EC443EFB44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

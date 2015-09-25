@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-using LuaParser.Parser;
-using LuaParser.Syntax;
 
-namespace LuaParser
+namespace LuaParser.Parsers.Expression
 {
     public class ExpressionListParser
     {
-        public IList<Expression> Parse(TokenEnumerator reader)
+        public IList<Syntax.Expression> Parse(ITokenEnumerator reader)
         {
             throw new System.NotImplementedException();
         }

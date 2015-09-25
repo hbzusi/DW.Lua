@@ -1,6 +1,6 @@
 using System;
 
-namespace LuaParser.Parser
+namespace LuaParser.Exceptions
 {
     internal class EndOfFileException : Exception
     {

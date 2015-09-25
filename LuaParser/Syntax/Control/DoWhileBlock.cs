@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LuaParser.Syntax;
 
-namespace LuaParser.Control
+namespace LuaParser.Syntax.Control
 {
     internal class DoWhileBlock : Statement
     {

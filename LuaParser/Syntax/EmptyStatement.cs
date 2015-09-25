@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using LuaParser.Syntax;
 
-namespace LuaParser
+namespace LuaParser.Syntax
 {
     internal class EmptyStatement : Statement
     {

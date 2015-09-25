@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LuaParserTests")]
+[assembly: AssemblyTitle("LuaParserUnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LuaParserTests")]
+[assembly: AssemblyProduct("LuaParserUnitTests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e651752f-23c7-43b0-9a28-bbbcc0e08fd8")]
+[assembly: Guid("e4ebe5a5-8ec2-4221-bc42-62ec443efb44")]
 
 // Version information for an assembly consists of the following four values:
 //

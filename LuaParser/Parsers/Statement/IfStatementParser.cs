@@ -1,11 +1,8 @@
-using System.IO;
-using LuaParser.Syntax;
-
-namespace LuaParser.Parser
+namespace LuaParser.Parsers.Statement
 {
     internal class IfStatementParser : StatementParser
     {
-        public override Statement Parse(TokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader)
         {
             throw new System.NotImplementedException();
         }

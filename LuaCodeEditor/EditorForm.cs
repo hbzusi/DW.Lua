@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using LuaParser;
-using LuaParser.Parser;
+using LuaParser.Parsers;
 using LuaParser.Syntax;
 
 namespace LuaCodeEditor

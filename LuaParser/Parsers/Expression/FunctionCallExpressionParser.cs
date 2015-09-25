@@ -1,12 +1,11 @@
-using System.Collections;
-using LuaParser.Parser;
+using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
-namespace LuaParser
+namespace LuaParser.Parsers.Expression
 {
     public class FunctionCallExpressionParser : ExpressionParser
     {
-        public override Expression Parse(TokenEnumerator reader)
+        public override Syntax.Expression Parse(ITokenEnumerator reader)
         {
             var name = reader.Current;
             reader.Advance();

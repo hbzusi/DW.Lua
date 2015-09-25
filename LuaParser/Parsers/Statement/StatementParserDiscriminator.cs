@@ -1,10 +1,8 @@
-using System.IO;
-
-namespace LuaParser.Parser
+namespace LuaParser.Parsers.Statement
 {
     internal class StatementParserDiscriminator
     {
-        public StatementParser Identify(TokenEnumerator reader)
+        public StatementParser Identify(ITokenEnumerator reader)
         {
             switch (reader.Current)
             {

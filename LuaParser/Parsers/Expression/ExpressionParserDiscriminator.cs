@@ -1,11 +1,11 @@
-using LuaParser.Parser;
+using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
-namespace LuaParser
+namespace LuaParser.Parsers.Expression
 {
     public class ExpressionParserDiscriminator
     {
-        public ExpressionParser Identify(TokenEnumerator reader)
+        public ExpressionParser Identify(ITokenEnumerator reader)
         {
             if (reader.Current == "(")
                 return new BracketedExpressionParser();

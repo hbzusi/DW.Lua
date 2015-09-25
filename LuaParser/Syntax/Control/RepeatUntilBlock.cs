@@ -1,6 +1,4 @@
-using LuaParser.Syntax;
-
-namespace LuaParser.Control
+namespace LuaParser.Syntax.Control
 {
     class RepeatUntilBlock
     {

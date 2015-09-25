@@ -1,10 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using LuaParser.Exceptions;
 
-namespace LuaParser.Parser
+namespace LuaParser.Parsers
 {
-    public class TokenEnumerator : IEnumerable<string>
+    public interface ITokenEnumerator : IEnumerable<string>
+    {
+        string Previous { get; }
+        string Next { get; }
+        string Current { get; }
+        bool Finished { get; }
+        void Advance();
+    }
+
+    public class TokenEnumerator : ITokenEnumerator
     {
         private readonly IList<string> _tokens;
         private int _index = -1;
@@ -15,7 +25,7 @@ namespace LuaParser.Parser
 
         public TokenEnumerator(IList<string> tokens)
         {
-            if (tokens == null) throw new ArgumentNullException("tokens");
+            if (tokens == null) throw new ArgumentNullException(nameof(tokens));
             _tokens = tokens;
             Advance();
         }
@@ -33,14 +43,7 @@ namespace LuaParser.Parser
             Next = _index < _tokens.Count - 1 ? _tokens[_index+1] : null;
         }
 
-        public string GetAndAdvance()
-        {
-            var current = Current;
-            Advance();
-            return current;
-        }
-
-        public bool Finished { get { return Next == null; } }
+        public bool Finished => Next == null;
 
         public IEnumerator<string> GetEnumerator()
         {

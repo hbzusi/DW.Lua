@@ -1,13 +1,9 @@
-using System.CodeDom;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Text;
+using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
-namespace LuaParser.Parser
+namespace LuaParser.Parsers.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
@@ -15,7 +11,7 @@ namespace LuaParser.Parser
         {
         }
 
-        public override Statement Parse(TokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader)
         {
             bool local = false;
             var variablesStringBuilder = new StringBuilder();
@@ -39,9 +35,9 @@ namespace LuaParser.Parser
             };
         }
 
-        private IList<Expression> ReadExpressions(TokenEnumerator reader)
+        private IList<Syntax.Expression> ReadExpressions(ITokenEnumerator reader)
         {
-            var result = new List<Expression>();
+            var result = new List<Syntax.Expression>();
             while (reader.Next != null)
             {
                 var expression = SyntaxParser.ReadExpression(reader);
@@ -56,7 +52,7 @@ namespace LuaParser.Parser
             return result;
         }
 
-        private IList<Variable> ReadDeclarations(TokenEnumerator reader)
+        private IList<Variable> ReadDeclarations(ITokenEnumerator reader)
         {
             var result = new List<Variable>();
             while (reader.Next != null)

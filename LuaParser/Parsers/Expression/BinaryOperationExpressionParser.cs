@@ -1,11 +1,8 @@
-using LuaParser.Parser;
-using LuaParser.Syntax;
-
-namespace LuaParser
+namespace LuaParser.Parsers.Expression
 {
     public class BinaryOperationExpressionParser : ExpressionParser
     {
-        public override Expression Parse(TokenEnumerator reader)
+        public override Syntax.Expression Parse(ITokenEnumerator reader)
         {
             throw new System.NotImplementedException();
         }
