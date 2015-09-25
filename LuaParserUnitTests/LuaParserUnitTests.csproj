@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parser\IfStatementParserTests.cs" />
+    <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
+    <Compile Include="Parsers\Statement\IfStatementParserTests.cs" />
     <Compile Include="StatementParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

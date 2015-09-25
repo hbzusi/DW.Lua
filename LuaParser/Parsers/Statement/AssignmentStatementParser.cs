@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
@@ -7,15 +6,9 @@ namespace LuaParser.Parsers.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
-        public AssignmentStatementParser()
-        {
-        }
-
         public override Syntax.Statement Parse(ITokenEnumerator reader)
         {
             bool local = false;
-            var variablesStringBuilder = new StringBuilder();
-            var expressionsStringBuilder = new StringBuilder();
             if (reader.Current == "local")
             {
                 local = true;
@@ -31,17 +24,20 @@ namespace LuaParser.Parsers.Statement
             return new Assignment
             {
                 Local = local,
-                Variables = variables
+                Variables = variables,
+                Expressions = expressions
             };
         }
 
         private IList<Syntax.Expression> ReadExpressions(ITokenEnumerator reader)
         {
             var result = new List<Syntax.Expression>();
-            while (reader.Next != null)
+            while (reader.Current != null)
             {
                 var expression = SyntaxParser.ReadExpression(reader);
                 result.Add(expression);
+                if (reader.Next == null)
+                    break;
                 reader.Advance();
                 if (reader.Current != "\n" && reader.Current != Token.Colon && reader.Current != Token.Semicolon)
                     throw new UnexpectedTokenException(reader.Current);

@@ -1,3 +1,6 @@
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
 using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
@@ -15,7 +18,30 @@ namespace LuaParser.Parsers.Expression
                 return new BinaryOperationExpressionParser();
             if (Token.IsIdentifier(reader.Current))
                 return new SingleVariableExpressionParser();
+            if (Token.IsNumericConstant(reader.Current))
+                return new NumericConstantExpressionParser();
             throw new UnexpectedTokenException(reader.Current);
         }
+    }
+
+    public class NumericConstantExpressionParser : ExpressionParser
+    {
+        public override Syntax.Expression Parse(ITokenEnumerator reader)
+        {
+            var constantValue = Double.Parse(reader.Current);
+            return new NumericConstantExpression(constantValue);
+        }
+    }
+
+    public class NumericConstantExpression : Syntax.Expression
+    {
+        public double Value { get; }
+
+        public NumericConstantExpression(double value)
+        {
+            Value = value;
+        }
+
+        public override IEnumerable<Unit> Children => new Unit[0];
     }
 }

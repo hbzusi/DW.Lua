@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace LuaParser.Syntax
 {
-    class Assignment : Statement
+    public class Assignment : Statement
     {
         public IList<Variable> Variables { get; set; }
         public IList<Expression> Expressions { get; set; }

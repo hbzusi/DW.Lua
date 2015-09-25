@@ -1,6 +1,6 @@
 namespace LuaParser.Syntax
 {
-    class Variable
+    public class Variable
     {
         public string Name;
     }

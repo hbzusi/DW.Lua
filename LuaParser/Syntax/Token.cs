@@ -16,7 +16,13 @@ namespace LuaParser.Syntax
 
         public static bool IsIdentifier(string token)
         {
-            return Char.IsLetter(token[0]) && token.Skip(1).All(Char.IsLetterOrDigit);
+            return char.IsLetter(token[0]) && token.Skip(1).All(char.IsLetterOrDigit);
+        }
+
+        public static bool IsNumericConstant(string token)
+        {
+            double dummy;
+            return double.TryParse(token, out dummy);
         }
 
         public static bool IsBinaryOperation(string token)

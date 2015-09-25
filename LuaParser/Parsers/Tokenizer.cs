@@ -62,8 +62,8 @@ namespace LuaParser.Parsers
         private static string TokenCharsString = "()[]+-/*=\n,";
         private static string NonTokenCharsString = "\t\r ";
 
-        private static char[] TokenChars = TokenCharsString.ToCharArray();
-        private static char[] NonTokenChars = NonTokenCharsString.ToCharArray();
+        private static readonly char[] TokenChars = TokenCharsString.ToCharArray();
+        private static readonly char[] NonTokenChars = NonTokenCharsString.ToCharArray();
 
         private static bool IsToken(char chr)
         {
