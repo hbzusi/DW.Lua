@@ -79,7 +79,7 @@
     <Compile Include="Syntax\Statement.cs" />
     <Compile Include="Syntax\StatementBlock.cs" />
     <Compile Include="Syntax\Token.cs" />
-    <Compile Include="Syntax\Type.cs" />
+    <Compile Include="Syntax\LuaType.cs" />
     <Compile Include="Syntax\UnaryOperation.cs" />
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\Value.cs" />
