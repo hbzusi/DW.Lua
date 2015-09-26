@@ -40,12 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Annotations\Annotations.cs" />
+    <Compile Include="Extensions\EquatableExtensions.cs" />
+    <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
+    <Compile Include="Parsers\Expression\BracketedExpression.cs" />
     <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />
     <Compile Include="Parsers\Expression\NumericConstantExpressionParser.cs" />
     <Compile Include="Parsers\Statement\EmptyStatementParser.cs" />
+    <Compile Include="Syntax\ConstantExpression.cs" />
     <Compile Include="Syntax\Keyword.cs" />
-    <Compile Include="Syntax\NumericConstantExpression.cs" />
     <Compile Include="Syntax\Control\IfStatement.cs" />
     <Compile Include="Syntax\EmptyStatement.cs" />
     <Compile Include="Parsers\Expression\ExpressionListParser.cs" />
@@ -66,21 +69,14 @@
     <Compile Include="Parsers\Expression\SingleVariableExpressionParser.cs" />
     <Compile Include="SyntaxParser.cs" />
     <Compile Include="Syntax\Assignment.cs" />
-    <Compile Include="Syntax\BinaryOperation.cs" />
     <Compile Include="Syntax\ConstValue.cs" />
-    <Compile Include="Syntax\Control\BreakStatement.cs" />
-    <Compile Include="Syntax\Control\DoWhileBlock.cs" />
-    <Compile Include="Syntax\Control\RepeatUntilBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syntax\Expression.cs" />
     <Compile Include="Syntax\FunctionCallExpression.cs" />
-    <Compile Include="Syntax\FunctionCallStatement.cs" />
-    <Compile Include="Syntax\FunctionDeclaration.cs" />
     <Compile Include="Syntax\Statement.cs" />
     <Compile Include="Syntax\StatementBlock.cs" />
     <Compile Include="Syntax\Token.cs" />
     <Compile Include="Syntax\LuaType.cs" />
-    <Compile Include="Syntax\UnaryOperation.cs" />
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\Value.cs" />
     <Compile Include="Syntax\Variable.cs" />

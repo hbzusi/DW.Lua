@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
@@ -30,19 +29,7 @@ namespace LuaParser.Parsers.Expression
         public override Syntax.Expression Parse(ITokenEnumerator reader)
         {
             reader.Advance();
-            return new BooleanConstantExpression(Boolean.Parse(reader.Previous));
+            return new ConstantExpression(new Value() {BooleanValue = Boolean.Parse(reader.Previous) });
         }
-    }
-
-    public class BooleanConstantExpression : Syntax.Expression
-    {
-        public Value Value;
-
-        public BooleanConstantExpression(bool value)
-        {
-            Value.BooleanValue = value;
-        }
-
-        public override IEnumerable<Unit> Children => new Unit[0];
     }
 }

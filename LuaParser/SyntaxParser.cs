@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using LuaParser.Parsers;
 using LuaParser.Parsers.Expression;
 using LuaParser.Parsers.Statement;
@@ -10,17 +11,17 @@ namespace LuaParser
     {
         public static StatementBlock Parse(string s)
         {
-            var rootBlock = new StatementBlock();
+            var statements = new List<Statement>();
             var reader = new StringReader(s);
             ITokenEnumerator tokenEnumerator = Tokenizer.Parse(reader);
 
             while (!tokenEnumerator.Finished)
             {
                 var statement = ReadStatement(tokenEnumerator);
-                rootBlock.Statements.Add(statement);
+                statements.Add(statement);
             }
 
-            return rootBlock;
+            return new StatementBlock(statements);
         }
 
         public static Statement ReadStatement(ITokenEnumerator reader)

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using LuaParser.Exceptions;
+using LuaParser.Extensions;
 using LuaParser.Syntax;
 using LuaParser.Syntax.Control;
 
@@ -8,30 +10,26 @@ namespace LuaParser.Parsers.Statement
     {
         public override Syntax.Statement Parse(ITokenEnumerator reader)
         {
-            StatementBlock ifBlock = new StatementBlock();
+            var ifStatements = new List<Syntax.Statement>();
             StatementBlock elseBlock = null;
-
-            if (reader.Current != Keyword.If)
-                throw new UnexpectedTokenException(reader.Current);
+            reader.VerifyExpectedToken(Keyword.If);
             reader.Advance();
             var conditionExpression = SyntaxParser.ReadExpression(reader);
-            if (reader.Current != Keyword.Then)
-                throw new UnexpectedTokenException(reader.Current);
-
+            reader.VerifyExpectedToken(Keyword.Then);
             reader.Advance();
             while (reader.Current != Keyword.End && reader.Current != Keyword.Else)
-                ifBlock.Statements.Add(SyntaxParser.ReadStatement(reader));
+                ifStatements.Add(SyntaxParser.ReadStatement(reader));
 
             if (reader.Current == Keyword.Else)
             {
                 reader.Advance();
-                elseBlock = new StatementBlock();
+                var elseStatements = new List<Syntax.Statement>();
                 while (reader.Current != Keyword.End)
-                    elseBlock.Statements.Add(SyntaxParser.ReadStatement(reader));
+                    elseStatements.Add(SyntaxParser.ReadStatement(reader));
+                elseBlock = new StatementBlock(elseStatements);
             }
-            if (reader.Current != Keyword.End)
-                throw new UnexpectedTokenException(reader.Current);
-            return new IfStatement(conditionExpression, ifBlock, elseBlock);
+            reader.VerifyExpectedToken(Keyword.End);
+            return new IfStatement(conditionExpression, new StatementBlock(ifStatements), elseBlock);
         }
     }
 }

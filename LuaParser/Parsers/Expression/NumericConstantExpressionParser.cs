@@ -8,7 +8,7 @@ namespace LuaParser.Parsers.Expression
         public override Syntax.Expression Parse(ITokenEnumerator reader)
         {
             var constantValue = Double.Parse(reader.Current);
-            return new NumericConstantExpression(constantValue);
+            return new ConstantExpression(new Value() {NumericValue = constantValue});
         }
     }
 }

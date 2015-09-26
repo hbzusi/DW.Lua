@@ -1,19 +1,47 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using LuaParser.Extensions;
 
 namespace LuaParser.Syntax.Control
 {
-    class IfStatement : Statement
+    public class IfStatement : Statement, IEquatable<IfStatement>
     {
-        public IfStatement(Expression condition, StatementBlock ifBlock, StatementBlock elseBlock)
+        public IfStatement([NotNull] Expression condition, [NotNull] StatementBlock ifBlock,
+            [CanBeNull] StatementBlock elseBlock = null)
         {
+            if (condition == null) throw new ArgumentNullException(nameof(condition));
+            if (ifBlock == null) throw new ArgumentNullException(nameof(ifBlock));
             Condition = condition;
             IfBlock = ifBlock;
             ElseBlock = elseBlock;
         }
 
         public override IEnumerable<Unit> Children { get; }
-        public Expression Condition { get; private set; }
-        public StatementBlock IfBlock { get; private set; }
-        public StatementBlock ElseBlock { get; private set; }
+
+        [NotNull]
+        public Expression Condition { get; }
+
+        [NotNull]
+        public StatementBlock IfBlock { get; }
+
+        [CanBeNull]
+        public StatementBlock ElseBlock { get; }
+
+        public bool Equals(IfStatement other)
+        {
+            return Condition.Equals(other.Condition) && IfBlock.Equals(other.IfBlock) &&
+                   Equals(ElseBlock, other.ElseBlock);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.CheckEquality(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

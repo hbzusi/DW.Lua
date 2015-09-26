@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using LuaParser.Exceptions;
+using LuaParser.Extensions;
 using LuaParser.Syntax;
 
 namespace LuaParser.Parsers.Statement
@@ -21,12 +22,7 @@ namespace LuaParser.Parsers.Statement
             reader.Advance();
             var expressions = ReadExpressions(reader);
 
-            return new Assignment
-            {
-                Local = local,
-                Variables = variables,
-                Expressions = expressions
-            };
+            return new Assignment(variables, expressions, local);
         }
 
         private IList<Syntax.Expression> ReadExpressions(ITokenEnumerator reader)
@@ -39,8 +35,7 @@ namespace LuaParser.Parsers.Statement
                 if (reader.Next == null)
                     break;
                 reader.Advance();
-                if (reader.Current != "\n" && reader.Current != Token.Colon && reader.Current != Token.Semicolon)
-                    throw new UnexpectedTokenException(reader.Current);
+                reader.VerifyExpectedToken("\n", Token.Colon, Token.Semicolon);
                 if (reader.Current == "\n" || reader.Current == Token.Semicolon)
                     break;
                 reader.Advance();
@@ -53,7 +48,7 @@ namespace LuaParser.Parsers.Statement
             var result = new List<Variable>();
             while (reader.Next != null)
             {
-                var variable = new Variable {Name = reader.Current};
+                var variable = new Variable(reader.Current);
                 result.Add(variable);
                 reader.Advance();
                 if (reader.Current != Token.Colon && reader.Current != Token.EqualsSign)

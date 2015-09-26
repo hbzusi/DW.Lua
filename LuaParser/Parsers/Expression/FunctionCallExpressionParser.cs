@@ -1,4 +1,5 @@
 using LuaParser.Exceptions;
+using LuaParser.Extensions;
 using LuaParser.Syntax;
 
 namespace LuaParser.Parsers.Expression
@@ -9,8 +10,7 @@ namespace LuaParser.Parsers.Expression
         {
             var name = reader.Current;
             reader.Advance();
-            if (reader.Current != "(")
-                throw new UnexpectedTokenException(reader.Current);
+            reader.VerifyExpectedToken(Token.LeftBracket);
 
             var parametersParser = new ExpressionListParser();
 
@@ -19,8 +19,7 @@ namespace LuaParser.Parsers.Expression
                 FunctionName = name,
                 Parameters = parametersParser.Parse(reader)
             };
-            if (reader.Current != ")")
-                throw new UnexpectedTokenException(reader.Current);
+            reader.VerifyExpectedToken(Token.RightBracket);
             return expression;
         }
     }

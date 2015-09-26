@@ -4,11 +4,11 @@ namespace LuaParser.Syntax
 {
     public static class Token
     {
-        public const string Colon = ",";
+        public static string Colon = ",";
 
-        public const string EqualsSign = "=";
+        public static string EqualsSign = "=";
 
-        public const string Semicolon = ";";
+        public static string Semicolon = ";";
         public static string LeftBracket => "(";
         public static string RightBracket => ")";
 

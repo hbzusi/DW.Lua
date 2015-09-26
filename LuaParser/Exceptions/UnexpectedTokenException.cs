@@ -2,7 +2,7 @@ using System;
 
 namespace LuaParser.Exceptions
 {
-    internal class UnexpectedTokenException : Exception
+    public class UnexpectedTokenException : Exception
     {
         public UnexpectedTokenException(string token) 
             :base($"Token '{token}' was unexpected at this time")
