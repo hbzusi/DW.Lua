@@ -1,4 +1,3 @@
-using System;
 using LuaParser.Exceptions;
 using LuaParser.Syntax;
 
@@ -20,16 +19,9 @@ namespace LuaParser.Parsers.Expression
                 return new SingleVariableExpressionParser();
             if (Token.IsNumericConstant(reader.Current))
                 return new NumericConstantExpressionParser();
+            if (reader.Current == Token.LeftCurlyBrace)
+                return new TableInitializerExpressionParser();
             throw new UnexpectedTokenException(reader.Current);
-        }
-    }
-
-    public class BooleanConstantExpressionParser : ExpressionParser
-    {
-        public override Syntax.Expression Parse(ITokenEnumerator reader)
-        {
-            reader.Advance();
-            return new ConstantExpression(new Value() {BooleanValue = Boolean.Parse(reader.Previous) });
         }
     }
 }

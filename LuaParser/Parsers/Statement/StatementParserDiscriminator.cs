@@ -6,12 +6,14 @@ namespace LuaParser.Parsers.Statement
     {
         public StatementParser Identify(ITokenEnumerator reader)
         {
-            if (reader.Current == "if")
+            if (reader.Current == Keyword.If)
                 return new IfStatementParser();
-            if (reader.Current == "while")
+            if (reader.Current == Keyword.While)
                 return new WhileStatementParser();
             if (reader.Current == Token.Semicolon)
                 return new EmptyStatementParser();
+            if (reader.Current == Keyword.Do)
+                return new DoEndBlockStatementParser();
             return new AssignmentStatementParser();
         }
     }

@@ -21,5 +21,10 @@ namespace LuaParser.Syntax
         {
             return this.CheckEquality(obj);
         }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
     }
 }

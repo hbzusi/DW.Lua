@@ -11,6 +11,8 @@ namespace LuaParser.Syntax
         public static string Semicolon = ";";
         public static string LeftBracket => "(";
         public static string RightBracket => ")";
+        public static string LeftCurlyBrace => "{";
+        public static string RightCurlyBrace => "}";
 
         public static bool IsIdentifier(string token)
         {

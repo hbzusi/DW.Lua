@@ -26,9 +26,8 @@ namespace LuaParser
 
         public static Statement ReadStatement(ITokenEnumerator reader)
         {
-            var token = reader.Current;
-            if (string.IsNullOrEmpty(token)) 
-                return new EmptyStatement();
+            while (string.IsNullOrEmpty(reader.Current) || reader.Current == "\n")
+                reader.Advance();
             var statementDiscriminator = new StatementParserDiscriminator();
             var statementParser = statementDiscriminator.Identify(reader);
             return statementParser.Parse(reader);

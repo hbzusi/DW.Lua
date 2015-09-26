@@ -5,7 +5,7 @@ using LuaParser.Exceptions;
 
 namespace LuaParser.Parsers
 {
-    public interface ITokenEnumerator : IEnumerable<string>
+    public interface ITokenEnumerator
     {
         string Previous { get; }
         string Next { get; }
@@ -56,11 +56,6 @@ namespace LuaParser.Parsers
         public IEnumerator<string> GetEnumerator()
         {
             return _tokens.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }
