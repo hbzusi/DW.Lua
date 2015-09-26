@@ -17,9 +17,11 @@ namespace LuaParser.Parsers.Statement
             var conditionExpression = SyntaxParser.ReadExpression(reader);
             if (reader.Current != Keyword.Then)
                 throw new UnexpectedTokenException(reader.Current);
+
             reader.Advance();
             while (reader.Current != Keyword.End && reader.Current != Keyword.Else)
                 ifBlock.Statements.Add(SyntaxParser.ReadStatement(reader));
+
             if (reader.Current == Keyword.Else)
             {
                 reader.Advance();

@@ -8,9 +8,6 @@ namespace LuaParser.Syntax.Control
         public Expression Condition { get; set; }
         public StatementBlock StatementBlock { get; set; }
 
-        public override IEnumerable<Unit> Children
-        {
-            get { return new Unit[] {Condition}.Concat(StatementBlock.Statements); }
-        }
+        public override IEnumerable<Unit> Children => new Unit[] {Condition}.Concat(StatementBlock.Statements);
     }
 }

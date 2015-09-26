@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using LuaParser.Extensions;
 using LuaParser.Parsers;
 using LuaParser.Parsers.Expression;
 using LuaParser.Parsers.Statement;

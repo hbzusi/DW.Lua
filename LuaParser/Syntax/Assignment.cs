@@ -8,9 +8,6 @@ namespace LuaParser.Syntax
         public IList<Expression> Expressions { get; set; }
         public bool Local { get; set; }
 
-        public override IEnumerable<Unit> Children
-        {
-            get { return (Expressions ?? new Expression[0]); }
-        }
+        public override IEnumerable<Unit> Children => (Expressions ?? new Expression[0]);
     }
 }

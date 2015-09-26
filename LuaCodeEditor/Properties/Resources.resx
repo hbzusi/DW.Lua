@@ -117,4 +117,7 @@
   <data name="Text_Status_OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="label_tokens" xml:space="preserve">
+    <value>Tokens</value>
+  </data>
 </root>

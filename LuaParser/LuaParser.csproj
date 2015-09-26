@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\Annotations.cs" />
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />
     <Compile Include="Parsers\Expression\NumericConstantExpressionParser.cs" />

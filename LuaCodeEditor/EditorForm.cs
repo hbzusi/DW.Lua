@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using LuaCodeEditor.Properties;
 using LuaParser;
 using LuaParser.Parsers;
 using LuaParser.Syntax;
@@ -23,7 +24,7 @@ namespace LuaCodeEditor
                 var tokenEnumerator = Tokenizer.Parse(reader);
                 var block = SyntaxParser.Parse(script);
                 UpdateSyntaxTreeView(block);
-                parserStatusLabel.Text = "Tokens: " + string.Join(", ",tokenEnumerator);
+                parserStatusLabel.Text = Resources.label_tokens + string.Join(", ",tokenEnumerator);
             }
             catch (Exception ex)
             {
@@ -42,11 +43,7 @@ namespace LuaCodeEditor
 
         private void InsertSyntaxTreeViewNode(Unit unit, TreeNode node)
         {
-            TreeNode newNode;
-            if (node == null)
-                newNode = treeView1.Nodes.Add(unit.GetType().Name);
-            else
-                newNode = node.Nodes.Add(unit.GetType().Name);
+            var newNode = node?.Nodes.Add(unit.GetType().Name) ?? treeView1.Nodes.Add(unit.GetType().Name);
 
             foreach (var child in unit.Children)
                 InsertSyntaxTreeViewNode(child,newNode);

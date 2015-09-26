@@ -1,5 +1,4 @@
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using LuaParser.Exceptions;
 using LuaParser.Syntax;

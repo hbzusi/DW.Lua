@@ -4,9 +4,6 @@ namespace LuaParser.Syntax.Control
 {
     class BreakStatement : Statement
     {
-        public override IEnumerable<Unit> Children
-        {
-            get { return new Unit[0]; }
-        }
+        public override IEnumerable<Unit> Children => new Unit[0];
     }
 }
