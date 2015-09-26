@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace LuaParser.Syntax
 {
@@ -13,6 +9,8 @@ namespace LuaParser.Syntax
         public const string EqualsSign = "=";
 
         public const string Semicolon = ";";
+        public static string LeftBracket => "(";
+        public static string RightBracket => ")";
 
         public static bool IsIdentifier(string token)
         {
@@ -28,6 +26,11 @@ namespace LuaParser.Syntax
         public static bool IsBinaryOperation(string token)
         {
             return new[] {"+", "-", "*", "/"}.Contains(token);
+        }
+
+        public static bool IsBooleanConstant(string token)
+        {
+            return token == "true" || token == "false";
         }
     }
 }

@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LuaParser;
+﻿using LuaParser;
 using NUnit.Framework;
 
-namespace LuaParserUnitTests.Parser
+namespace LuaParserUnitTests.Parsers.Statement
 {
     [TestFixture]
     public class IfStatementParserTests
     {
+        private const string EmptyIfCase = "if (true) then ; end";
+        private const string EmptyIfElseCase = "if (true) then ; else ; end";
+
         [Test]
-        public void Test()
+        [TestCase(EmptyIfCase)]
+        [TestCase(EmptyIfElseCase)]
+        public void Test(string code)
         {
-            SyntaxParser.Parse("if (true) then ; else ; end");
+            SyntaxParser.Parse(code);
         } 
     }
 }

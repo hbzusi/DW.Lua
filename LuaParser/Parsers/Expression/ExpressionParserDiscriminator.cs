@@ -16,6 +16,8 @@ namespace LuaParser.Parsers.Expression
                 return new FunctionCallExpressionParser();
             if (Token.IsIdentifier(reader.Current) && Token.IsBinaryOperation(reader.Next))
                 return new BinaryOperationExpressionParser();
+            if (Token.IsBooleanConstant(reader.Current))
+                return new BooleanConstantExpressionParser();
             if (Token.IsIdentifier(reader.Current))
                 return new SingleVariableExpressionParser();
             if (Token.IsNumericConstant(reader.Current))
@@ -24,22 +26,22 @@ namespace LuaParser.Parsers.Expression
         }
     }
 
-    public class NumericConstantExpressionParser : ExpressionParser
+    public class BooleanConstantExpressionParser : ExpressionParser
     {
         public override Syntax.Expression Parse(ITokenEnumerator reader)
         {
-            var constantValue = Double.Parse(reader.Current);
-            return new NumericConstantExpression(constantValue);
+            reader.Advance();
+            return new BooleanConstantExpression(Boolean.Parse(reader.Previous));
         }
     }
 
-    public class NumericConstantExpression : Syntax.Expression
+    public class BooleanConstantExpression : Syntax.Expression
     {
-        public double Value { get; }
+        public Value Value;
 
-        public NumericConstantExpression(double value)
+        public BooleanConstantExpression(bool value)
         {
-            Value = value;
+            Value.BooleanValue = value;
         }
 
         public override IEnumerable<Unit> Children => new Unit[0];

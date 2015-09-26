@@ -9,11 +9,8 @@ namespace LuaParser.Syntax
             Statements = new List<Statement>();
         }
 
-        public IList<Statement> Statements { get; private set; }
+        public IList<Statement> Statements { get; }
 
-        public override IEnumerable<Unit> Children
-        {
-            get { return Statements; }
-        }
+        public override IEnumerable<Unit> Children => Statements;
     }
 }

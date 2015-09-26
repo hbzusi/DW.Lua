@@ -1,4 +1,7 @@
 namespace LuaParser.Syntax
 {
-    struct Value { }
+    public struct Value {
+        public double NumericValue { get; set; }
+        public bool BooleanValue { get; set; }
+    }
 }

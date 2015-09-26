@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using LuaParser;
-using LuaParser.Parsers.Expression;
 using LuaParser.Syntax;
 using NUnit.Framework;
 
@@ -54,7 +53,7 @@ namespace LuaParserUnitTests.Parsers.Statement
             Assert.That(assignment.Expressions.Count, Is.EqualTo(1));
             Assert.IsInstanceOf<NumericConstantExpression>(assignment.Expressions.Single());
             var expression = (NumericConstantExpression) assignment.Expressions.Single();
-            Assert.That(expression.Value, Is.EqualTo(1));
+            Assert.That(expression.Value.NumericValue, Is.EqualTo(1));
         }
     }
 }

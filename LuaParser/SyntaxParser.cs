@@ -24,7 +24,7 @@ namespace LuaParser
             return rootBlock;
         }
 
-        private static Statement ReadStatement(ITokenEnumerator reader)
+        public static Statement ReadStatement(ITokenEnumerator reader)
         {
             var token = reader.Current;
             if (string.IsNullOrEmpty(token)) 

@@ -12,6 +12,7 @@ namespace LuaParser.Parsers
         string Current { get; }
         bool Finished { get; }
         void Advance();
+        string GetAndAdvance();
     }
 
     public class TokenEnumerator : ITokenEnumerator
@@ -41,6 +42,13 @@ namespace LuaParser.Parsers
                 Current = _tokens[_index];
 
             Next = _index < _tokens.Count - 1 ? _tokens[_index+1] : null;
+        }
+
+        public string GetAndAdvance()
+        {
+            string token = Current;
+            Advance();
+            return token;
         }
 
         public bool Finished => Next == null;
