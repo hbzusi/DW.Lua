@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting;
 using JetBrains.Annotations;
-using LuaParser.Parsers;
 
-namespace LuaParser
+namespace LuaParser.Parsers
 {
     public class ParserContext : IParserContext
     {

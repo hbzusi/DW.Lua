@@ -52,6 +52,7 @@
     <Compile Include="Parsers\Statement\IfStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\WhileStatementParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Parsers\TokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

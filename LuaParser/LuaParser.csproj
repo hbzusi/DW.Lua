@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Extensions\EquatableExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
-    <Compile Include="ParserContext.cs" />
+    <Compile Include="Parsers\ParserContext.cs" />
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parsers\Expression\BooleanConstantExpressionParser.cs" />
     <Compile Include="Parsers\IParserContext.cs" />
