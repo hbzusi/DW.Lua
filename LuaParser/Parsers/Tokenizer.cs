@@ -59,7 +59,7 @@ namespace LuaParser.Parsers
             return sb.ToString();
         }
 
-        private static string TokenCharsString = "{}()[]+-/*=\n,";
+        private static string TokenCharsString = "{}()[]+-/*=\n,:";
         private static string NonTokenCharsString = "\t\r ";
 
         private static readonly char[] TokenChars = TokenCharsString.ToCharArray();

@@ -34,8 +34,7 @@ namespace LuaParser.Parsers.Statement
                 result.Add(expression);
                 if (reader.Next == null)
                     break;
-                reader.Advance();
-                reader.VerifyExpectedToken("\n", Token.Colon, Token.Semicolon);
+                reader.VerifyExpectedToken("\n", Token.Comma, Token.Semicolon);
                 if (reader.Current == "\n" || reader.Current == Token.Semicolon)
                     break;
                 reader.Advance();
@@ -51,7 +50,7 @@ namespace LuaParser.Parsers.Statement
                 var variable = new Variable(reader.Current);
                 result.Add(variable);
                 reader.Advance();
-                if (reader.Current != Token.Colon && reader.Current != Token.EqualsSign)
+                if (reader.Current != Token.Comma && reader.Current != Token.EqualsSign)
                     throw new UnexpectedTokenException(reader.Current);
                 if (reader.Current == Token.EqualsSign)
                     break;

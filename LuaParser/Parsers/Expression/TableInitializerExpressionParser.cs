@@ -14,7 +14,7 @@ namespace LuaParser.Parsers.Expression
             while (reader.Current != Token.RightCurlyBrace)
             {
                 expressions.Add(SyntaxParser.ReadExpression(reader));
-                reader.VerifyExpectedToken(Token.RightCurlyBrace, Token.Colon);
+                reader.VerifyExpectedToken(Token.RightCurlyBrace, Token.Comma);
             }
             reader.VerifyExpectedToken(Token.RightCurlyBrace);
             reader.Advance();

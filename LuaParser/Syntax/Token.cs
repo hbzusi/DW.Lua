@@ -4,7 +4,8 @@ namespace LuaParser.Syntax
 {
     public static class Token
     {
-        public static string Colon = ",";
+        public static string Comma = ",";
+        public static string Colon = ":";
 
         public static string EqualsSign = "=";
 
@@ -27,7 +28,7 @@ namespace LuaParser.Syntax
 
         public static bool IsBinaryOperation(string token)
         {
-            return new[] {"+", "-", "*", "/"}.Contains(token);
+            return new[] {"+", "-", "*", "/", "=="}.Contains(token);
         }
 
         public static bool IsBooleanConstant(string token)

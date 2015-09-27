@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using LuaParser.Exceptions;
 using LuaParser.Parsers;
 
@@ -13,7 +14,13 @@ namespace LuaParser.Extensions
         public static void VerifyExpectedToken(this ITokenEnumerator enumerator, params string[] expectedTokens)
         {
             if (!expectedTokens.Contains(enumerator.Current))
-                throw new UnexpectedTokenException(enumerator.Current);
+                throw new UnexpectedTokenException(enumerator.Current, expectedTokens);
+        }
+
+        public static void VerifyExpectedTokenAndAdvance(this ITokenEnumerator enumerator, params string[] expectedTokens)
+        {
+            enumerator.VerifyExpectedToken(expectedTokens);
+            enumerator.Advance();
         }
     }
 }

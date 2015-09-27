@@ -14,6 +14,8 @@ namespace LuaParser.Parsers.Statement
                 return new EmptyStatementParser();
             if (reader.Current == Keyword.Do)
                 return new DoEndBlockStatementParser();
+            if (reader.Current == Keyword.Function)
+                return new FunctionDeclarationStatementParser();
             return new AssignmentStatementParser();
         }
     }

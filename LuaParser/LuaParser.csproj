@@ -50,6 +50,7 @@
     <Compile Include="Parsers\Expression\TableInitializerExpressionParser.cs" />
     <Compile Include="Parsers\Statement\DoEndBlockStatementParser.cs" />
     <Compile Include="Parsers\Statement\EmptyStatementParser.cs" />
+    <Compile Include="Parsers\Statement\FunctionDeclarationStatementParser.cs" />
     <Compile Include="Syntax\ConstantExpression.cs" />
     <Compile Include="Syntax\DoEndBlock.cs" />
     <Compile Include="Syntax\Keyword.cs" />
