@@ -29,7 +29,7 @@ namespace LuaParser.Parsers.Statement
             var statements = new List<Syntax.Statement>();
             while (reader.Current != Keyword.End)
                 statements.Add(SyntaxParser.ReadStatement(reader));
-            reader.VerifyExpectedTokenAndAdvance(Keyword.End);
+            reader.VerifyExpectedToken(Keyword.End);
 
             return new FunctionDeclarationStatement(functionName,argumentNames,new StatementBlock(statements));
         }

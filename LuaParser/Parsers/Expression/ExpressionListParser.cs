@@ -1,12 +1,18 @@
 using System.Collections.Generic;
+using LuaParser.Syntax;
 
 namespace LuaParser.Parsers.Expression
 {
     public class ExpressionListParser
     {
-        public IList<Syntax.Expression> Parse(ITokenEnumerator reader)
+        public IEnumerable<Syntax.Expression> Parse(ITokenEnumerator reader)
         {
-            throw new System.NotImplementedException();
+            var expressions = new List<Syntax.Expression>();
+            do
+            {
+                expressions.Add(SyntaxParser.ReadExpression(reader));
+            } while (reader.Next == Token.Comma);
+            return expressions;
         }
     }
 }

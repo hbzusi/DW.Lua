@@ -1,3 +1,4 @@
+using System.Linq;
 using LuaParser.Exceptions;
 using LuaParser.Extensions;
 using LuaParser.Syntax;
@@ -17,7 +18,7 @@ namespace LuaParser.Parsers.Expression
             var expression = new FunctionCallExpression
             {
                 FunctionName = name,
-                Parameters = parametersParser.Parse(reader)
+                Parameters = parametersParser.Parse(reader).ToList()
             };
             reader.VerifyExpectedToken(Token.RightBracket);
             return expression;

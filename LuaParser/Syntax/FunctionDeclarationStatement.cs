@@ -20,14 +20,14 @@ namespace LuaParser.Parsers.Statement
         [NotNull]
         public StatementBlock FunctionBody { get; }
 
-        public FunctionDeclarationStatement([NotNull] string functionName, [NotNull] List<string> argumentNames,
+        public FunctionDeclarationStatement([NotNull] string functionName, [NotNull] IEnumerable<string> argumentNames,
             [NotNull] StatementBlock functionBody)
         {
             if (functionName == null) throw new ArgumentNullException(nameof(functionName));
             if (argumentNames == null) throw new ArgumentNullException(nameof(argumentNames));
             if (functionBody == null) throw new ArgumentNullException(nameof(functionBody));
             FunctionName = functionName;
-            _argumentNames = argumentNames;
+            _argumentNames = argumentNames.ToList();
             FunctionBody = functionBody;
         }
 

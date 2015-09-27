@@ -13,8 +13,7 @@ namespace LuaParserUnitTests.Parsers.Statement
         [Test]
         public void ShouldParseIfElseThen()
         {
-            var value = new Value {BooleanValue = true};
-            var conditionExpression = new BracketedExpression(new ConstantExpression(value));
+            var conditionExpression = new BracketedExpression(new ConstantExpression(Constants.True));
             var emptyStatementBlock = new StatementBlock(new EmptyStatement());
             var ifStatement = new IfStatement(conditionExpression, emptyStatementBlock, emptyStatementBlock);
             var expected = new StatementBlock(ifStatement);
@@ -24,8 +23,7 @@ namespace LuaParserUnitTests.Parsers.Statement
         [Test]
         public void ShouldParseIfThen()
         {
-            var value = new Value {BooleanValue = false};
-            var conditionExpression = new BracketedExpression(new ConstantExpression(value));
+            var conditionExpression = new BracketedExpression(new ConstantExpression(Constants.False));
             var emptyStatementBlock = new StatementBlock(new EmptyStatement());
             var ifStatement = new IfStatement(conditionExpression, emptyStatementBlock);
             var expected = new StatementBlock(ifStatement);

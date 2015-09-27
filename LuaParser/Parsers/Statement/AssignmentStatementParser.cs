@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using LuaParser.Exceptions;
 using LuaParser.Extensions;
+using LuaParser.Parsers.Expression;
 using LuaParser.Syntax;
 
 namespace LuaParser.Parsers.Statement
@@ -17,29 +18,11 @@ namespace LuaParser.Parsers.Statement
             }
 
             var variables = ReadDeclarations(reader);
-            if (reader.Current != Token.EqualsSign)
-                throw new UnexpectedTokenException(reader.Current, Token.EqualsSign);
-            reader.Advance();
-            var expressions = ReadExpressions(reader);
+            reader.VerifyExpectedTokenAndAdvance(Token.EqualsSign);
+            var assignedExpressionParser = new ExpressionListParser();
+            var expressions = assignedExpressionParser.Parse(reader);
 
             return new Assignment(variables, expressions, local);
-        }
-
-        private IList<Syntax.Expression> ReadExpressions(ITokenEnumerator reader)
-        {
-            var result = new List<Syntax.Expression>();
-            while (reader.Current != null)
-            {
-                var expression = SyntaxParser.ReadExpression(reader);
-                result.Add(expression);
-                if (reader.Next == null)
-                    break;
-                reader.VerifyExpectedToken("\n", Token.Comma, Token.Semicolon);
-                if (reader.Current == "\n" || reader.Current == Token.Semicolon)
-                    break;
-                reader.Advance();
-            }
-            return result;
         }
 
         private IList<Variable> ReadDeclarations(ITokenEnumerator reader)
@@ -50,8 +33,7 @@ namespace LuaParser.Parsers.Statement
                 var variable = new Variable(reader.Current);
                 result.Add(variable);
                 reader.Advance();
-                if (reader.Current != Token.Comma && reader.Current != Token.EqualsSign)
-                    throw new UnexpectedTokenException(reader.Current);
+                reader.VerifyExpectedToken(Token.Comma,Token.EqualsSign);
                 if (reader.Current == Token.EqualsSign)
                     break;
                 reader.Advance();
