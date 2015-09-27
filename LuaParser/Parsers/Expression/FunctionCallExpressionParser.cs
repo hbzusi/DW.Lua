@@ -1,5 +1,4 @@
 using System.Linq;
-using LuaParser.Exceptions;
 using LuaParser.Extensions;
 using LuaParser.Syntax;
 
@@ -7,7 +6,7 @@ namespace LuaParser.Parsers.Expression
 {
     public class FunctionCallExpressionParser : ExpressionParser
     {
-        public override Syntax.Expression Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
             var name = reader.Current;
             reader.Advance();

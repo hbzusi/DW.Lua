@@ -1,4 +1,3 @@
-using System;
 using LuaParser.Extensions;
 using LuaParser.Syntax;
 
@@ -6,7 +5,7 @@ namespace LuaParser.Parsers.Expression
 {
     public class BracketedExpressionParser : ExpressionParser
     {
-        public override Syntax.Expression Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedToken(Token.LeftBracket);
             reader.Advance();

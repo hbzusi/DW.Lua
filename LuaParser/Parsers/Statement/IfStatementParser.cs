@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using LuaParser.Exceptions;
 using LuaParser.Extensions;
 using LuaParser.Syntax;
 using LuaParser.Syntax.Control;

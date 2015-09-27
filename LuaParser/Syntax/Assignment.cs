@@ -8,9 +8,9 @@ namespace LuaParser.Syntax
     public class Assignment : Statement, IEquatable<Assignment>
     {
         private readonly List<Variable> _variables;
-        private readonly List<Expression> _expressions;
+        private readonly List<LuaExpression> _expressions;
 
-        public Assignment(IEnumerable<Variable> variables, IEnumerable<Expression> expressions, bool local)
+        public Assignment(IEnumerable<Variable> variables, IEnumerable<LuaExpression> expressions, bool local)
         {
             _variables = variables.ToList();
             _expressions = expressions.ToList();
@@ -19,11 +19,11 @@ namespace LuaParser.Syntax
 
         public IList<Variable> Variables => _variables.AsReadOnly();
 
-        public IList<Expression> Expressions => _expressions;
+        public IList<LuaExpression> Expressions => _expressions;
 
         public bool Local { get; }
 
-        public override IEnumerable<Unit> Children => (Expressions ?? new Expression[0]);
+        public override IEnumerable<Unit> Children => (Expressions ?? new LuaExpression[0]);
 
         public bool Equals(Assignment other)
         {

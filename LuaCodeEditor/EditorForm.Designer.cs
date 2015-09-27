@@ -1,11 +1,14 @@
-﻿namespace LuaCodeEditor
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace LuaCodeEditor
 {
     partial class EditorForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -81,9 +84,9 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox codeBox;
-        private System.Windows.Forms.Label parserStatusLabel;
-        private System.Windows.Forms.TreeView treeView1;
+        private RichTextBox codeBox;
+        private Label parserStatusLabel;
+        private TreeView treeView1;
     }
 }
 

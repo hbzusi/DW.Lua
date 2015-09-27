@@ -34,7 +34,7 @@ namespace LuaParser
         }
 
 
-        public static Expression ReadExpression(ITokenEnumerator reader)
+        public static LuaExpression ReadExpression(ITokenEnumerator reader)
         {
             var expressionDiscriminator = new ExpressionParserDiscriminator();
             var expressionParser = expressionDiscriminator.Identify(reader);

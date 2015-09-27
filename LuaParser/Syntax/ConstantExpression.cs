@@ -5,7 +5,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class ConstantExpression : Syntax.Expression, IEquatable<ConstantExpression>
+    public class ConstantExpression : LuaExpression, IEquatable<ConstantExpression>
     {
         public Value Value { get; }
 

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using LuaParser.Extensions;
 using LuaParser.Syntax;
 using LuaParser.Syntax.Control;

@@ -6,7 +6,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    internal class FunctionCallExpression : Expression, IEquatable<FunctionCallExpression>
+    internal class FunctionCallExpression : LuaExpression, IEquatable<FunctionCallExpression>
     {
         public override IEnumerable<Unit> Children
         {
@@ -14,7 +14,7 @@ namespace LuaParser.Syntax
         }
 
         public string FunctionName { get; set; }
-        public IList<Expression> Parameters { get; set; }
+        public IList<LuaExpression> Parameters { get; set; }
 
         public bool Equals([CanBeNull] FunctionCallExpression other)
         {

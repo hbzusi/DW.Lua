@@ -5,9 +5,9 @@ namespace LuaParser.Parsers.Expression
 {
     public class ExpressionListParser
     {
-        public IEnumerable<Syntax.Expression> Parse(ITokenEnumerator reader)
+        public IEnumerable<LuaExpression> Parse(ITokenEnumerator reader)
         {
-            var expressions = new List<Syntax.Expression>();
+            var expressions = new List<LuaExpression>();
             do
             {
                 expressions.Add(SyntaxParser.ReadExpression(reader));

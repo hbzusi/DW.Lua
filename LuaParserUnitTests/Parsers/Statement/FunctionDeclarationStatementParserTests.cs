@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LuaParser;
+﻿using LuaParser;
 using LuaParser.Parsers.Statement;
 using LuaParser.Syntax;
 using NUnit.Framework;

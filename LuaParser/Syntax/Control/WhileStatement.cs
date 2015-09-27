@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LuaParser.Extensions;
 
 namespace LuaParser.Syntax.Control
 {
     public class WhileStatement : Statement, IEquatable<WhileStatement>
     {
-        public Expression Condition { get; }
+        public LuaExpression Condition { get; }
         public StatementBlock Body { get; }
 
-        public WhileStatement(Expression condition, StatementBlock body)
+        public WhileStatement(LuaExpression condition, StatementBlock body)
         {
             Condition = condition;
             Body = body;

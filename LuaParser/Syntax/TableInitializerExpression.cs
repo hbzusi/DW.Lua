@@ -6,21 +6,21 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class TableInitializerExpression : Expression, IEquatable<TableInitializerExpression>
+    public class TableInitializerExpression : LuaExpression, IEquatable<TableInitializerExpression>
     {
-        [NotNull] private readonly List<Expression> _expressions;
+        [NotNull] private readonly List<LuaExpression> _expressions;
 
-        public TableInitializerExpression([NotNull] IEnumerable<Expression> expressions)
+        public TableInitializerExpression([NotNull] IEnumerable<LuaExpression> expressions)
         {
             if (expressions == null) throw new ArgumentNullException(nameof(expressions));
-            _expressions = new List<Expression>(expressions);
+            _expressions = new List<LuaExpression>(expressions);
         }
 
-        public TableInitializerExpression(params Expression[] expressions) : this(expressions.AsEnumerable())
+        public TableInitializerExpression(params LuaExpression[] expressions) : this(expressions.AsEnumerable())
         {
         }
 
-        public IEnumerable<Expression> Expressions => _expressions.AsReadOnly();
+        public IEnumerable<LuaExpression> Expressions => _expressions.AsReadOnly();
 
         public override IEnumerable<Unit> Children { get; }
 

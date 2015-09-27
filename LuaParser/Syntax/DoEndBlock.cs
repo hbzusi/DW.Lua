@@ -4,7 +4,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class DoEndBlock : Syntax.Statement, IEquatable<DoEndBlock>
+    public class DoEndBlock : Statement, IEquatable<DoEndBlock>
     {
         public StatementBlock StatementBlock { get; }
 

@@ -5,9 +5,9 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class BracketedExpression : Syntax.Expression, IEquatable<BracketedExpression>
+    public class BracketedExpression : LuaExpression, IEquatable<BracketedExpression>
     {
-        public BracketedExpression([NotNull] Syntax.Expression expression)
+        public BracketedExpression([NotNull] LuaExpression expression)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             Contents = expression;
@@ -30,6 +30,6 @@ namespace LuaParser.Syntax
             return Contents?.GetHashCode() ?? 0;
         }
 
-        public Syntax.Expression Contents { get; }
+        public LuaExpression Contents { get; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using LuaParser.Extensions;
 using LuaParser.Syntax;
-using Enumerable = System.Linq.Enumerable;
 
 namespace LuaParser.Parsers.Statement
 {

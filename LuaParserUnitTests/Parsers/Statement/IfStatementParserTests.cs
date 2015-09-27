@@ -1,6 +1,5 @@
 ﻿using LuaParser;
 using LuaParser.Exceptions;
-using LuaParser.Parsers.Expression;
 using LuaParser.Syntax;
 using LuaParser.Syntax.Control;
 using NUnit.Framework;

@@ -7,7 +7,7 @@ namespace LuaParser.Syntax.Control
 {
     public class IfStatement : Statement, IEquatable<IfStatement>
     {
-        public IfStatement([NotNull] Expression condition, [NotNull] StatementBlock ifBlock,
+        public IfStatement([NotNull] LuaExpression condition, [NotNull] StatementBlock ifBlock,
             [CanBeNull] StatementBlock elseBlock = null)
         {
             if (condition == null) throw new ArgumentNullException(nameof(condition));
@@ -20,7 +20,7 @@ namespace LuaParser.Syntax.Control
         public override IEnumerable<Unit> Children { get; }
 
         [NotNull]
-        public Expression Condition { get; }
+        public LuaExpression Condition { get; }
 
         [NotNull]
         public StatementBlock IfBlock { get; }
