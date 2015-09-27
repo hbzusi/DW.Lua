@@ -19,7 +19,7 @@ namespace LuaParser.Parsers.Statement
             _terminatingTokens = new HashSet<string>(terminatingTokens);
         }
 
-        public override Syntax.Statement Parse(ITokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader, IParserContext context)
         {
             return ParseBlock(reader);
         }

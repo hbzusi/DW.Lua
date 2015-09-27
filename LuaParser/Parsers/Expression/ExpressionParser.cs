@@ -2,6 +2,6 @@
 {
     public abstract class ExpressionParser
     {
-        public abstract Syntax.Expression Parse(ITokenEnumerator reader);
+        public abstract Syntax.Expression Parse(ITokenEnumerator reader, IParserContext context);
     }
 }

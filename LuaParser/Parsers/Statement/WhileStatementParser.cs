@@ -7,7 +7,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class WhileStatementParser : StatementParser
     {
-        public override Syntax.Statement Parse(ITokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndAdvance(Keyword.While);
             var conditionExpression = SyntaxParser.ReadExpression(reader);

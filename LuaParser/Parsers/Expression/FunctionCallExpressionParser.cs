@@ -7,7 +7,7 @@ namespace LuaParser.Parsers.Expression
 {
     public class FunctionCallExpressionParser : ExpressionParser
     {
-        public override Syntax.Expression Parse(ITokenEnumerator reader)
+        public override Syntax.Expression Parse(ITokenEnumerator reader, IParserContext context)
         {
             var name = reader.Current;
             reader.Advance();

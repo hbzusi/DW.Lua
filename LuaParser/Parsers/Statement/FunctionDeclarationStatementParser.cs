@@ -6,7 +6,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class FunctionDeclarationStatementParser : StatementParser
     {
-        public override Syntax.Statement Parse(ITokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndAdvance(Keyword.Function);
             if (reader.Next == Token.Colon)

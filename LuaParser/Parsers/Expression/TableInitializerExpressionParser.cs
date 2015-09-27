@@ -6,7 +6,7 @@ namespace LuaParser.Parsers.Expression
 {
     public class TableInitializerExpressionParser : ExpressionParser
     {
-        public override Syntax.Expression Parse(ITokenEnumerator reader)
+        public override Syntax.Expression Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedToken(Token.LeftCurlyBrace);
             reader.Advance();

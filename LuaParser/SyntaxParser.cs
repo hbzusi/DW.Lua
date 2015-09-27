@@ -30,7 +30,7 @@ namespace LuaParser
                 reader.Advance();
             var statementDiscriminator = new StatementParserDiscriminator();
             var statementParser = statementDiscriminator.Identify(reader);
-            return statementParser.Parse(reader);
+            return statementParser.Parse(reader, new ParserContext());
         }
 
 
@@ -38,7 +38,11 @@ namespace LuaParser
         {
             var expressionDiscriminator = new ExpressionParserDiscriminator();
             var expressionParser = expressionDiscriminator.Identify(reader);
-            return expressionParser.Parse(reader);
+            return expressionParser.Parse(reader, new ParserContext());
         }
+    }
+
+    public class ParserContext : IParserContext
+    {
     }
 }

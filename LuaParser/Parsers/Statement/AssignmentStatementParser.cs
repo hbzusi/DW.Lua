@@ -8,7 +8,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
-        public override Syntax.Statement Parse(ITokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader, IParserContext context)
         {
             bool local = false;
             if (reader.Current == "local")

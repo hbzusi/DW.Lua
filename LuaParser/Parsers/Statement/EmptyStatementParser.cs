@@ -5,7 +5,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class EmptyStatementParser : StatementParser
     {
-        public override Syntax.Statement Parse(ITokenEnumerator reader)
+        public override Syntax.Statement Parse(ITokenEnumerator reader, IParserContext context)
         {
             var token = reader.GetAndAdvance();
             if (string.IsNullOrWhiteSpace(token) || token == Token.Semicolon)
