@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=7.1.0.0, Culture=neutral, PublicKeyToken=db26512813023263, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.Redist.7.1\lib\net40\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,12 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Annotations\Annotations.cs" />
     <Compile Include="Extensions\EquatableExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parsers\Expression\BooleanConstantExpressionParser.cs" />
-    <Compile Include="Parsers\Expression\BracketedExpression.cs" />
+    <Compile Include="Parsers\ITokenEnumerator.cs" />
+    <Compile Include="Syntax\FunctionDeclarationStatement.cs" />
+    <Compile Include="Syntax\BracketedExpression.cs" />
     <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />
     <Compile Include="Parsers\Expression\NumericConstantExpressionParser.cs" />
     <Compile Include="Parsers\Expression\TableInitializerExpressionParser.cs" />
@@ -84,6 +89,9 @@
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\Value.cs" />
     <Compile Include="Syntax\Variable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

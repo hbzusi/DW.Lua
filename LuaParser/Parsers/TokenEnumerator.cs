@@ -5,16 +5,6 @@ using LuaParser.Exceptions;
 
 namespace LuaParser.Parsers
 {
-    public interface ITokenEnumerator
-    {
-        string Previous { get; }
-        string Next { get; }
-        string Current { get; }
-        bool Finished { get; }
-        void Advance();
-        string GetAndAdvance();
-    }
-
     public class TokenEnumerator : ITokenEnumerator
     {
         private readonly IList<string> _tokens;

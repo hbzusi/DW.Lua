@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using LuaParser.Extensions;
-using LuaParser.Syntax;
 
-namespace LuaParser.Parsers.Expression
+namespace LuaParser.Syntax
 {
     public class BracketedExpression : Syntax.Expression, IEquatable<BracketedExpression>
     {
