@@ -7,7 +7,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
-        public override Syntax.LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             bool local = false;
             if (reader.Current == "local")
@@ -19,7 +19,7 @@ namespace LuaParser.Parsers.Statement
             var variables = ReadDeclarations(reader);
             reader.VerifyExpectedTokenAndAdvance(Token.EqualsSign);
             var assignedExpressionParser = new ExpressionListParser();
-            var expressions = assignedExpressionParser.Parse(reader);
+            var expressions = assignedExpressionParser.Parse(reader, context);
 
             return new Assignment(variables, expressions, local);
         }

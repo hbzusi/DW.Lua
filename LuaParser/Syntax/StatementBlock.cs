@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LuaParser.Extensions;
+using static System.String;
 
 namespace LuaParser.Syntax
 {
@@ -23,6 +24,11 @@ namespace LuaParser.Syntax
         public bool Equals(StatementBlock other)
         {
             return other != null && Statements.SequenceEqual(other.Statements);
+        }
+
+        public override string ToString()
+        {
+            return Join("\n", _statements);
         }
 
         public override bool Equals(object obj)

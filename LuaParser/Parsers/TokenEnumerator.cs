@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LuaParser.Exceptions;
 
 namespace LuaParser.Parsers
@@ -23,13 +24,9 @@ namespace LuaParser.Parsers
         public void Advance()
         {
             _index++;
-            if (_index >= _tokens.Count)
-                throw new EndOfFileException();
 
-            if (_index > 0)
-                Previous = _tokens[_index - 1];
-                Current = _tokens[_index];
-
+            Previous = Current;
+            Current = _index < _tokens.Count ? _tokens[_index] : null;
             Next = _index < _tokens.Count - 1 ? _tokens[_index+1] : null;
         }
 
@@ -40,11 +37,6 @@ namespace LuaParser.Parsers
             return token;
         }
 
-        public bool Finished => Next == null;
-
-        public IEnumerator<string> GetEnumerator()
-        {
-            return _tokens.GetEnumerator();
-        }
+        public bool Finished => _index >= _tokens.Count;
     }
 }

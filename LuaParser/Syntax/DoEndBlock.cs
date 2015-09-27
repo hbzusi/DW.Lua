@@ -1,23 +1,29 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
     public class DoEndBlock : LuaStatement, IEquatable<DoEndBlock>
     {
-        public StatementBlock StatementBlock { get; }
+        public StatementBlock Body { get; }
 
-        public DoEndBlock(StatementBlock statementBlock)
+        public DoEndBlock(StatementBlock body)
         {
-            StatementBlock = statementBlock;
+            Body = body;
         }
 
         public override IEnumerable<Unit> Children { get; }
 
         public bool Equals(DoEndBlock other)
         {
-            return other != null && Equals(StatementBlock, other.StatementBlock);
+            return other != null && Equals(Body, other.Body);
+        }
+
+        public override string ToString()
+        {
+            return new StringBuilder().AppendLine("do").AppendLine(Body.ToString()).AppendLine("end").ToString();
         }
 
         public override bool Equals(object obj)
@@ -27,7 +33,7 @@ namespace LuaParser.Syntax
 
         public override int GetHashCode()
         {
-            return StatementBlock.GetHashCode();
+            return Body.GetHashCode();
         }
     }
 }

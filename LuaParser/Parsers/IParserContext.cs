@@ -2,5 +2,7 @@
 {
     public interface IParserContext
     {
+        void AddError(string error);
+        IScope CurrentScope { get; }
     }
 }

@@ -6,14 +6,14 @@ namespace LuaParser.Parsers.Statement
 {
     internal class DoEndBlockStatementParser : StatementParser
     {
-        public override Syntax.LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedToken(Keyword.Do);
             reader.Advance();
-            var statements = new List<Syntax.LuaStatement>();
+            var statements = new List<LuaStatement>();
             while (reader.Current != Keyword.End)
-                statements.Add(SyntaxParser.ReadStatement(reader));
-            reader.VerifyExpectedToken(Keyword.End);
+                statements.Add(SyntaxParser.ReadStatement(reader, context));
+            reader.VerifyExpectedTokenAndAdvance(Keyword.End);
             return new DoEndBlock(new StatementBlock(statements));
         }
     }

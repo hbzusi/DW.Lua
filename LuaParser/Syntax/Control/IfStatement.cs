@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using JetBrains.Annotations;
 using LuaParser.Extensions;
 
@@ -32,6 +33,17 @@ namespace LuaParser.Syntax.Control
         {
             return Condition.Equals(other.Condition) && IfBlock.Equals(other.IfBlock) &&
                    Equals(ElseBlock, other.ElseBlock);
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("if ").Append(Condition).AppendLine(" then ");
+            sb.AppendLine(IfBlock.ToString());
+            if (ElseBlock != null)
+                sb.AppendLine("else").AppendLine(ElseBlock.ToString());
+            sb.Append(" end");
+            return sb.ToString();
         }
 
         public override bool Equals(object obj)

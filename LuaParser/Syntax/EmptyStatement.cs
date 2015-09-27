@@ -14,6 +14,11 @@ namespace LuaParser.Syntax
             return other != null;
         }
 
+        public override string ToString()
+        {
+            return ";";
+        }
+
         public override bool Equals(object obj)
         {
             return this.CheckEquality(obj);

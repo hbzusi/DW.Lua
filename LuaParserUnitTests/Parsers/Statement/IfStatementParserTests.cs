@@ -16,7 +16,8 @@ namespace LuaParserUnitTests.Parsers.Statement
             var emptyStatementBlock = new StatementBlock(new EmptyStatement());
             var ifStatement = new IfStatement(conditionExpression, emptyStatementBlock, emptyStatementBlock);
             var expected = new StatementBlock(ifStatement);
-            Assert.AreEqual(expected, SyntaxParser.Parse("if (true) then ; else ; end"));
+            var actual = SyntaxParser.Parse("if (true) then ; else ; end");
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]

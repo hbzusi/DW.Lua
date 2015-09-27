@@ -13,7 +13,7 @@ namespace LuaParser.Parsers.Expression
             var expressions = new List<LuaExpression>();
             while (reader.Current != Token.RightCurlyBrace)
             {
-                expressions.Add(SyntaxParser.ReadExpression(reader));
+                expressions.Add(SyntaxParser.ReadExpression(reader, context));
                 reader.VerifyExpectedToken(Token.RightCurlyBrace, Token.Comma);
             }
             reader.VerifyExpectedToken(Token.RightCurlyBrace);

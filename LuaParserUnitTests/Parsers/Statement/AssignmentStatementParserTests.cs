@@ -13,7 +13,8 @@ namespace LuaParserUnitTests.Parsers.Statement
             var assignment = new Assignment(new[] {new Variable("a")},
                 new[] {new ConstantExpression(Constants.One)}, true);
             var expected = new StatementBlock(assignment);
-            Assert.AreEqual(expected, SyntaxParser.Parse("local a = 1"));
+            var actual = SyntaxParser.Parse("local a = 1");
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]

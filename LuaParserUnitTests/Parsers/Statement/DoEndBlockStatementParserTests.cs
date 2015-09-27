@@ -12,7 +12,8 @@ namespace LuaParserUnitTests.Parsers.Statement
         {
             var expected =
                 new StatementBlock(new DoEndBlock(new StatementBlock(new EmptyStatement(), new EmptyStatement())));
-            Assert.AreEqual(expected, SyntaxParser.Parse("do ; ; end"));
+            var actual = SyntaxParser.Parse("do ; ; end");
+            Assert.AreEqual(expected,actual);
         }
     }
 }

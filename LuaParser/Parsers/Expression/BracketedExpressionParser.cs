@@ -9,7 +9,7 @@ namespace LuaParser.Parsers.Expression
         {
             reader.VerifyExpectedToken(Token.LeftBracket);
             reader.Advance();
-            var expression = SyntaxParser.ReadExpression(reader);
+            var expression = SyntaxParser.ReadExpression(reader, context);
             reader.VerifyExpectedToken(Token.RightBracket);
             reader.Advance();
             return new BracketedExpression(expression);

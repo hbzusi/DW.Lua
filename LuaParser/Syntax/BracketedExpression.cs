@@ -10,14 +10,19 @@ namespace LuaParser.Syntax
         public BracketedExpression([NotNull] LuaExpression expression)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
-            Contents = expression;
+            Expression = expression;
         }
 
-        public override IEnumerable<Unit> Children => new[] {Contents};
+        public override IEnumerable<Unit> Children => new[] {Expression};
 
         public bool Equals(BracketedExpression other)
         {
-            return Contents?.Equals(other.Contents) ?? false;
+            return Expression?.Equals(other.Expression) ?? false;
+        }
+
+        public override string ToString()
+        {
+            return $"('{Expression}')";
         }
 
         public override bool Equals(object obj)
@@ -27,9 +32,9 @@ namespace LuaParser.Syntax
 
         public override int GetHashCode()
         {
-            return Contents?.GetHashCode() ?? 0;
+            return Expression?.GetHashCode() ?? 0;
         }
 
-        public LuaExpression Contents { get; }
+        public LuaExpression Expression { get; }
     }
 }

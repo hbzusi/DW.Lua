@@ -6,23 +6,21 @@ namespace LuaParser.Parsers.Statement
 {
     internal class IfStatementParser : StatementParser
     {
-        public override Syntax.LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             StatementBlock elseBlock = null;
             reader.VerifyExpectedTokenAndAdvance(Keyword.If);
-            var conditionExpression = SyntaxParser.ReadExpression(reader);
+            var conditionExpression = SyntaxParser.ReadExpression(reader, context);
             reader.VerifyExpectedTokenAndAdvance(Keyword.Then);
 
             var ifBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
-            var ifBlock = ifBlockParser.ParseBlock(reader);
+            var ifBlock = ifBlockParser.ParseBlock(reader, context);
 
-            if (reader.Current == Keyword.Else)
+            if (reader.Previous == Keyword.Else)
             {
-                var elseBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
-                reader.Advance();
-                elseBlock = elseBlockParser.ParseBlock(reader);
+                var elseBlockParser = new StatementBlockParser(Keyword.End);
+                elseBlock = elseBlockParser.ParseBlock(reader, context);
             }
-            reader.VerifyExpectedToken(Keyword.End);
             return new IfStatement(conditionExpression, ifBlock, elseBlock);
         }
     }

@@ -31,6 +31,11 @@ namespace LuaParser.Syntax
                    Expressions.SequenceEqual(other.Expressions);
         }
 
+        public override string ToString()
+        {
+            return string.Join(",", Variables) + "=" + string.Join(",", Expressions);
+        }
+
         public override bool Equals(object obj)
         {
             return this.CheckEquality(obj);

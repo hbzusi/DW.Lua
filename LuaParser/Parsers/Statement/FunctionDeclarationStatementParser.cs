@@ -6,7 +6,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class FunctionDeclarationStatementParser : StatementParser
     {
-        public override Syntax.LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndAdvance(Keyword.Function);
             if (reader.Next == Token.Colon)
@@ -26,10 +26,10 @@ namespace LuaParser.Parsers.Statement
                 reader.VerifyExpectedToken(Token.Comma, Token.RightBracket);
             }
             reader.VerifyExpectedTokenAndAdvance(Token.RightBracket);
-            var statements = new List<Syntax.LuaStatement>();
+            var statements = new List<LuaStatement>();
             while (reader.Current != Keyword.End)
-                statements.Add(SyntaxParser.ReadStatement(reader));
-            reader.VerifyExpectedToken(Keyword.End);
+                statements.Add(SyntaxParser.ReadStatement(reader, context));
+            reader.VerifyExpectedTokenAndAdvance(Keyword.End);
 
             return new FunctionDeclarationStatement(functionName,argumentNames,new StatementBlock(statements));
         }

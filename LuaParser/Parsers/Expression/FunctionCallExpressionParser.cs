@@ -17,7 +17,7 @@ namespace LuaParser.Parsers.Expression
             var expression = new FunctionCallExpression
             {
                 FunctionName = name,
-                Parameters = parametersParser.Parse(reader).ToList()
+                Parameters = parametersParser.Parse(reader, context).ToList()
             };
             reader.VerifyExpectedToken(Token.RightBracket);
             return expression;

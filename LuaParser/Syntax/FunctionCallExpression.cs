@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 using LuaParser.Extensions;
 
@@ -19,6 +20,16 @@ namespace LuaParser.Syntax
         public bool Equals([CanBeNull] FunctionCallExpression other)
         {
             return other != null && FunctionName == other.FunctionName && Parameters.SequenceEqual(other.Parameters);
+        }
+
+        public override string ToString()
+        {
+            return
+                new StringBuilder().Append(FunctionName)
+                    .Append("(")
+                    .Append(String.Join(",", Parameters))
+                    .Append(")")
+                    .ToString();
         }
 
         public override bool Equals(object obj)

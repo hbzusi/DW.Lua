@@ -7,7 +7,7 @@ using LuaParser.Syntax;
 
 namespace LuaParser.Parsers.Statement
 {
-    public class FunctionDeclarationStatement : Syntax.LuaStatement, IEquatable<FunctionDeclarationStatement>
+    public class FunctionDeclarationStatement : LuaStatement, IEquatable<FunctionDeclarationStatement>
     {
         private readonly List<string> _argumentNames;
 
@@ -37,6 +37,11 @@ namespace LuaParser.Parsers.Statement
         {
             return other != null && other.FunctionName == FunctionName &&
                    ArgumentNames.SequenceEqual(other.ArgumentNames) && Equals(other.FunctionBody, FunctionBody);
+        }
+
+        public override string ToString()
+        {
+            throw new NotImplementedException();
         }
 
         public override bool Equals(object obj)

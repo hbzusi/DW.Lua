@@ -19,17 +19,17 @@ namespace LuaParser.Parsers.Statement
             _terminatingTokens = new HashSet<string>(terminatingTokens);
         }
 
-        public override Syntax.LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
-            return ParseBlock(reader);
+            return ParseBlock(reader, context);
         }
 
-        public StatementBlock ParseBlock(ITokenEnumerator reader)
+        public StatementBlock ParseBlock(ITokenEnumerator reader, IParserContext context)
         {
-            var statements = new List<Syntax.LuaStatement>();
+            var statements = new List<LuaStatement>();
             while (!_terminatingTokens.Contains(reader.Current))
-                statements.Add(SyntaxParser.ReadStatement(reader));
-            reader.VerifyExpectedToken(_terminatingTokens);
+                statements.Add(SyntaxParser.ReadStatement(reader, context));
+            reader.VerifyExpectedTokenAndAdvance(_terminatingTokens);
             return new StatementBlock(statements);
         }
     }

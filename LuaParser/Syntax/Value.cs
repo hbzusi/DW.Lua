@@ -21,5 +21,10 @@ namespace LuaParser.Syntax
             Type = luaType;
             _value = value;
         }
+
+        public override string ToString()
+        {
+            return _value.ToString();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using LuaParser.Extensions;
 
 namespace LuaParser.Syntax.Control
@@ -20,6 +21,17 @@ namespace LuaParser.Syntax.Control
         public bool Equals(WhileStatement other)
         {
             return other != null && Equals(Condition, other.Condition) && Equals(Body, other.Body);
+        }
+
+        public override string ToString()
+        {
+            return
+                new StringBuilder().Append("while ")
+                    .Append(Condition)
+                    .AppendLine(" do")
+                    .AppendLine(Body.ToString())
+                    .AppendLine("end")
+                    .ToString();
         }
 
         public override bool Equals(object obj)
