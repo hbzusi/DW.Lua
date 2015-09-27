@@ -35,6 +35,7 @@ namespace DW.Lua.UnitTests.Parsers.Statement
             var expected = new StatementBlock(assignment1, assignment2);
             Assert.AreEqual(expected, SyntaxParser.Parse("local a = 1\nlocal b = 2"));
         }
+
         [Test]
         public void ShouldParseMultipleAssignments()
         {

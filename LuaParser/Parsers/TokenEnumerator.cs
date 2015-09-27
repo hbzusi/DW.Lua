@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DW.Lua.Exceptions;
 
 namespace DW.Lua.Parsers
 {
@@ -22,6 +23,8 @@ namespace DW.Lua.Parsers
         public void Advance()
         {
             _index++;
+            if (_index > _tokens.Count) 
+                throw new EndOfFileException();
 
             Previous = Current;
             Current = _index < _tokens.Count ? _tokens[_index] : null;

@@ -18,7 +18,16 @@ namespace DW.Lua.Syntax.Control
             ElseBlock = elseBlock;
         }
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children
+        {
+            get
+            {
+                yield return Condition;
+                yield return IfBlock;
+                if (ElseBlock != null)
+                    yield return ElseBlock;
+            }
+        }
 
         [NotNull]
         public LuaExpression Condition { get; }
