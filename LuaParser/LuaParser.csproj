@@ -48,6 +48,8 @@
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parsers\Expression\BooleanConstantExpressionParser.cs" />
     <Compile Include="Parsers\ITokenEnumerator.cs" />
+    <Compile Include="Parsers\Statement\StatementBlockParser.cs" />
+    <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\FunctionDeclarationStatement.cs" />
     <Compile Include="Syntax\BracketedExpression.cs" />
     <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />

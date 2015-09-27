@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Parsers\Code\RealLifeCodeTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
+    <Compile Include="Parsers\Statement\DoEndBlockStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\IfStatementParserTests.cs" />
+    <Compile Include="Parsers\Statement\WhileStatementParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
