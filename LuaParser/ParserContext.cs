@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting;
 using JetBrains.Annotations;
 using LuaParser.Parsers;
 
@@ -6,9 +8,11 @@ namespace LuaParser
 {
     public class ParserContext : IParserContext
     {
+        public List<string> Errors { get; } = new List<string>();
+
         public void AddError(string error)
         {
-            throw new NotImplementedException();
+            Errors.Add(error);
         }
 
         public IScope CurrentScope { get; private set; }

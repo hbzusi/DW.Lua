@@ -95,6 +95,7 @@
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\Value.cs" />
     <Compile Include="Syntax\Variable.cs" />
+    <Compile Include="Syntax\VariableExpression.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
