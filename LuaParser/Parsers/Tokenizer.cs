@@ -41,11 +41,9 @@ namespace DW.Lua.Parsers
         private static string ReadToken(TextReader reader)
         {
             var sb = new StringBuilder();
-            do
+            int next;
+            while ((next = reader.Peek()) != -1)
             {
-                var next = reader.Peek();
-                if (next == -1)
-                    break;
                 var nextChar = (char)next;
                 if (IsNonToken(nextChar))
                     break;
@@ -55,7 +53,7 @@ namespace DW.Lua.Parsers
                 reader.Read();
                 if (IsToken(nextChar) && sb.Length == 1) // now after adding the new char the length is 1 
                     break;
-            } while (true);
+            };
             return sb.ToString();
         }
 

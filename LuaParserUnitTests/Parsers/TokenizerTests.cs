@@ -9,11 +9,12 @@ namespace DW.Lua.UnitTests.Parsers
     public class TokenizerTests
     {
         [Test]
-        [TestCase("(a)", ExpectedResult = new[] { "(", "a", ")" })]
-        [TestCase("a,b", ExpectedResult = new[] { "a", ",", "b" })]
-        [TestCase("a=b", ExpectedResult = new[] { "a", "=", "b" })]
-        [TestCase("a = b", ExpectedResult = new[] { "a", "=", "b" })]
-        [TestCase("a == b",ExpectedResult = new[]{"a","==","b"})]
+        [TestCase("(a)", ExpectedResult = new[] {"(", "a", ")"})]
+        [TestCase("a,b", ExpectedResult = new[] {"a", ",", "b"})]
+        [TestCase("a=b", ExpectedResult = new[] {"a", "=", "b"})]
+        [TestCase("a = b", ExpectedResult = new[] {"a", "=", "b"})]
+        [TestCase("a == b", ExpectedResult = new[] {"a", "==", "b"})]
+        [TestCase("local a={}", ExpectedResult = new[] {"local", "a", "=", "{", "}"})]
         public string[] ShouldParse(string code)
         {
             var reader = Tokenizer.Parse(new StringReader(code));
@@ -21,6 +22,6 @@ namespace DW.Lua.UnitTests.Parsers
             while (!reader.Finished)
                 tokens.Add(reader.GetAndAdvance());
             return tokens.ToArray();
-        } 
+        }
     }
 }
