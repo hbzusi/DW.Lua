@@ -5,7 +5,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class Assignment : Statement, IEquatable<Assignment>
+    public class Assignment : LuaStatement, IEquatable<Assignment>
     {
         private readonly List<Variable> _variables;
         private readonly List<LuaExpression> _expressions;

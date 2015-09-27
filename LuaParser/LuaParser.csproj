@@ -85,7 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syntax\LuaExpression.cs" />
     <Compile Include="Syntax\FunctionCallExpression.cs" />
-    <Compile Include="Syntax\Statement.cs" />
+    <Compile Include="Syntax\LuaStatement.cs" />
     <Compile Include="Syntax\StatementBlock.cs" />
     <Compile Include="Syntax\TableInitializerExpression.cs" />
     <Compile Include="Syntax\Token.cs" />

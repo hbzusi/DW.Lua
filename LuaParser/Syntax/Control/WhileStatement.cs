@@ -4,7 +4,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax.Control
 {
-    public class WhileStatement : Statement, IEquatable<WhileStatement>
+    public class WhileStatement : LuaStatement, IEquatable<WhileStatement>
     {
         public LuaExpression Condition { get; }
         public StatementBlock Body { get; }

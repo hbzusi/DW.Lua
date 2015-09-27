@@ -5,7 +5,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class EmptyStatement : Statement, IEquatable<EmptyStatement>
+    public class EmptyStatement : LuaStatement, IEquatable<EmptyStatement>
     {
         public override IEnumerable<Unit> Children => new Unit[0];
 

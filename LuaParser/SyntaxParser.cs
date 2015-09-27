@@ -11,7 +11,7 @@ namespace LuaParser
     {
         public static StatementBlock Parse(string s)
         {
-            var statements = new List<Statement>();
+            var statements = new List<LuaStatement>();
             var reader = new StringReader(s);
             ITokenEnumerator tokenEnumerator = Tokenizer.Parse(reader);
 
@@ -24,7 +24,7 @@ namespace LuaParser
             return new StatementBlock(statements);
         }
 
-        public static Statement ReadStatement(ITokenEnumerator reader)
+        public static LuaStatement ReadStatement(ITokenEnumerator reader)
         {
             while (string.IsNullOrEmpty(reader.Current) || reader.Current == "\n")
                 reader.Advance();

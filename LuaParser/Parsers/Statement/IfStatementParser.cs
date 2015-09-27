@@ -6,7 +6,7 @@ namespace LuaParser.Parsers.Statement
 {
     internal class IfStatementParser : StatementParser
     {
-        public override Syntax.Statement Parse(ITokenEnumerator reader, IParserContext context)
+        public override Syntax.LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             StatementBlock elseBlock = null;
             reader.VerifyExpectedTokenAndAdvance(Keyword.If);

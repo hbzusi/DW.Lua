@@ -5,7 +5,7 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax.Control
 {
-    public class IfStatement : Statement, IEquatable<IfStatement>
+    public class IfStatement : LuaStatement, IEquatable<IfStatement>
     {
         public IfStatement([NotNull] LuaExpression condition, [NotNull] StatementBlock ifBlock,
             [CanBeNull] StatementBlock elseBlock = null)

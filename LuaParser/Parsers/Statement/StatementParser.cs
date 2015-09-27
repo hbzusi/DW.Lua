@@ -13,6 +13,6 @@ namespace LuaParser.Parsers.Statement
         /// <param name="reader"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public abstract Syntax.Statement Parse([NotNull]ITokenEnumerator reader, [NotNull]IParserContext context);
+        public abstract Syntax.LuaStatement Parse([NotNull]ITokenEnumerator reader, [NotNull]IParserContext context);
     }
 }

@@ -7,7 +7,7 @@ using LuaParser.Syntax;
 
 namespace LuaParser.Parsers.Statement
 {
-    public class FunctionDeclarationStatement : Syntax.Statement, IEquatable<FunctionDeclarationStatement>
+    public class FunctionDeclarationStatement : Syntax.LuaStatement, IEquatable<FunctionDeclarationStatement>
     {
         private readonly List<string> _argumentNames;
 

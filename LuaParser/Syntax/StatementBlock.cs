@@ -5,18 +5,18 @@ using LuaParser.Extensions;
 
 namespace LuaParser.Syntax
 {
-    public class StatementBlock : Statement, IEquatable<StatementBlock>
+    public class StatementBlock : LuaStatement, IEquatable<StatementBlock>
     {
-        private readonly List<Statement> _statements;
+        private readonly List<LuaStatement> _statements;
 
-        public StatementBlock(params Statement[] statements) : this(statements.AsEnumerable()) { }
+        public StatementBlock(params LuaStatement[] statements) : this(statements.AsEnumerable()) { }
 
-        public StatementBlock(IEnumerable<Statement> statements)
+        public StatementBlock(IEnumerable<LuaStatement> statements)
         {
             _statements = statements.ToList();
         }
 
-        public IList<Statement> Statements => _statements.AsReadOnly();
+        public IList<LuaStatement> Statements => _statements.AsReadOnly();
 
         public override IEnumerable<Unit> Children => Statements;
 
