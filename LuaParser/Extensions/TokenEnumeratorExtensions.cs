@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LuaParser.Exceptions;
-using LuaParser.Parsers;
+using DW.Lua.Exceptions;
+using DW.Lua.Parsers;
 
-namespace LuaParser.Extensions
+namespace DW.Lua.Extensions
 {
     internal static class TokenEnumeratorExtensions
     {

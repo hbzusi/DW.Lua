@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace LuaCodeEditor
+namespace DW.Lua.Editor
 {
     static class Program
     {

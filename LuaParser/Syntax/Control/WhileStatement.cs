@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LuaParser.Extensions;
+using DW.Lua.Extensions;
 
-namespace LuaParser.Syntax.Control
+namespace DW.Lua.Syntax.Control
 {
     public class WhileStatement : LuaStatement, IEquatable<WhileStatement>
     {

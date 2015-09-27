@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using LuaParser.Extensions;
+using DW.Lua.Extensions;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public class DoEndBlock : LuaStatement, IEquatable<DoEndBlock>
     {

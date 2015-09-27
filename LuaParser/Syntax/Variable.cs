@@ -1,7 +1,7 @@
 using System;
-using LuaParser.Extensions;
+using DW.Lua.Extensions;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public class Variable : IEquatable<Variable>
     {

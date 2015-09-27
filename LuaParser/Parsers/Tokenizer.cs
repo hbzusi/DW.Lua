@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace LuaParser.Parsers
+namespace DW.Lua.Parsers
 {
     public static class Tokenizer
     {

@@ -1,9 +1,8 @@
-﻿using LuaParser;
-using LuaParser.Syntax;
-using LuaParser.Syntax.Control;
+﻿using DW.Lua.Syntax;
+using DW.Lua.Syntax.Control;
 using NUnit.Framework;
 
-namespace LuaParserUnitTests.Parsers.Statement
+namespace DW.Lua.UnitTests.Parsers.Statement
 {
     [TestFixture]
     public class WhileStatementParserTests

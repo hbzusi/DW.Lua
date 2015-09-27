@@ -1,6 +1,6 @@
-using LuaParser.Syntax;
+using DW.Lua.Syntax;
 
-namespace LuaParser.Parsers.Statement
+namespace DW.Lua.Parsers.Statement
 {
     internal class StatementParserDiscriminator
     {

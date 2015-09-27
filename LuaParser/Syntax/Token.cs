@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public static class Token
     {

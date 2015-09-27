@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace LuaCodeEditor
+namespace DW.Lua.Editor
 {
     partial class EditorForm
     {

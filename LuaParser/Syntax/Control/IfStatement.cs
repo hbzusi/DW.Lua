@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DW.Lua.Extensions;
 using JetBrains.Annotations;
-using LuaParser.Extensions;
 
-namespace LuaParser.Syntax.Control
+namespace DW.Lua.Syntax.Control
 {
     public class IfStatement : LuaStatement, IEquatable<IfStatement>
     {

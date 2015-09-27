@@ -1,8 +1,7 @@
-﻿using LuaParser;
-using LuaParser.Syntax;
+﻿using DW.Lua.Syntax;
 using NUnit.Framework;
 
-namespace LuaParserUnitTests.Parsers.Statement
+namespace DW.Lua.UnitTests.Parsers.Statement
 {
     [TestFixture]
     public class AssignmentStatementParserTests
@@ -35,6 +34,14 @@ namespace LuaParserUnitTests.Parsers.Statement
                 new[] { new ConstantExpression(Constants.Two) }, true);
             var expected = new StatementBlock(assignment1, assignment2);
             Assert.AreEqual(expected, SyntaxParser.Parse("local a = 1\nlocal b = 2"));
+        }
+        [Test]
+        public void ShouldParseMultipleAssignments()
+        {
+            var assignment = new Assignment(new[] { new Variable("a"), new Variable("b") },
+                new[] { new ConstantExpression(Constants.One) }, true);
+            var expected = new StatementBlock(assignment);
+            Assert.AreEqual(expected, SyntaxParser.Parse("local a,b = 1"));
         }
     }
 }

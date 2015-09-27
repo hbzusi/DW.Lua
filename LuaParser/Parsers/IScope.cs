@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using DW.Lua.Syntax;
 using JetBrains.Annotations;
-using LuaParser.Syntax;
 
-namespace LuaParser.Parsers
+namespace DW.Lua.Parsers
 {
     public interface IScope
     {

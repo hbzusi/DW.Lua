@@ -7,8 +7,8 @@
     <ProjectGuid>{6B3D591A-A8C1-460B-9E84-23DC5897B073}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LuaParser</RootNamespace>
-    <AssemblyName>LuaParser</AssemblyName>
+    <RootNamespace>DW.Lua</RootNamespace>
+    <AssemblyName>DW.Lua</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

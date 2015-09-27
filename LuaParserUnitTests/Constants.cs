@@ -1,6 +1,6 @@
-﻿using LuaParser.Syntax;
+﻿using DW.Lua.Syntax;
 
-namespace LuaParserUnitTests
+namespace DW.Lua.UnitTests
 {
     internal static class Constants
     {

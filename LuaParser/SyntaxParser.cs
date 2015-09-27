@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using LuaParser.Parsers;
-using LuaParser.Parsers.Expression;
-using LuaParser.Parsers.Statement;
-using LuaParser.Syntax;
+using DW.Lua.Parsers;
+using DW.Lua.Parsers.Expression;
+using DW.Lua.Parsers.Statement;
+using DW.Lua.Syntax;
 
-namespace LuaParser
+namespace DW.Lua
 {
     public static class SyntaxParser
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace LuaParser.Extensions
+namespace DW.Lua.Extensions
 {
     public static class EquatableExtensions
     {

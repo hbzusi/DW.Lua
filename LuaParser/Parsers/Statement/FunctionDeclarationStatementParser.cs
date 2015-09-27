@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using LuaParser.Extensions;
-using LuaParser.Syntax;
+using DW.Lua.Extensions;
+using DW.Lua.Syntax;
 
-namespace LuaParser.Parsers.Statement
+namespace DW.Lua.Parsers.Statement
 {
     internal class FunctionDeclarationStatementParser : StatementParser
     {

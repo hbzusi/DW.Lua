@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using LuaParser.Syntax;
+using DW.Lua.Syntax;
 
-namespace LuaParser.Parsers
+namespace DW.Lua.Parsers
 {
     class Scope : IScope
     {

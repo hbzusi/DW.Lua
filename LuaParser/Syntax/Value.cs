@@ -1,4 +1,4 @@
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public struct Value
     {

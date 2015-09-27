@@ -1,4 +1,4 @@
-namespace LuaParser.Parsers
+namespace DW.Lua.Parsers
 {
     public interface ITokenEnumerator
     {

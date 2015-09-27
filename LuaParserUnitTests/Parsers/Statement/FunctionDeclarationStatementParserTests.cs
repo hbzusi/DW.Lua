@@ -1,9 +1,7 @@
-﻿using LuaParser;
-using LuaParser.Parsers.Statement;
-using LuaParser.Syntax;
+﻿using DW.Lua.Syntax;
 using NUnit.Framework;
 
-namespace LuaParserUnitTests.Parsers.Statement
+namespace DW.Lua.UnitTests.Parsers.Statement
 {
     [TestFixture]
     public class FunctionDeclarationStatementParserTests

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public class VariableExpression : LuaExpression
     {

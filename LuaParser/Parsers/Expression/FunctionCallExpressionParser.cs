@@ -1,8 +1,8 @@
 using System.Linq;
-using LuaParser.Extensions;
-using LuaParser.Syntax;
+using DW.Lua.Extensions;
+using DW.Lua.Syntax;
 
-namespace LuaParser.Parsers.Expression
+namespace DW.Lua.Parsers.Expression
 {
     public class FunctionCallExpressionParser : ExpressionParser
     {

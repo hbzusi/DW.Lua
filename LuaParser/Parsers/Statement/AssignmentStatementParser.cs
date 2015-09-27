@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using LuaParser.Extensions;
-using LuaParser.Parsers.Expression;
-using LuaParser.Syntax;
+using DW.Lua.Extensions;
+using DW.Lua.Parsers.Expression;
+using DW.Lua.Syntax;
 
-namespace LuaParser.Parsers.Statement
+namespace DW.Lua.Parsers.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
@@ -17,6 +17,8 @@ namespace LuaParser.Parsers.Statement
             }
 
             var variables = ReadDeclarations(reader);
+            foreach (var variable in variables)
+                context.CurrentScope.AddVariable(variable);
             reader.VerifyExpectedTokenAndAdvance(Token.EqualsSign);
             var assignedExpressionParser = new ExpressionListParser();
             var expressions = assignedExpressionParser.Parse(reader, context);

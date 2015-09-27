@@ -1,8 +1,8 @@
-using LuaParser.Extensions;
-using LuaParser.Syntax;
-using LuaParser.Syntax.Control;
+using DW.Lua.Extensions;
+using DW.Lua.Syntax;
+using DW.Lua.Syntax.Control;
 
-namespace LuaParser.Parsers.Statement
+namespace DW.Lua.Parsers.Statement
 {
     internal class WhileStatementParser : StatementParser
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DW.Lua.Extensions;
 using JetBrains.Annotations;
-using LuaParser.Extensions;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public class TableInitializerExpression : LuaExpression, IEquatable<TableInitializerExpression>
     {

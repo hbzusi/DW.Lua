@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public abstract class Unit
     {

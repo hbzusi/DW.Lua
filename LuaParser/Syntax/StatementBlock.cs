@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LuaParser.Extensions;
-using static System.String;
+using DW.Lua.Extensions;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public class StatementBlock : LuaStatement, IEquatable<StatementBlock>
     {
@@ -28,7 +27,7 @@ namespace LuaParser.Syntax
 
         public override string ToString()
         {
-            return Join("\n", _statements);
+            return String.Join("\n", _statements);
         }
 
         public override bool Equals(object obj)

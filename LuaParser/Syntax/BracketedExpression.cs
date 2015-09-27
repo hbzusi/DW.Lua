@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using DW.Lua.Extensions;
 using JetBrains.Annotations;
-using LuaParser.Extensions;
 
-namespace LuaParser.Syntax
+namespace DW.Lua.Syntax
 {
     public class BracketedExpression : LuaExpression, IEquatable<BracketedExpression>
     {

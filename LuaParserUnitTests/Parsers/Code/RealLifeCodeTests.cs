@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
-using LuaParser;
 using NUnit.Framework;
 
-namespace LuaParserUnitTests.Parsers.Code
+namespace DW.Lua.UnitTests.Parsers.Code
 {
     [TestFixture]
     public class RealLifeCodeTests
@@ -11,14 +11,18 @@ namespace LuaParserUnitTests.Parsers.Code
         private string GetFixtureCode(string name)
         {
             var assembly = GetType().Assembly;
-            var resourceName = "LuaParserUnitTests.Fixtures."+name;
+            var resourceName = "DW.Lua.UnitTests.Fixtures."+name;
             string result;
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
-                Debug.Assert(stream != null, "stream != null");
-                using (StreamReader reader = new StreamReader(stream))
-                    result = reader.ReadToEnd();
+                if (stream != null)
+                    using (StreamReader reader = new StreamReader(stream))
+                        result = reader.ReadToEnd();
+                else
+                {
+                    throw new InvalidOperationException("Could not load resource stream for " + name);
+                }
             }
             return result;
         }

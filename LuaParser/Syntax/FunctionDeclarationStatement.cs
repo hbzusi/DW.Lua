@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DW.Lua.Extensions;
 using JetBrains.Annotations;
-using LuaParser.Extensions;
-using LuaParser.Syntax;
 
-namespace LuaParser.Parsers.Statement
+namespace DW.Lua.Syntax
 {
     public class FunctionDeclarationStatement : LuaStatement, IEquatable<FunctionDeclarationStatement>
     {

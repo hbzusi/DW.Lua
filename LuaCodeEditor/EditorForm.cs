@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using LuaCodeEditor.Properties;
-using LuaParser;
-using LuaParser.Parsers;
-using LuaParser.Syntax;
+using DW.Lua.Parsers;
+using DW.Lua.Syntax;
 
-namespace LuaCodeEditor
+namespace DW.Lua.Editor
 {
     public partial class EditorForm : Form
     {

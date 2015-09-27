@@ -1,6 +1,6 @@
 using System;
 
-namespace LuaParser.Exceptions
+namespace DW.Lua.Exceptions
 {
     public class UnexpectedTokenException : Exception
     {

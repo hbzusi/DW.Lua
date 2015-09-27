@@ -1,7 +1,6 @@
-﻿using LuaParser.Parsers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace LuaParserUnitTests.Parsers
+namespace DW.Lua.UnitTests.Parsers
 {
     [TestFixture]
     public class TokenizerTests
