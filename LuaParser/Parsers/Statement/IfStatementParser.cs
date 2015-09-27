@@ -10,26 +10,22 @@ namespace LuaParser.Parsers.Statement
     {
         public override Syntax.Statement Parse(ITokenEnumerator reader)
         {
-            var ifStatements = new List<Syntax.Statement>();
             StatementBlock elseBlock = null;
-            reader.VerifyExpectedToken(Keyword.If);
-            reader.Advance();
+            reader.VerifyExpectedTokenAndAdvance(Keyword.If);
             var conditionExpression = SyntaxParser.ReadExpression(reader);
-            reader.VerifyExpectedToken(Keyword.Then);
-            reader.Advance();
-            while (reader.Current != Keyword.End && reader.Current != Keyword.Else)
-                ifStatements.Add(SyntaxParser.ReadStatement(reader));
+            reader.VerifyExpectedTokenAndAdvance(Keyword.Then);
+
+            var ifBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
+            var ifBlock = ifBlockParser.ParseBlock(reader);
 
             if (reader.Current == Keyword.Else)
             {
+                var elseBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
                 reader.Advance();
-                var elseStatements = new List<Syntax.Statement>();
-                while (reader.Current != Keyword.End)
-                    elseStatements.Add(SyntaxParser.ReadStatement(reader));
-                elseBlock = new StatementBlock(elseStatements);
+                elseBlock = elseBlockParser.ParseBlock(reader);
             }
             reader.VerifyExpectedToken(Keyword.End);
-            return new IfStatement(conditionExpression, new StatementBlock(ifStatements), elseBlock);
+            return new IfStatement(conditionExpression, ifBlock, elseBlock);
         }
     }
 }
