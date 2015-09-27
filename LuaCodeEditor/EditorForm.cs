@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using DW.Lua.Editor.Properties;
 using DW.Lua.Parsers;
 using DW.Lua.Syntax;
 
