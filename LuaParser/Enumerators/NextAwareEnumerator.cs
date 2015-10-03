@@ -6,9 +6,16 @@ namespace DW.Lua.Enumerators
 {
     public class NextAwareEnumerator<T> : INextAwareEnumerator<T>
     {
+        private readonly IEnumerator<T> _sourceEnumerator;
+
+        public NextAwareEnumerator(IEnumerator<T> sourceEnumerator)
+        {
+            _sourceEnumerator = sourceEnumerator;
+        }
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _sourceEnumerator.Dispose();
         }
 
         public bool MoveNext()

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Enumerators\NextAwareEnumerator.cs" />
     <Compile Include="Extensions\EquatableExtensions.cs" />
+    <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
     <Compile Include="Parsers\ParserContext.cs" />
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />

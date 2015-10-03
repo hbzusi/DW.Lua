@@ -1,5 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using static System.Char;
+using static System.Double;
 
 namespace DW.Lua.Syntax
 {
@@ -18,13 +19,13 @@ namespace DW.Lua.Syntax
 
         public static bool IsIdentifier(string token)
         {
-            return Char.IsLetter(token[0]) && token.Skip(1).All(Char.IsLetterOrDigit);
+            return IsLetter(token[0]) && token.Skip(1).All(IsLetterOrDigit);
         }
 
         public static bool IsNumericConstant(string token)
         {
             double dummy;
-            return Double.TryParse(token, out dummy);
+            return TryParse(token, out dummy);
         }
 
         public static bool IsBinaryOperation(string token)
