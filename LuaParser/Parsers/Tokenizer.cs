@@ -5,44 +5,46 @@ using System.Text;
 
 namespace DW.Lua.Parsers
 {
-    public static class Tokenizer
+    public class Tokenizer
     {
-        public static TokenEnumerator Parse(TextReader input)
-        {
-            var tokens = ReadTokens(input).ToList();
+        private TextReader Reader { get; }
 
+        public static TokenEnumerator Parse(TextReader reader)
+        {
+            var tokenizer = new Tokenizer(reader);
+            var tokens = tokenizer.ReadTokens().ToList();
             return new TokenEnumerator(tokens);
         }
 
-        private static IEnumerable<string> ReadTokens(TextReader reader)
+        private IEnumerable<string> ReadTokens()
         {
-            while (reader.Peek() != -1)
+            while (Reader.Peek() != -1)
             {
-                SkipNonTokens(reader);
-                yield return ReadToken(reader);
+                SkipNonTokens();
+                yield return ReadToken();
             }
         }
 
-        private static void SkipNonTokens(TextReader reader)
+        private void SkipNonTokens()
         {
             do
             {
-                var next = reader.Peek();
+                var next = Reader.Peek();
                 if (next == -1)
                     break;
                 var nextChar = (char)next;
                 if (IsNonToken(nextChar))
-                    reader.Read();
+                    Reader.Read();
                 else
                     break;
             } while (true);
         }
 
-        private static string ReadToken(TextReader reader)
+        private string ReadToken()
         {
             var sb = new StringBuilder();
             int next;
-            while ((next = reader.Peek()) != -1)
+            while ((next = Reader.Peek()) != -1)
             {
                 var nextChar = (char)next;
                 if (IsNonToken(nextChar))
@@ -50,18 +52,23 @@ namespace DW.Lua.Parsers
                 if (IsToken(nextChar) && sb.Length > 0)
                     break;
                 sb.Append(nextChar);
-                reader.Read();
+                Reader.Read();
                 if (IsToken(nextChar) && sb.Length == 1) // now after adding the new char the length is 1 
                     break;
-            };
+            }
             return sb.ToString();
         }
 
-        private static string TokenCharsString = "{}()[]+-/*=\n,:";
-        private static string NonTokenCharsString = "\t\r ";
+        private const string TokenCharsString = "{}()[]+-/*=\n,:";
+        private static readonly string NonTokenCharsString = "\t\r ";
 
         private static readonly char[] TokenChars = TokenCharsString.ToCharArray();
         private static readonly char[] NonTokenChars = NonTokenCharsString.ToCharArray();
+
+        private Tokenizer(TextReader reader)
+        {
+            Reader = reader;
+        }
 
         private static bool IsToken(char chr)
         {
