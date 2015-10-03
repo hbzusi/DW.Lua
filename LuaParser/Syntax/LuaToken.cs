@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace DW.Lua.Syntax
 {
-    public static class Token
+    public static class LuaToken
     {
         public static string Comma = ",";
         public static string Colon = ":";

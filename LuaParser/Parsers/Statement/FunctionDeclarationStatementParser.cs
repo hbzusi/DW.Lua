@@ -9,23 +9,23 @@ namespace DW.Lua.Parsers.Statement
         public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndAdvance(Keyword.Function);
-            if (reader.Next == Token.Colon)
+            if (reader.Next == LuaToken.Colon)
             {
                 reader.Advance();
                 reader.Advance();
             }
             var functionName = reader.GetAndAdvance();
-            reader.VerifyExpectedToken(Token.LeftBracket);
+            reader.VerifyExpectedToken(LuaToken.LeftBracket);
 
             var argumentNames = new List<string>();
-            while (reader.Current != Token.RightBracket)
+            while (reader.Current != LuaToken.RightBracket)
             {
                 reader.Advance();
                 argumentNames.Add(reader.Current);
                 reader.Advance();
-                reader.VerifyExpectedToken(Token.Comma, Token.RightBracket);
+                reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }
-            reader.VerifyExpectedTokenAndAdvance(Token.RightBracket);
+            reader.VerifyExpectedTokenAndAdvance(LuaToken.RightBracket);
             var statements = new List<LuaStatement>();
             while (reader.Current != Keyword.End)
                 statements.Add(SyntaxParser.ReadStatement(reader, context));

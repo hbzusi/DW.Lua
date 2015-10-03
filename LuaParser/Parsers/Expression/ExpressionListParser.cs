@@ -11,7 +11,7 @@ namespace DW.Lua.Parsers.Expression
             do
             {
                 expressions.Add(SyntaxParser.ReadExpression(reader, context));
-            } while (reader.Next == Token.Comma);
+            } while (reader.Next == LuaToken.Comma);
             return expressions;
         }
     }

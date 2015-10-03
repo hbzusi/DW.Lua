@@ -10,7 +10,7 @@ namespace DW.Lua.Parsers.Expression
         {
             var name = reader.Current;
             reader.Advance();
-            reader.VerifyExpectedToken(Token.LeftBracket);
+            reader.VerifyExpectedToken(LuaToken.LeftBracket);
 
             var parametersParser = new ExpressionListParser();
 
@@ -19,7 +19,7 @@ namespace DW.Lua.Parsers.Expression
                 FunctionName = name,
                 Parameters = parametersParser.Parse(reader, context).ToList()
             };
-            reader.VerifyExpectedToken(Token.RightBracket);
+            reader.VerifyExpectedToken(LuaToken.RightBracket);
             return expression;
         }
     }

@@ -10,7 +10,7 @@ namespace DW.Lua.Parsers.Statement
                 return new IfStatementParser();
             if (reader.Current == Keyword.While)
                 return new WhileStatementParser();
-            if (reader.Current == Token.Semicolon)
+            if (reader.Current == LuaToken.Semicolon)
                 return new EmptyStatementParser();
             if (reader.Current == Keyword.Do)
                 return new DoEndBlockStatementParser();

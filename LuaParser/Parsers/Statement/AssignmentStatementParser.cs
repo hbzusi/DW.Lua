@@ -19,7 +19,7 @@ namespace DW.Lua.Parsers.Statement
             var variables = ReadDeclarations(reader);
             foreach (var variable in variables)
                 context.CurrentScope.AddVariable(variable);
-            reader.VerifyExpectedTokenAndAdvance(Token.EqualsSign);
+            reader.VerifyExpectedTokenAndAdvance(LuaToken.EqualsSign);
             var assignedExpressionParser = new ExpressionListParser();
             var expressions = assignedExpressionParser.Parse(reader, context);
 
@@ -34,8 +34,8 @@ namespace DW.Lua.Parsers.Statement
                 var variable = new Variable(reader.Current);
                 result.Add(variable);
                 reader.Advance();
-                reader.VerifyExpectedToken(Token.Comma,Token.EqualsSign);
-                if (reader.Current == Token.EqualsSign)
+                reader.VerifyExpectedToken(LuaToken.Comma,LuaToken.EqualsSign);
+                if (reader.Current == LuaToken.EqualsSign)
                     break;
                 reader.Advance();
             }

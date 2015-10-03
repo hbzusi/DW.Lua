@@ -7,19 +7,19 @@ namespace DW.Lua.Parsers.Expression
     {
         public ExpressionParser Identify(ITokenEnumerator reader)
         {
-            if (reader.Current == Token.LeftBracket)
+            if (reader.Current == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();
-            if (Token.IsIdentifier(reader.Current) && reader.Next == Token.LeftBracket)
+            if (LuaToken.IsIdentifier(reader.Current) && reader.Next == LuaToken.LeftBracket)
                 return new FunctionCallExpressionParser();
-            if (Token.IsIdentifier(reader.Current) && Token.IsBinaryOperation(reader.Next))
+            if (LuaToken.IsIdentifier(reader.Current) && LuaToken.IsBinaryOperation(reader.Next))
                 return new BinaryOperationExpressionParser();
-            if (Token.IsBooleanConstant(reader.Current))
+            if (LuaToken.IsBooleanConstant(reader.Current))
                 return new BooleanConstantExpressionParser();
-            if (Token.IsIdentifier(reader.Current))
+            if (LuaToken.IsIdentifier(reader.Current))
                 return new SingleVariableExpressionParser();
-            if (Token.IsNumericConstant(reader.Current))
+            if (LuaToken.IsNumericConstant(reader.Current))
                 return new NumericConstantExpressionParser();
-            if (reader.Current == Token.LeftCurlyBrace)
+            if (reader.Current == LuaToken.LeftCurlyBrace)
                 return new TableInitializerExpressionParser();
             throw new UnexpectedTokenException(reader.Current);
         }

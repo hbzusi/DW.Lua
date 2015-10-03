@@ -7,10 +7,10 @@ namespace DW.Lua.Parsers.Expression
     {
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
-            reader.VerifyExpectedToken(Token.LeftBracket);
+            reader.VerifyExpectedToken(LuaToken.LeftBracket);
             reader.Advance();
             var expression = SyntaxParser.ReadExpression(reader, context);
-            reader.VerifyExpectedToken(Token.RightBracket);
+            reader.VerifyExpectedToken(LuaToken.RightBracket);
             reader.Advance();
             return new BracketedExpression(expression);
         }

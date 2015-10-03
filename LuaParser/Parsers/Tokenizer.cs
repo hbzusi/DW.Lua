@@ -68,8 +68,8 @@ namespace DW.Lua.Parsers
             return sb.ToString();
         }
 
-        private static readonly HashSet<char> SingleCharTokenChars = new HashSet<char>(Token.SingleCharTokensString.ToCharArray());
-        private static readonly HashSet<char> NonTokenChars = new HashSet<char>(Token.NonTokenCharsString.ToCharArray());
+        private static readonly HashSet<char> SingleCharTokenChars = new HashSet<char>(LuaToken.SingleCharTokensString.ToCharArray());
+        private static readonly HashSet<char> NonTokenChars = new HashSet<char>(LuaToken.NonTokenCharsString.ToCharArray());
 
         private Tokenizer(TextReader reader)
         {
