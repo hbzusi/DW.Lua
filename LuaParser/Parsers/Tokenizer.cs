@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using DW.Lua.Syntax;
 
 namespace DW.Lua.Parsers
 {
@@ -67,11 +68,8 @@ namespace DW.Lua.Parsers
             return sb.ToString();
         }
 
-        private const string SingleCharTokensString = "{}()[]+-/*=\n,:";
-        private static readonly string NonTokenCharsString = "\t\r ";
-
-        private static readonly HashSet<char> SingleCharTokenChars = new HashSet<char>(SingleCharTokensString.ToCharArray());
-        private static readonly HashSet<char> NonTokenChars = new HashSet<char>(NonTokenCharsString.ToCharArray());
+        private static readonly HashSet<char> SingleCharTokenChars = new HashSet<char>(Token.SingleCharTokensString.ToCharArray());
+        private static readonly HashSet<char> NonTokenChars = new HashSet<char>(Token.NonTokenCharsString.ToCharArray());
 
         private Tokenizer(TextReader reader)
         {
