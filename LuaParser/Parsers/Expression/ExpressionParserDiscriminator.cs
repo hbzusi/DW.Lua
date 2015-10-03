@@ -7,9 +7,9 @@ namespace DW.Lua.Parsers.Expression
     {
         public ExpressionParser Identify(ITokenEnumerator reader)
         {
-            if (reader.Current == "(")
+            if (reader.Current == Token.LeftBracket)
                 return new BracketedExpressionParser();
-            if (Token.IsIdentifier(reader.Current) && reader.Next == "(")
+            if (Token.IsIdentifier(reader.Current) && reader.Next == Token.LeftBracket)
                 return new FunctionCallExpressionParser();
             if (Token.IsIdentifier(reader.Current) && Token.IsBinaryOperation(reader.Next))
                 return new BinaryOperationExpressionParser();
