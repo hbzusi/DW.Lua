@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,19 @@ namespace DW.Lua.Parsers
 
         private IEnumerable<string> ReadTokens()
         {
-            while (Reader.Peek() != -1)
+            while (HasNextChar)
             {
                 SkipNonTokens();
                 yield return ReadToken();
             }
+        }
+
+        private bool HasNextChar => Reader.Peek() != -1;
+
+        private char GetNextChar()
+        {
+            if (!HasNextChar) throw new InvalidOperationException("Cannot read next character: stream ended");
+            return (char) Reader.Peek();
         }
 
         private void SkipNonTokens()
@@ -43,36 +52,35 @@ namespace DW.Lua.Parsers
         private string ReadToken()
         {
             var sb = new StringBuilder();
-            int next;
-            while ((next = Reader.Peek()) != -1)
+            while (HasNextChar)
             {
-                var nextChar = (char)next;
+                var nextChar = GetNextChar();
                 if (IsNonToken(nextChar))
                     break;
-                if (IsToken(nextChar) && sb.Length > 0)
+                if (IsSingleCharToken(nextChar) && sb.Length > 0)
                     break;
                 sb.Append(nextChar);
                 Reader.Read();
-                if (IsToken(nextChar) && sb.Length == 1) // now after adding the new char the length is 1 
+                if (IsSingleCharToken(nextChar) && sb.Length == 1) // now after adding the new char the length is 1 
                     break;
             }
             return sb.ToString();
         }
 
-        private const string TokenCharsString = "{}()[]+-/*=\n,:";
+        private const string SingleCharTokensString = "{}()[]+-/*=\n,:";
         private static readonly string NonTokenCharsString = "\t\r ";
 
-        private static readonly char[] TokenChars = TokenCharsString.ToCharArray();
-        private static readonly char[] NonTokenChars = NonTokenCharsString.ToCharArray();
+        private static readonly HashSet<char> SingleCharTokenChars = new HashSet<char>(SingleCharTokensString.ToCharArray());
+        private static readonly HashSet<char> NonTokenChars = new HashSet<char>(NonTokenCharsString.ToCharArray());
 
         private Tokenizer(TextReader reader)
         {
             Reader = reader;
         }
 
-        private static bool IsToken(char chr)
+        private static bool IsSingleCharToken(char chr)
         {
-            return TokenChars.Contains(chr);
+            return SingleCharTokenChars.Contains(chr);
         }
 
         private static bool IsNonToken(char chr)
