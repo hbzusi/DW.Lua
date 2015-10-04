@@ -4,7 +4,7 @@ using System.Linq;
 using DW.Lua.Extensions;
 using JetBrains.Annotations;
 
-namespace DW.Lua.Syntax
+namespace DW.Lua.Syntax.Statement
 {
     public class FunctionDeclarationStatement : LuaStatement, IEquatable<FunctionDeclarationStatement>
     {

@@ -4,6 +4,7 @@ using DW.Lua.Parsers;
 using DW.Lua.Parsers.Expression;
 using DW.Lua.Parsers.Statement;
 using DW.Lua.Syntax;
+using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua
 {
@@ -40,7 +41,7 @@ namespace DW.Lua
         {
             var expressionDiscriminator = new ExpressionParserDiscriminator();
             var expressionParser = expressionDiscriminator.Identify(reader);
-            return expressionParser.Parse(reader, context);
+            var expression = expressionParser.Parse(reader, context);
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using DW.Lua.Extensions;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Parsers
@@ -15,14 +16,15 @@ namespace DW.Lua.Parsers
         private static readonly HashSet<char> NonTokenChars =
             new HashSet<char>(LuaToken.NonTokenCharsString.ToCharArray());
 
+        private static readonly HashSet<string> Bigrams =
+            new HashSet<string>(LuaToken.TokenBigrams);
+
+        private readonly INextAwareEnumerator<char> _reader;
+
         private Tokenizer(TextReader reader)
         {
-            Reader = reader;
+            _reader = reader.AsEnumerable().GetNextAwareEnumerator();
         }
-
-        private TextReader Reader { get; }
-
-        private bool HasNextChar => Reader.Peek() != -1;
 
         public static TokenEnumerator Parse(TextReader reader)
         {
@@ -33,50 +35,50 @@ namespace DW.Lua.Parsers
 
         private IEnumerable<string> ReadTokens()
         {
-            while (HasNextChar)
+            while (_reader.MoveNext())
             {
                 SkipNonTokens();
                 yield return ReadToken();
             }
         }
 
-        private char GetNextChar()
-        {
-            if (!HasNextChar) throw new InvalidOperationException("Cannot read next character: stream ended");
-            return (char) Reader.Peek();
-        }
-
         private void SkipNonTokens()
         {
-            do
+            // Spin reader until either all non-tokens are skipped or enumerator is finished
+            while (IsNonToken(_reader.Current) && _reader.MoveNext())
             {
-                var next = Reader.Peek();
-                if (next == -1)
-                    break;
-                var nextChar = (char) next;
-                if (IsNonToken(nextChar))
-                    Reader.Read();
-                else
-                    break;
-            } while (true);
+            }
         }
 
         private string ReadToken()
         {
-            var sb = new StringBuilder();
-            while (HasNextChar)
+            var builder = new StringBuilder();
+            while (true)
             {
-                var nextChar = GetNextChar();
-                if (IsNonToken(nextChar))
+                builder.Append(_reader.Current);
+                if (!_reader.HasNext)
                     break;
-                if (IsSingleCharToken(nextChar) && sb.Length > 0)
+                if (IsBigram(_reader.Current, _reader.Next))
+                {
+                    _reader.MoveNext();
+                    builder.Append(_reader.Current);
                     break;
-                sb.Append(nextChar);
-                Reader.Read();
-                if (IsSingleCharToken(nextChar) && sb.Length == 1) // now after adding the new char the length is 1 
+                }
+                if (IsSingleCharToken(_reader.Current))
                     break;
+
+                if (_reader.HasNext && (IsNonToken(_reader.Next) || IsSingleCharToken(_reader.Next)))
+                    break;
+
+                _reader.MoveNext();
             }
-            return sb.ToString();
+            return builder.ToString();
+        }
+
+        private static bool IsBigram(char char1, char char2)
+        {
+            var candidateBigram = new string(new[] {char1, char2});
+            return Bigrams.Contains(candidateBigram);
         }
 
         private static bool IsSingleCharToken(char chr)

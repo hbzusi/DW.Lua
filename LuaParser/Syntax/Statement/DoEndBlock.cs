@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DW.Lua.Extensions;
 
-namespace DW.Lua.Syntax
+namespace DW.Lua.Syntax.Statement
 {
     public class DoEndBlock : LuaStatement, IEquatable<DoEndBlock>
     {

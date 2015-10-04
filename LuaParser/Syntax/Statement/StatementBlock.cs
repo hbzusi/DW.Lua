@@ -4,7 +4,7 @@ using System.Linq;
 using DW.Lua.Extensions;
 using DW.Lua.Misc;
 
-namespace DW.Lua.Syntax
+namespace DW.Lua.Syntax.Statement
 {
     public class StatementBlock : LuaStatement, IEquatable<StatementBlock>
     {

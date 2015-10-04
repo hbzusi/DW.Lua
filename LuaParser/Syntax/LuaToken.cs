@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using static System.Char;
 using static System.Double;
 
@@ -6,16 +7,16 @@ namespace DW.Lua.Syntax
 {
     public static class LuaToken
     {
-        public static string Comma = ",";
-        public static string Colon = ":";
+        public const string Comma = ",";
+        public const string Colon = ":";
 
-        public static string EqualsSign = "=";
+        public const string EqualsSign = "=";
 
-        public static string Semicolon = ";";
-        public static string LeftBracket => "(";
-        public static string RightBracket => ")";
-        public static string LeftCurlyBrace => "{";
-        public static string RightCurlyBrace => "}";
+        public const string Semicolon = ";";
+        public const string LeftBracket = "(";
+        public const string RightBracket = ")";
+        public const string LeftCurlyBrace = "{";
+        public const string RightCurlyBrace = "}";
 
         public static bool IsIdentifier(string token)
         {
@@ -30,7 +31,7 @@ namespace DW.Lua.Syntax
 
         public static bool IsBinaryOperation(string token)
         {
-            return new[] {"+", "-", "*", "/", "=="}.Contains(token);
+            return BinaryOperations.Contains(token);
         }
 
         public static bool IsBooleanConstant(string token)
@@ -38,13 +39,17 @@ namespace DW.Lua.Syntax
             return token == "true" || token == "false";
         }
 
-        public const string SingleCharTokensString = "{}()[]+-/*=\n,:";
+        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|";
         public static readonly string NonTokenCharsString = "\t\r ";
 
         public static readonly string[] TokenBigrams =
         {
             "==",
-            "~="
+            "~=",
+            "&&",
+            "||"
         };
-}
+
+        public static readonly string[] BinaryOperations = {"+", "-", "*", "/", "=="};
+    }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using DW.Lua.Extensions;
 using JetBrains.Annotations;
 
-namespace DW.Lua.Syntax
+namespace DW.Lua.Syntax.Expression
 {
     internal class FunctionCallExpression : LuaExpression, IEquatable<FunctionCallExpression>
     {

@@ -1,5 +1,6 @@
 using DW.Lua.Extensions;
 using DW.Lua.Syntax;
+using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parsers.Expression
 {

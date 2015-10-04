@@ -1,22 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace DW.Lua.Syntax
+namespace DW.Lua.Syntax.Expression
 {
-    public class VariableExpression : LuaExpression
+    public class BinaryExpression : LuaExpression
     {
-        private readonly Variable _variable;
-
-        public VariableExpression(Variable variable)
+        public BinaryExpression(LuaExpression leftExpression, LuaExpression rightExpression, string operation)
         {
-            _variable = variable;
         }
 
-        public override IEnumerable<Unit> Children
-        {
-            get { yield break; }
-        }
-
+        public override IEnumerable<Unit> Children { get; }
         public override string ToString()
         {
             throw new NotImplementedException();

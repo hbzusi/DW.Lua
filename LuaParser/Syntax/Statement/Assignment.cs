@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DW.Lua.Extensions;
 
-namespace DW.Lua.Syntax
+namespace DW.Lua.Syntax.Statement
 {
     public class Assignment : LuaStatement, IEquatable<Assignment>
     {
