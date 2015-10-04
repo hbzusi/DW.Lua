@@ -97,6 +97,7 @@
     <Compile Include="Syntax\LuaExpression.cs" />
     <Compile Include="Syntax\Expression\FunctionCallExpression.cs" />
     <Compile Include="Syntax\LuaStatement.cs" />
+    <Compile Include="Syntax\Statement\ReturnStatement.cs" />
     <Compile Include="Syntax\Statement\StatementBlock.cs" />
     <Compile Include="Syntax\Expression\TableInitializerExpression.cs" />
     <Compile Include="Syntax\LuaToken.cs" />

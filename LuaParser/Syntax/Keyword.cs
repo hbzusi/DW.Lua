@@ -10,5 +10,6 @@
         public const string Do = "do";
         public const string Function = "function";
         public const string For = "for";
+        public const string Return = "return";
     }
 }

@@ -27,12 +27,11 @@ namespace DW.Lua.Parsers.Statement
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
-            var statements = new List<LuaStatement>();
-            while (reader.Current != Keyword.End)
-                statements.Add(SyntaxParser.ReadStatement(reader, context));
+            var statementsParser = new StatementBlockParser();
+            var body = statementsParser.ParseBlock(reader, context);
             reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
 
-            return new FunctionDeclarationStatement(functionName,argumentNames,new StatementBlock(statements));
+            return new FunctionDeclarationStatement(functionName,argumentNames,body);
         }
     }
 }

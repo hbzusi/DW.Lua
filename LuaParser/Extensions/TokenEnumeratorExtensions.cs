@@ -2,6 +2,7 @@
 using System.Linq;
 using DW.Lua.Exceptions;
 using DW.Lua.Parsers;
+using DW.Lua.Syntax;
 
 namespace DW.Lua.Extensions
 {
@@ -28,6 +29,12 @@ namespace DW.Lua.Extensions
         {
             enumerator.VerifyExpectedToken(expectedTokens);
             enumerator.MoveNext();
+        }
+
+        public static void VerifyIsIdentifier(this ITokenEnumerator enumerator)
+        {
+            if (!LuaToken.IsIdentifier(enumerator.Current))
+                throw new UnexpectedTokenException(enumerator.Current);
         }
     }
 }

@@ -29,7 +29,11 @@ namespace DW.Lua.Parsers.Statement
         {
             var statements = new List<LuaStatement>();
             while (!_terminatingTokens.Contains(reader.Current))
+            {
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
+                while (string.IsNullOrEmpty(reader.Current) || reader.Current == "\n")
+                    reader.MoveNext();
+            }
             reader.VerifyExpectedTokenAndMoveNext(_terminatingTokens);
             return new StatementBlock(statements);
         }
