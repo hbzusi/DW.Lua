@@ -40,5 +40,11 @@ namespace DW.Lua.Syntax
 
         public const string SingleCharTokensString = "{}()[]+-/*=\n,:";
         public static readonly string NonTokenCharsString = "\t\r ";
-    }
+
+        public static readonly string[] TokenBigrams =
+        {
+            "==",
+            "~="
+        };
+}
 }

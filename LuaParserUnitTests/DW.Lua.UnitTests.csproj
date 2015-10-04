@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Enumerators\NextAwareEnumeratorTests.cs" />
     <Compile Include="Parsers\Code\RealLifeCodeTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\DoEndBlockStatementParserTests.cs" />

@@ -28,7 +28,7 @@ namespace DW.Lua.UnitTests.Parsers.Code
         }
 
         [Test]
-        public void ShouldParseFixtureCode()
+        public void ShouldParseHammingAlgorithmCode()
         {
             SyntaxParser.Parse(GetFixtureCode("Hamming.lua"));
         }
