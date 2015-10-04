@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DW.Lua.Enumerators
+namespace DW.Lua.Misc
 {
     public class NextAwareEnumerator<T> : INextAwareEnumerator<T>
     {

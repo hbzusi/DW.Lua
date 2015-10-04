@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using DW.Lua.Enumerators;
 using DW.Lua.Extensions;
+using DW.Lua.Misc;
 using NUnit.Framework;
 
 namespace DW.Lua.UnitTests.Enumerators

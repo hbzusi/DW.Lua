@@ -17,7 +17,6 @@ namespace DW.Lua.UnitTests.Parsers
         [TestCase("a == b", ExpectedResult = new[] {"a", "==", "b"})]
         [TestCase("a&&b", ExpectedResult = new[] { "a", "&&", "b" })]
         [TestCase("a && b", ExpectedResult = new[] { "a", "&&", "b" })]
-        [TestCase("a&&b", ExpectedResult = new[] { "a", "&&", "b" })]
         [TestCase("a ~= b", ExpectedResult = new[] { "a", "~=", "b" })]
         [TestCase("a =! b", ExpectedResult = new[] { "a", "=", "!", "b" })]
         [TestCase("local a={}", ExpectedResult = new[] {"local", "a", "=", "{", "}"})]

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DW.Lua.Enumerators;
+using DW.Lua.Misc;
 
 namespace DW.Lua.Extensions
 {

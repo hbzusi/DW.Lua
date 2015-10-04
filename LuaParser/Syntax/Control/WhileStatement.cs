@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using DW.Lua.Extensions;
+using DW.Lua.Misc;
 
 namespace DW.Lua.Syntax.Control
 {
@@ -48,7 +49,7 @@ namespace DW.Lua.Syntax.Control
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return HashCodeHelper.CombineHashCodes(12347, Condition, Body);
         }
     }
 }
