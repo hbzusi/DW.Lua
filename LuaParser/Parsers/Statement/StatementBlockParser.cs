@@ -10,7 +10,7 @@ namespace DW.Lua.Parsers.Statement
         private readonly HashSet<string> _terminatingTokens;
 
         public StatementBlockParser(params string[] terminatingTokens)
-            : this(Enumerable.AsEnumerable(terminatingTokens))
+            : this(terminatingTokens.AsEnumerable())
         {
         }
 

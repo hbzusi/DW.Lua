@@ -12,7 +12,11 @@ namespace DW.Lua.Syntax
             _variable = variable;
         }
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children
+        {
+            get { yield break; }
+        }
+
         public override string ToString()
         {
             throw new NotImplementedException();

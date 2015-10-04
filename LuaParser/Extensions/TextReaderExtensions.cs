@@ -11,10 +11,10 @@ namespace DW.Lua.Extensions
             while (reader.HasNextChar())
                 yield return reader.GetNextChar();
         }
-        
-        public static bool HasNextChar(this TextReader reader) => reader.Peek() != -1;
 
-        public static char GetNextChar(this TextReader reader)
+        private static bool HasNextChar(this TextReader reader) => reader.Peek() != -1;
+
+        private static char GetNextChar(this TextReader reader)
         {
             if (!reader.HasNextChar()) throw new InvalidOperationException("Cannot read next character: stream ended");
             return (char) reader.Peek();

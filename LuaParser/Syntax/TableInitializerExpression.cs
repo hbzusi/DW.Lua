@@ -22,7 +22,7 @@ namespace DW.Lua.Syntax
 
         public IEnumerable<LuaExpression> Expressions => _expressions.AsReadOnly();
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children => Expressions;
 
         public bool Equals(TableInitializerExpression other)
         {

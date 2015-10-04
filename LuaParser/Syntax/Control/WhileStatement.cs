@@ -16,7 +16,14 @@ namespace DW.Lua.Syntax.Control
             Body = body;
         }
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children
+        {
+            get
+            {
+                yield return Condition;
+                yield return Body;
+            }
+        }
 
         public bool Equals(WhileStatement other)
         {

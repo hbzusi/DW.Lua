@@ -14,7 +14,7 @@ namespace DW.Lua.Syntax
             Body = body;
         }
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children { get { yield return Body; } }
 
         public bool Equals(DoEndBlock other)
         {

@@ -30,7 +30,7 @@ namespace DW.Lua.Syntax
             FunctionBody = functionBody;
         }
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children { get { yield return FunctionBody; } }
 
         public bool Equals([CanBeNull] FunctionDeclarationStatement other)
         {
