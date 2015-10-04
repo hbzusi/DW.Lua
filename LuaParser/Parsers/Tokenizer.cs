@@ -9,7 +9,20 @@ namespace DW.Lua.Parsers
 {
     public class Tokenizer
     {
+        private static readonly HashSet<char> SingleCharTokenChars =
+            new HashSet<char>(LuaToken.SingleCharTokensString.ToCharArray());
+
+        private static readonly HashSet<char> NonTokenChars =
+            new HashSet<char>(LuaToken.NonTokenCharsString.ToCharArray());
+
+        private Tokenizer(TextReader reader)
+        {
+            Reader = reader;
+        }
+
         private TextReader Reader { get; }
+
+        private bool HasNextChar => Reader.Peek() != -1;
 
         public static TokenEnumerator Parse(TextReader reader)
         {
@@ -27,8 +40,6 @@ namespace DW.Lua.Parsers
             }
         }
 
-        private bool HasNextChar => Reader.Peek() != -1;
-
         private char GetNextChar()
         {
             if (!HasNextChar) throw new InvalidOperationException("Cannot read next character: stream ended");
@@ -42,7 +53,7 @@ namespace DW.Lua.Parsers
                 var next = Reader.Peek();
                 if (next == -1)
                     break;
-                var nextChar = (char)next;
+                var nextChar = (char) next;
                 if (IsNonToken(nextChar))
                     Reader.Read();
                 else
@@ -66,14 +77,6 @@ namespace DW.Lua.Parsers
                     break;
             }
             return sb.ToString();
-        }
-
-        private static readonly HashSet<char> SingleCharTokenChars = new HashSet<char>(LuaToken.SingleCharTokensString.ToCharArray());
-        private static readonly HashSet<char> NonTokenChars = new HashSet<char>(LuaToken.NonTokenCharsString.ToCharArray());
-
-        private Tokenizer(TextReader reader)
-        {
-            Reader = reader;
         }
 
         private static bool IsSingleCharToken(char chr)
