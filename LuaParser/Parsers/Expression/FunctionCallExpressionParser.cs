@@ -15,11 +15,7 @@ namespace DW.Lua.Parsers.Expression
 
             var parametersParser = new ExpressionListParser();
 
-            var expression = new FunctionCallExpression
-            {
-                FunctionName = name,
-                Parameters = parametersParser.Parse(reader, context).ToList()
-            };
+            var expression = new FunctionCallExpression(name, parametersParser.Parse(reader, context).ToList());
             reader.VerifyExpectedToken(LuaToken.RightBracket);
             return expression;
         }

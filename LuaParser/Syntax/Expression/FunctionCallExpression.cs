@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DW.Lua.Extensions;
+using DW.Lua.Misc;
 using JetBrains.Annotations;
 
 namespace DW.Lua.Syntax.Expression
 {
     internal class FunctionCallExpression : LuaExpression, IEquatable<FunctionCallExpression>
     {
-        public override IEnumerable<Unit> Children
+
+        public FunctionCallExpression(string name, IEnumerable<LuaExpression> parameters)
         {
-            get { throw new NotImplementedException(); }
+            FunctionName = name;
+            Parameters = parameters.ToList();
         }
 
-        public string FunctionName { get; set; }
-        public IList<LuaExpression> Parameters { get; set; }
+        public override IEnumerable<Unit> Children => Parameters;
+
+        public string FunctionName { get; }
+        public IList<LuaExpression> Parameters { get; }
 
         public bool Equals([CanBeNull] FunctionCallExpression other)
         {
@@ -39,7 +44,7 @@ namespace DW.Lua.Syntax.Expression
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return HashCodeHelper.CombineHashCodes(FunctionName.GetHashCode(), Parameters);
         }
     }
 }
