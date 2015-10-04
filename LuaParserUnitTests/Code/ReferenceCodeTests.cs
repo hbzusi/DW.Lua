@@ -2,10 +2,10 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace DW.Lua.UnitTests.Parsers.Code
+namespace DW.Lua.UnitTests.Code
 {
     [TestFixture]
-    public class RealLifeCodeTests
+    public class ReferenceCodeTests
     {
         private string GetFixtureCode(string name)
         {
@@ -27,9 +27,12 @@ namespace DW.Lua.UnitTests.Parsers.Code
         }
 
         [Test]
-        public void ShouldParseHammingAlgorithmCode()
+        [TestCase("Factorial.lua")]
+        [TestCase("Hamming.lua")]
+        [TestCase("HexDump.lua")]
+        public void Parse(string fixtureName)
         {
-            SyntaxParser.Parse(GetFixtureCode("Hamming.lua"));
+            SyntaxParser.Parse(GetFixtureCode(fixtureName));
         }
     }
 }

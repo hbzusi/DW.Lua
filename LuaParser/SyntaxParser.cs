@@ -4,6 +4,7 @@ using DW.Lua.Parsers;
 using DW.Lua.Parsers.Expression;
 using DW.Lua.Parsers.Statement;
 using DW.Lua.Syntax;
+using DW.Lua.Syntax.Expression;
 using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua
@@ -42,6 +43,15 @@ namespace DW.Lua
             var expressionDiscriminator = new ExpressionParserDiscriminator();
             var expressionParser = expressionDiscriminator.Identify(reader);
             var expression = expressionParser.Parse(reader, context);
+
+            if (LuaToken.IsBinaryOperation(reader.Current))
+            {
+                var operation = reader.GetAndMoveNext();
+                var rightSideExpression = ReadExpression(reader,context);
+                expression = new BinaryExpression(expression,rightSideExpression,operation);
+            }
+
+            return expression;
         }
     }
 }

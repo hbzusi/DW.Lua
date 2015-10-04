@@ -1,12 +1,11 @@
+using DW.Lua.Misc;
+
 namespace DW.Lua.Parsers
 {
-    public interface ITokenEnumerator
+    public interface ITokenEnumerator : INextAwareEnumerator<string>
     {
         string Previous { get; }
-        string Next { get; }
-        string Current { get; }
         bool Finished { get; }
-        void MoveNext();
         string GetAndMoveNext();
     }
 }

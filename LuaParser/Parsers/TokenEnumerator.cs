@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DW.Lua.Exceptions;
 
@@ -11,6 +12,15 @@ namespace DW.Lua.Parsers
 
         public string Previous { get; private set; }
         public string Next { get; private set; }
+        public bool HasNext => _index < _tokens.Count - 1;
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
+
+        object IEnumerator.Current => Current;
+
         public string Current { get; private set; }
 
         public TokenEnumerator(IList<string> tokens)
@@ -20,15 +30,16 @@ namespace DW.Lua.Parsers
             MoveNext();
         }
 
-        public void MoveNext()
+        public bool MoveNext()
         {
             _index++;
-            if (_index > _tokens.Count) 
-                throw new EndOfFileException();
+            if (_index >= _tokens.Count)
+                return false;
 
             Previous = Current;
             Current = _index < _tokens.Count ? _tokens[_index] : null;
             Next = _index < _tokens.Count - 1 ? _tokens[_index+1] : null;
+            return _index < _tokens.Count;
         }
 
         public string GetAndMoveNext()
@@ -39,5 +50,9 @@ namespace DW.Lua.Parsers
         }
 
         public bool Finished => _index >= _tokens.Count;
+
+        public void Dispose()
+        {
+        }
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="Extensions\EquatableExtensions.cs" />
     <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
+    <Compile Include="Parsers\Expression\StringConstantExpressionParser.cs" />
     <Compile Include="Parsers\ParserContext.cs" />
     <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parsers\Expression\BooleanConstantExpressionParser.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Parsers\Statement\StatementBlockParser.cs" />
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />
+    <Compile Include="Syntax\Expression\StringConstantExpression.cs" />
     <Compile Include="Syntax\Statement\FunctionDeclarationStatement.cs" />
     <Compile Include="Syntax\Expression\BracketedExpression.cs" />
     <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />

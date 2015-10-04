@@ -3,7 +3,7 @@ using DW.Lua.Extensions;
 using DW.Lua.Misc;
 using NUnit.Framework;
 
-namespace DW.Lua.UnitTests.Enumerators
+namespace DW.Lua.UnitTests.Misc
 {
     [TestFixture]
     public class NextAwareEnumeratorTests

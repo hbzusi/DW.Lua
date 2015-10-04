@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Misc\NextAwareEnumeratorTests.cs" />
-    <Compile Include="Parsers\Code\RealLifeCodeTests.cs" />
+    <Compile Include="Code\ReferenceCodeTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\DoEndBlockStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\FunctionDeclarationStatementParserTests.cs" />
@@ -56,6 +56,8 @@
     <Compile Include="Parsers\TokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Fixtures\HexDump.lua" />
+    <EmbeddedResource Include="Fixtures\Factorial.lua" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
