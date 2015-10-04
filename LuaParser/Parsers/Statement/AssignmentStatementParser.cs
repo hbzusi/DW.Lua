@@ -20,7 +20,7 @@ namespace DW.Lua.Parsers.Statement
             var variables = ReadDeclarations(reader);
             foreach (var variable in variables)
                 context.CurrentScope.AddVariable(variable);
-            reader.VerifyExpectedTokenAndAdvance(LuaToken.EqualsSign);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.EqualsSign);
             var assignedExpressionParser = new ExpressionListParser();
             var expressions = assignedExpressionParser.Parse(reader, context);
 

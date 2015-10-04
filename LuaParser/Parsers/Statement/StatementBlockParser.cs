@@ -30,7 +30,7 @@ namespace DW.Lua.Parsers.Statement
             var statements = new List<LuaStatement>();
             while (!_terminatingTokens.Contains(reader.Current))
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
-            reader.VerifyExpectedTokenAndAdvance(_terminatingTokens);
+            reader.VerifyExpectedTokenAndMoveNext(_terminatingTokens);
             return new StatementBlock(statements);
         }
     }

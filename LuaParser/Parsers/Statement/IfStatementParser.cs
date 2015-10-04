@@ -10,9 +10,9 @@ namespace DW.Lua.Parsers.Statement
         public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             StatementBlock elseBlock = null;
-            reader.VerifyExpectedTokenAndAdvance(Keyword.If);
+            reader.VerifyExpectedTokenAndMoveNext(Keyword.If);
             var conditionExpression = SyntaxParser.ReadExpression(reader, context);
-            reader.VerifyExpectedTokenAndAdvance(Keyword.Then);
+            reader.VerifyExpectedTokenAndMoveNext(Keyword.Then);
 
             var ifBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
             var ifBlock = ifBlockParser.ParseBlock(reader, context);

@@ -9,7 +9,7 @@ namespace DW.Lua.Parsers.Statement
     {
         public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
-            reader.VerifyExpectedTokenAndAdvance(Keyword.Function);
+            reader.VerifyExpectedTokenAndMoveNext(Keyword.Function);
             if (reader.Next == LuaToken.Colon)
             {
                 reader.MoveNext();
@@ -26,11 +26,11 @@ namespace DW.Lua.Parsers.Statement
                 reader.MoveNext();
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }
-            reader.VerifyExpectedTokenAndAdvance(LuaToken.RightBracket);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
             var statements = new List<LuaStatement>();
             while (reader.Current != Keyword.End)
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
-            reader.VerifyExpectedTokenAndAdvance(Keyword.End);
+            reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
 
             return new FunctionDeclarationStatement(functionName,argumentNames,new StatementBlock(statements));
         }

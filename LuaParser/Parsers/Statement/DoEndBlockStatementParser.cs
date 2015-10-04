@@ -15,7 +15,7 @@ namespace DW.Lua.Parsers.Statement
             var statements = new List<LuaStatement>();
             while (reader.Current != Keyword.End)
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
-            reader.VerifyExpectedTokenAndAdvance(Keyword.End);
+            reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
             context.ReleaseScope(scope);
             return new DoEndBlock(new StatementBlock(statements));
         }

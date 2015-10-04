@@ -12,10 +12,10 @@ namespace DW.Lua.Extensions
             VerifyExpectedToken(enumerator, expectedTokens.ToArray());
         }
 
-        public static void VerifyExpectedTokenAndAdvance(this ITokenEnumerator enumerator,
+        public static void VerifyExpectedTokenAndMoveNext(this ITokenEnumerator enumerator,
             IEnumerable<string> expectedTokens)
         {
-            VerifyExpectedTokenAndAdvance(enumerator, expectedTokens.ToArray());
+            VerifyExpectedTokenAndMoveNext(enumerator, expectedTokens.ToArray());
         }
 
         public static void VerifyExpectedToken(this ITokenEnumerator enumerator, params string[] expectedTokens)
@@ -24,7 +24,7 @@ namespace DW.Lua.Extensions
                 throw new UnexpectedTokenException(enumerator.Current, expectedTokens);
         }
 
-        public static void VerifyExpectedTokenAndAdvance(this ITokenEnumerator enumerator, params string[] expectedTokens)
+        public static void VerifyExpectedTokenAndMoveNext(this ITokenEnumerator enumerator, params string[] expectedTokens)
         {
             enumerator.VerifyExpectedToken(expectedTokens);
             enumerator.MoveNext();

@@ -57,10 +57,12 @@
     <Compile Include="Parsers\IScope.cs" />
     <Compile Include="Parsers\ITokenEnumerator.cs" />
     <Compile Include="Parsers\Scope.cs" />
+    <Compile Include="Parsers\Statement\ForStatementParser.cs" />
     <Compile Include="Parsers\Statement\StatementBlockParser.cs" />
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />
     <Compile Include="Syntax\Expression\StringConstantExpression.cs" />
+    <Compile Include="Syntax\Statement\ForStatement.cs" />
     <Compile Include="Syntax\Statement\FunctionDeclarationStatement.cs" />
     <Compile Include="Syntax\Expression\BracketedExpression.cs" />
     <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />

@@ -10,7 +10,7 @@ namespace DW.Lua.Parsers.Expression
         {
             var leftExpression = SyntaxParser.ReadExpression(reader,context);
             var operation = reader.Current;
-            reader.VerifyExpectedTokenAndAdvance(LuaToken.BinaryOperations);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.BinaryOperations);
             var rightExpression = SyntaxParser.ReadExpression(reader, context);
             return new BinaryExpression(leftExpression,rightExpression, operation);
         }

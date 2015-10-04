@@ -2,12 +2,13 @@
 {
     public static class Keyword
     {
-        public static string If => "if";
-        public static string Then => "then";
-        public static string End => "end";
-        public static string Else => "else";
-        public static string While => "while";
-        public static string Do => "do";
-        public static string Function => "function";
+        public const string If = "if";
+        public const string Then = "then";
+        public const string End = "end";
+        public const string Else = "else";
+        public const string While = "while";
+        public const string Do = "do";
+        public const string Function = "function";
+        public const string For = "for";
     }
 }

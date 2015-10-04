@@ -9,12 +9,12 @@ namespace DW.Lua.Parsers.Expression
     {
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
-            reader.VerifyExpectedTokenAndAdvance(LuaToken.DoubleQuote, LuaToken.DoubleLeftSquareBracket);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.DoubleQuote, LuaToken.DoubleLeftSquareBracket);
             var builder = new StringBuilder();
             while (!reader.Finished && reader.Current != LuaToken.DoubleQuote &&
                    reader.Current != LuaToken.DoubleRightSquareBracket)
                 builder.Append(reader.GetAndMoveNext());
-            reader.VerifyExpectedTokenAndAdvance(LuaToken.DoubleQuote, LuaToken.DoubleRightSquareBracket);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.DoubleQuote, LuaToken.DoubleRightSquareBracket);
 
             return new StringConstantExpression(builder.ToString());
         }
