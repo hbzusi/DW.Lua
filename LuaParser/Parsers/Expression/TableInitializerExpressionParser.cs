@@ -10,7 +10,7 @@ namespace DW.Lua.Parsers.Expression
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedToken(LuaToken.LeftCurlyBrace);
-            reader.Advance();
+            reader.MoveNext();
             var expressions = new List<LuaExpression>();
             while (reader.Current != LuaToken.RightCurlyBrace)
             {
@@ -18,7 +18,7 @@ namespace DW.Lua.Parsers.Expression
                 reader.VerifyExpectedToken(LuaToken.RightCurlyBrace, LuaToken.Comma);
             }
             reader.VerifyExpectedToken(LuaToken.RightCurlyBrace);
-            reader.Advance();
+            reader.MoveNext();
             return new TableInitializerExpression(expressions);
         }
     }

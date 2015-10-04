@@ -9,7 +9,7 @@ namespace DW.Lua.Parsers.Expression
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
             var constantValue = Double.Parse(reader.Current);
-            reader.Advance();
+            reader.MoveNext();
             return new ConstantExpression(new Value {NumericValue = constantValue});
         }
     }

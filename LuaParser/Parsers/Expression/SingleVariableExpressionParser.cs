@@ -16,7 +16,7 @@ namespace DW.Lua.Parsers.Expression
                 variable = new Variable(variableName);
             }
             else variable = visibleVariables[variableName];
-            reader.Advance();
+            reader.MoveNext();
             return new VariableExpression(variable);
         }
     }

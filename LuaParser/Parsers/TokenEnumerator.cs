@@ -17,10 +17,10 @@ namespace DW.Lua.Parsers
         {
             if (tokens == null) throw new ArgumentNullException(nameof(tokens));
             _tokens = tokens;
-            Advance();
+            MoveNext();
         }
 
-        public void Advance()
+        public void MoveNext()
         {
             _index++;
             if (_index > _tokens.Count) 
@@ -31,10 +31,10 @@ namespace DW.Lua.Parsers
             Next = _index < _tokens.Count - 1 ? _tokens[_index+1] : null;
         }
 
-        public string GetAndAdvance()
+        public string GetAndMoveNext()
         {
             string token = Current;
-            Advance();
+            MoveNext();
             return token;
         }
 

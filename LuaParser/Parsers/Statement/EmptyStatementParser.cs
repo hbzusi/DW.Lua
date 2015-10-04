@@ -8,7 +8,7 @@ namespace DW.Lua.Parsers.Statement
     {
         public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
-            var token = reader.GetAndAdvance();
+            var token = reader.GetAndMoveNext();
             if (string.IsNullOrWhiteSpace(token) || token == LuaToken.Semicolon)
                 return new EmptyStatement();
             throw new UnexpectedTokenException(token);

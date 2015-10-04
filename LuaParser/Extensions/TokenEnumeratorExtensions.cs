@@ -27,7 +27,7 @@ namespace DW.Lua.Extensions
         public static void VerifyExpectedTokenAndAdvance(this ITokenEnumerator enumerator, params string[] expectedTokens)
         {
             enumerator.VerifyExpectedToken(expectedTokens);
-            enumerator.Advance();
+            enumerator.MoveNext();
         }
     }
 }

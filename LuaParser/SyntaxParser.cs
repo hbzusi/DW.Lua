@@ -30,7 +30,7 @@ namespace DW.Lua
         public static LuaStatement ReadStatement(ITokenEnumerator reader, IParserContext context)
         {
             while (string.IsNullOrEmpty(reader.Current) || reader.Current == "\n")
-                reader.Advance();
+                reader.MoveNext();
             var statementDiscriminator = new StatementParserDiscriminator();
             var statementParser = statementDiscriminator.Identify(reader);
             return statementParser.Parse(reader, context);

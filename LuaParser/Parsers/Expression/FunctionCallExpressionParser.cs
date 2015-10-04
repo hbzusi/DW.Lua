@@ -10,7 +10,7 @@ namespace DW.Lua.Parsers.Expression
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
             var name = reader.Current;
-            reader.Advance();
+            reader.MoveNext();
             reader.VerifyExpectedToken(LuaToken.LeftBracket);
 
             var parametersParser = new ExpressionListParser();

@@ -6,7 +6,7 @@ namespace DW.Lua.Parsers
         string Next { get; }
         string Current { get; }
         bool Finished { get; }
-        void Advance();
-        string GetAndAdvance();
+        void MoveNext();
+        string GetAndMoveNext();
     }
 }

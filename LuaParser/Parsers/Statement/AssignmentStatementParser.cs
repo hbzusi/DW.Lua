@@ -14,7 +14,7 @@ namespace DW.Lua.Parsers.Statement
             if (reader.Current == "local")
             {
                 local = true;
-                reader.Advance();
+                reader.MoveNext();
             }
 
             var variables = ReadDeclarations(reader);
@@ -34,11 +34,11 @@ namespace DW.Lua.Parsers.Statement
             {
                 var variable = new Variable(reader.Current);
                 result.Add(variable);
-                reader.Advance();
+                reader.MoveNext();
                 reader.VerifyExpectedToken(LuaToken.Comma,LuaToken.EqualsSign);
                 if (reader.Current == LuaToken.EqualsSign)
                     break;
-                reader.Advance();
+                reader.MoveNext();
             }
             return result;
         }

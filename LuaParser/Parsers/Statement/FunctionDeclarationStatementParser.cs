@@ -12,18 +12,18 @@ namespace DW.Lua.Parsers.Statement
             reader.VerifyExpectedTokenAndAdvance(Keyword.Function);
             if (reader.Next == LuaToken.Colon)
             {
-                reader.Advance();
-                reader.Advance();
+                reader.MoveNext();
+                reader.MoveNext();
             }
-            var functionName = reader.GetAndAdvance();
+            var functionName = reader.GetAndMoveNext();
             reader.VerifyExpectedToken(LuaToken.LeftBracket);
 
             var argumentNames = new List<string>();
             while (reader.Current != LuaToken.RightBracket)
             {
-                reader.Advance();
+                reader.MoveNext();
                 argumentNames.Add(reader.Current);
-                reader.Advance();
+                reader.MoveNext();
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }
             reader.VerifyExpectedTokenAndAdvance(LuaToken.RightBracket);
