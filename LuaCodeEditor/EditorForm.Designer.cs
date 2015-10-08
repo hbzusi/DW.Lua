@@ -43,7 +43,7 @@ namespace DW.Lua.Editor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.codeBox.Location = new System.Drawing.Point(0, 0);
             this.codeBox.Name = "codeBox";
-            this.codeBox.Size = new System.Drawing.Size(265, 273);
+            this.codeBox.Size = new System.Drawing.Size(403, 283);
             this.codeBox.TabIndex = 0;
             this.codeBox.Text = "";
             this.codeBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -52,7 +52,7 @@ namespace DW.Lua.Editor
             // 
             this.parserStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.parserStatusLabel.AutoSize = true;
-            this.parserStatusLabel.Location = new System.Drawing.Point(12, 276);
+            this.parserStatusLabel.Location = new System.Drawing.Point(12, 286);
             this.parserStatusLabel.Name = "parserStatusLabel";
             this.parserStatusLabel.Size = new System.Drawing.Size(36, 13);
             this.parserStatusLabel.TabIndex = 1;
@@ -60,10 +60,11 @@ namespace DW.Lua.Editor
             // 
             // treeView1
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.Location = new System.Drawing.Point(272, 0);
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView1.Location = new System.Drawing.Point(410, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(277, 325);
+            this.treeView1.Size = new System.Drawing.Size(277, 349);
             this.treeView1.TabIndex = 2;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -71,7 +72,7 @@ namespace DW.Lua.Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 351);
+            this.ClientSize = new System.Drawing.Size(689, 361);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.parserStatusLabel);
             this.Controls.Add(this.codeBox);

@@ -11,7 +11,7 @@ namespace DW.Lua.Syntax.Statement
             ReturnedExpression = returnedExpression;
         }
 
-        public override IEnumerable<Unit> Children { get; }
+        public override IEnumerable<Unit> Children { get { yield return ReturnedExpression; } }
         public override string ToString()
         {
             throw new System.NotImplementedException();
