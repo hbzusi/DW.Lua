@@ -1,4 +1,6 @@
 using System;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
 
@@ -6,7 +8,7 @@ namespace DW.Lua.Parser.Expression
 {
     public class NumericConstantExpressionParser : ExpressionParser
     {
-        public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var constantValue = Double.Parse(reader.Current.Value);
             reader.MoveNext();

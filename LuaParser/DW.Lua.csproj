@@ -55,7 +55,6 @@
     <Compile Include="Parser\Expression\BooleanConstantExpressionParser.cs" />
     <Compile Include="Parser\IParserContext.cs" />
     <Compile Include="Parser\IScope.cs" />
-    <Compile Include="Parser\ITokenEnumerator.cs" />
     <Compile Include="Parser\Scope.cs" />
     <Compile Include="Parser\Statement\ForStatementParser.cs" />
     <Compile Include="Parser\Statement\StatementBlockParser.cs" />
@@ -86,7 +85,6 @@
     <Compile Include="Parser\Statement\StatementParser.cs" />
     <Compile Include="Parser\Statement\StatementParserDiscriminator.cs" />
     <Compile Include="Language\Token.cs" />
-    <Compile Include="Language\TokenEnumerator.cs" />
     <Compile Include="Language\Tokenizer.cs" />
     <Compile Include="Exceptions\UnexpectedTokenException.cs" />
     <Compile Include="Parser\Statement\WhileStatementParser.cs" />

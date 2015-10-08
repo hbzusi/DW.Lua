@@ -1,4 +1,6 @@
 using DW.Lua.Extensions;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Control;
 
@@ -6,7 +8,7 @@ namespace DW.Lua.Parser.Statement
 {
     internal class WhileStatementParser : StatementParser
     {
-        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keyword.While);
             var conditionExpression = SyntaxParser.ReadExpression(reader, context);

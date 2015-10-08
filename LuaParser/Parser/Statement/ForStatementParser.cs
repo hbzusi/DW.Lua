@@ -1,5 +1,7 @@
 using System.Linq;
 using DW.Lua.Extensions;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Parser.Expression;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Statement;
@@ -8,7 +10,7 @@ namespace DW.Lua.Parser.Statement
 {
     internal class ForStatementParser : StatementParser
     {
-        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keyword.For);
             var scope = context.AcquireScope();

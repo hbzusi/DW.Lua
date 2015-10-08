@@ -2,6 +2,7 @@
 using System.IO;
 using DW.Lua.Extensions;
 using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Parser;
 using DW.Lua.Parser.Expression;
 using DW.Lua.Parser.Statement;
@@ -19,7 +20,7 @@ namespace DW.Lua
             var reader = new StringReader(s);
             var rootScope = new Scope();
             var context = new ParserContext(rootScope);
-            ITokenEnumerator tokenEnumerator = Tokenizer.Parse(reader);
+            INextAwareEnumerator<Token> tokenEnumerator = Tokenizer.Parse(reader);
 
             while (tokenEnumerator.HasNext)
             {
@@ -30,7 +31,7 @@ namespace DW.Lua
             return new StatementBlock(statements);
         }
 
-        public static LuaStatement ReadStatement(ITokenEnumerator reader, IParserContext context)
+        public static LuaStatement ReadStatement(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             while (string.IsNullOrEmpty(reader.Current.Value) || reader.Current.Value == "\n")
                 reader.MoveNext();
@@ -40,7 +41,7 @@ namespace DW.Lua
         }
 
 
-        public static LuaExpression ReadExpression(ITokenEnumerator reader, IParserContext context)
+        public static LuaExpression ReadExpression(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var expressionDiscriminator = new ExpressionParserDiscriminator();
             var expressionParser = expressionDiscriminator.Identify(reader);

@@ -26,11 +26,11 @@ namespace DW.Lua.Language
             _reader = reader.AsEnumerable().GetNextAwareEnumerator();
         }
 
-        public static TokenEnumerator Parse(TextReader reader)
+        public static INextAwareEnumerator<Token> Parse(TextReader reader)
         {
             var tokenizer = new Tokenizer(reader);
-            var tokens = tokenizer.ReadTokens().ToList();
-            return new TokenEnumerator(tokens);
+            var tokens = tokenizer.ReadTokens();
+            return tokens.GetNextAwareEnumerator();
         }
 
         private IEnumerable<Token> ReadTokens()

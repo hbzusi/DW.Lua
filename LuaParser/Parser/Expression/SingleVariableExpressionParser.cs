@@ -1,3 +1,5 @@
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
 
@@ -5,7 +7,7 @@ namespace DW.Lua.Parser.Expression
 {
     public class SingleVariableExpressionParser : ExpressionParser
     {
-        public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var variableName = reader.Current.Value;
             var visibleVariables = context.CurrentScope.GetVisibleVariables();

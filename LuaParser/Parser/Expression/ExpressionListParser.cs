@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Parser.Expression
 {
     public class ExpressionListParser
     {
-        public IEnumerable<LuaExpression> Parse(ITokenEnumerator reader, IParserContext context)
+        public IEnumerable<LuaExpression> Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var expressions = new List<LuaExpression>();
             do

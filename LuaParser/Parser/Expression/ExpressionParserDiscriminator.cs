@@ -1,11 +1,13 @@
 using DW.Lua.Exceptions;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Parser.Expression
 {
     public class ExpressionParserDiscriminator
     {
-        public ExpressionParser Identify(ITokenEnumerator reader)
+        public ExpressionParser Identify(INextAwareEnumerator<Token> reader)
         {
             if (reader.Current.Value == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DW.Lua.Extensions;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Statement;
 
@@ -20,12 +22,12 @@ namespace DW.Lua.Parser.Statement
             _terminatingTokens = new HashSet<string>(terminatingTokens);
         }
 
-        public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             return ParseBlock(reader, context);
         }
 
-        public StatementBlock ParseBlock(ITokenEnumerator reader, IParserContext context)
+        public StatementBlock ParseBlock(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var statements = new List<LuaStatement>();
             while (!_terminatingTokens.Contains(reader.Current.Value))

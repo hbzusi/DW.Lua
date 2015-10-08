@@ -1,3 +1,5 @@
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using JetBrains.Annotations;
 
 namespace DW.Lua.Parser.Statement
@@ -13,6 +15,6 @@ namespace DW.Lua.Parser.Statement
         /// <param name="reader"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public abstract Syntax.LuaStatement Parse([NotNull]ITokenEnumerator reader, [NotNull]IParserContext context);
+        public abstract Syntax.LuaStatement Parse([NotNull]INextAwareEnumerator<Token> reader, [NotNull]IParserContext context);
     }
 }

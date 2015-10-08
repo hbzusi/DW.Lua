@@ -1,4 +1,6 @@
-﻿using DW.Lua.Syntax;
+﻿using DW.Lua.Language;
+using DW.Lua.Misc;
+using DW.Lua.Syntax;
 
 namespace DW.Lua.Parser.Expression
 {
@@ -14,6 +16,6 @@ namespace DW.Lua.Parser.Expression
         /// <param name="reader"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public abstract LuaExpression Parse(ITokenEnumerator reader, IParserContext context);
+        public abstract LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context);
     }
 }

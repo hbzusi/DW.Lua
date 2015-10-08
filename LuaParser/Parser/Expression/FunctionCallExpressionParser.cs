@@ -1,5 +1,7 @@
 using System.Linq;
 using DW.Lua.Extensions;
+using DW.Lua.Language;
+using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
 
@@ -7,7 +9,7 @@ namespace DW.Lua.Parser.Expression
 {
     public class FunctionCallExpressionParser : ExpressionParser
     {
-        public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
+        public override LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var name = reader.Current.Value;
             reader.MoveNext();
