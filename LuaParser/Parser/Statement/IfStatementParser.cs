@@ -17,7 +17,7 @@ namespace DW.Lua.Parser.Statement
             var ifBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
             var ifBlock = ifBlockParser.ParseBlock(reader, context);
 
-            if (reader.Current == Keyword.Else)
+            if (reader.Current.Value == Keyword.Else)
             {
                 var elseBlockParser = new StatementBlockParser(Keyword.End);
                 elseBlock = elseBlockParser.ParseBlock(reader, context);

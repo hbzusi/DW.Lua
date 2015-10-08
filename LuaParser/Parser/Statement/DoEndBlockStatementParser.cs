@@ -13,7 +13,7 @@ namespace DW.Lua.Parser.Statement
             reader.VerifyExpectedToken(Keyword.Do);
             reader.MoveNext();
             var statements = new List<LuaStatement>();
-            while (reader.Current != Keyword.End)
+            while (reader.Current.Value != Keyword.End)
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
             reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
             context.ReleaseScope(scope);

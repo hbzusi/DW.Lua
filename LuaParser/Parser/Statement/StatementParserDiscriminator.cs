@@ -8,19 +8,19 @@ namespace DW.Lua.Parser.Statement
     {
         public StatementParser Identify(ITokenEnumerator reader)
         {
-            if (reader.Current == Keyword.If)
+            if (reader.Current.Value == Keyword.If)
                 return new IfStatementParser();
-            if (reader.Current == Keyword.While)
+            if (reader.Current.Value == Keyword.While)
                 return new WhileStatementParser();
-            if (reader.Current == Keyword.Return)
+            if (reader.Current.Value == Keyword.Return)
                 return new ReturnStatementParser();
-            if (reader.Current == Keyword.For)
+            if (reader.Current.Value == Keyword.For)
                 return new ForStatementParser();
-            if (reader.Current == LuaToken.Semicolon)
+            if (reader.Current.Value == LuaToken.Semicolon)
                 return new EmptyStatementParser();
-            if (reader.Current == Keyword.Do)
+            if (reader.Current.Value == Keyword.Do)
                 return new DoEndBlockStatementParser();
-            if (reader.Current == Keyword.Function)
+            if (reader.Current.Value == Keyword.Function)
                 return new FunctionDeclarationStatementParser();
             return new AssignmentStatementParser();
         }

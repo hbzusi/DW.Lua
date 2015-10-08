@@ -8,7 +8,7 @@ namespace DW.Lua.Parser.Expression
     {
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
-            var expression = new ConstantExpression(new Value { BooleanValue = Boolean.Parse(reader.Current) });
+            var expression = new ConstantExpression(new Value { BooleanValue = Boolean.Parse(reader.Current.Value) });
             reader.MoveNext();
             return expression;
         }

@@ -33,7 +33,7 @@ namespace DW.Lua.Language
             return new TokenEnumerator(tokens);
         }
 
-        private IEnumerable<string> ReadTokens()
+        private IEnumerable<Token> ReadTokens()
         {
             while (_reader.MoveNext())
             {
@@ -50,7 +50,7 @@ namespace DW.Lua.Language
             }
         }
 
-        private string ReadToken()
+        private Token ReadToken()
         {
             var builder = new StringBuilder();
             while (true)
@@ -72,7 +72,7 @@ namespace DW.Lua.Language
 
                 _reader.MoveNext();
             }
-            return builder.ToString();
+            return new Token(builder.ToString(),0,0,TokenType.Keyword);
         }
 
         private static bool IsBigram(char char1, char char2)

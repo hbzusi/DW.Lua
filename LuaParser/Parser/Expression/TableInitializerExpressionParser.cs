@@ -12,7 +12,7 @@ namespace DW.Lua.Parser.Expression
             reader.VerifyExpectedToken(LuaToken.LeftCurlyBrace);
             reader.MoveNext();
             var expressions = new List<LuaExpression>();
-            while (reader.Current != LuaToken.RightCurlyBrace)
+            while (reader.Current.Value != LuaToken.RightCurlyBrace)
             {
                 expressions.Add(SyntaxParser.ReadExpression(reader, context));
                 reader.VerifyExpectedToken(LuaToken.RightCurlyBrace, LuaToken.Comma);

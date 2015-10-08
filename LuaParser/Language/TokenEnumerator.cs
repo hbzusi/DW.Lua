@@ -7,10 +7,10 @@ namespace DW.Lua.Language
 {
     public class TokenEnumerator : ITokenEnumerator
     {
-        private readonly IList<string> _tokens;
+        private readonly IList<Token> _tokens;
         private int _index = -1;
 
-        public string Next { get; private set; }
+        public Token Next { get; private set; }
         public bool HasNext => _index < _tokens.Count - 1;
 
         public void Reset()
@@ -20,9 +20,9 @@ namespace DW.Lua.Language
 
         object IEnumerator.Current => Current;
 
-        public string Current { get; private set; }
+        public Token Current { get; private set; }
 
-        public TokenEnumerator(IList<string> tokens)
+        public TokenEnumerator(IList<Token> tokens)
         {
             if (tokens == null) throw new ArgumentNullException(nameof(tokens));
             _tokens = tokens;

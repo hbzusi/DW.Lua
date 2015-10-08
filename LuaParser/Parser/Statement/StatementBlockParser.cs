@@ -28,10 +28,10 @@ namespace DW.Lua.Parser.Statement
         public StatementBlock ParseBlock(ITokenEnumerator reader, IParserContext context)
         {
             var statements = new List<LuaStatement>();
-            while (!_terminatingTokens.Contains(reader.Current))
+            while (!_terminatingTokens.Contains(reader.Current.Value))
             {
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
-                while (string.IsNullOrEmpty(reader.Current) || reader.Current == "\n")
+                while (string.IsNullOrEmpty(reader.Current.Value) || reader.Current.Value == "\n")
                     reader.MoveNext();
             }
             reader.VerifyExpectedTokenAndMoveNext(_terminatingTokens);

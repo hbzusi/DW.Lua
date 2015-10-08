@@ -32,7 +32,7 @@ namespace DW.Lua
 
         public static LuaStatement ReadStatement(ITokenEnumerator reader, IParserContext context)
         {
-            while (string.IsNullOrEmpty(reader.Current) || reader.Current == "\n")
+            while (string.IsNullOrEmpty(reader.Current.Value) || reader.Current.Value == "\n")
                 reader.MoveNext();
             var statementDiscriminator = new StatementParserDiscriminator();
             var statementParser = statementDiscriminator.Identify(reader);
@@ -46,7 +46,7 @@ namespace DW.Lua
             var expressionParser = expressionDiscriminator.Identify(reader);
             var expression = expressionParser.Parse(reader, context);
 
-            if (LuaToken.IsBinaryOperation(reader.Current))
+            if (LuaToken.IsBinaryOperation(reader.Current.Value))
             {
                 var operation = reader.GetAndMoveNext();
                 var rightSideExpression = ReadExpression(reader,context);

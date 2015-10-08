@@ -10,7 +10,7 @@ namespace DW.Lua.Parser.Statement
         public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keyword.Function);
-            if (reader.Next == LuaToken.Colon)
+            if (reader.Next.Value == LuaToken.Colon)
             {
                 reader.MoveNext();
                 reader.MoveNext();
@@ -19,10 +19,10 @@ namespace DW.Lua.Parser.Statement
             reader.VerifyExpectedToken(LuaToken.LeftBracket);
 
             var argumentNames = new List<string>();
-            while (reader.Current != LuaToken.RightBracket)
+            while (reader.Current.Value != LuaToken.RightBracket)
             {
                 reader.MoveNext();
-                argumentNames.Add(reader.Current);
+                argumentNames.Add(reader.Current.Value);
                 reader.MoveNext();
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }

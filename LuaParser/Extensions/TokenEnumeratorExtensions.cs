@@ -21,8 +21,8 @@ namespace DW.Lua.Extensions
 
         public static void VerifyExpectedToken(this ITokenEnumerator enumerator, params string[] expectedTokens)
         {
-            if (!expectedTokens.Contains(enumerator.Current))
-                throw new UnexpectedTokenException(enumerator.Current, expectedTokens);
+            if (!expectedTokens.Contains(enumerator.Current.Value))
+                throw new UnexpectedTokenException(enumerator.Current.Value, expectedTokens);
         }
 
         public static void VerifyExpectedTokenAndMoveNext(this ITokenEnumerator enumerator, params string[] expectedTokens)
@@ -33,13 +33,13 @@ namespace DW.Lua.Extensions
 
         public static void VerifyIsIdentifier(this ITokenEnumerator enumerator)
         {
-            if (!LuaToken.IsIdentifier(enumerator.Current))
-                throw new UnexpectedTokenException(enumerator.Current);
+            if (!LuaToken.IsIdentifier(enumerator.Current.Value))
+                throw new UnexpectedTokenException(enumerator.Current.Value);
         }
 
         public static string GetAndMoveNext(this ITokenEnumerator enumerator)
         {
-            var token = enumerator.Current;
+            var token = enumerator.Current.Value;
             enumerator.MoveNext();
             return token;
         }

@@ -7,21 +7,21 @@ namespace DW.Lua.Parser.Expression
     {
         public ExpressionParser Identify(ITokenEnumerator reader)
         {
-            if (reader.Current == LuaToken.LeftBracket)
+            if (reader.Current.Value == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();
-            if (LuaToken.IsIdentifier(reader.Current) && reader.Next == LuaToken.LeftBracket)
+            if (LuaToken.IsIdentifier(reader.Current.Value) && reader.Next.Value == LuaToken.LeftBracket)
                 return new FunctionCallExpressionParser();
-            if (LuaToken.IsBooleanConstant(reader.Current))
+            if (LuaToken.IsBooleanConstant(reader.Current.Value))
                 return new BooleanConstantExpressionParser();
-            if (LuaToken.IsIdentifier(reader.Current))
+            if (LuaToken.IsIdentifier(reader.Current.Value))
                 return new SingleVariableExpressionParser();
-            if (LuaToken.IsNumericConstant(reader.Current))
+            if (LuaToken.IsNumericConstant(reader.Current.Value))
                 return new NumericConstantExpressionParser();
-            if (reader.Current == LuaToken.LeftCurlyBrace)
+            if (reader.Current.Value == LuaToken.LeftCurlyBrace)
                 return new TableInitializerExpressionParser();
-            if (reader.Current.StartsWith(LuaToken.DoubleQuote))
+            if (reader.Current.Value.StartsWith(LuaToken.DoubleQuote))
                 return new StringConstantExpressionParser();
-            throw new UnexpectedTokenException(reader.Current);
+            throw new UnexpectedTokenException(reader.Current.Value);
         }
     }
 }

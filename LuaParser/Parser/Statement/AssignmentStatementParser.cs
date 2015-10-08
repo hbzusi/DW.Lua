@@ -11,7 +11,7 @@ namespace DW.Lua.Parser.Statement
         public override LuaStatement Parse(ITokenEnumerator reader, IParserContext context)
         {
             bool local = false;
-            if (reader.Current == "local")
+            if (reader.Current.Value == "local")
             {
                 local = true;
                 reader.MoveNext();
@@ -30,13 +30,13 @@ namespace DW.Lua.Parser.Statement
         private IList<Variable> ReadDeclarations(ITokenEnumerator reader)
         {
             var result = new List<Variable>();
-            while (reader.Next != null)
+            while (reader.Next.Value != null)
             {
-                var variable = new Variable(reader.Current);
+                var variable = new Variable(reader.Current.Value);
                 result.Add(variable);
                 reader.MoveNext();
                 reader.VerifyExpectedToken(LuaToken.Comma,LuaToken.EqualsSign);
-                if (reader.Current == LuaToken.EqualsSign)
+                if (reader.Current.Value == LuaToken.EqualsSign)
                     break;
                 reader.MoveNext();
             }

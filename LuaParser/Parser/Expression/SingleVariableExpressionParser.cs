@@ -7,7 +7,7 @@ namespace DW.Lua.Parser.Expression
     {
         public override LuaExpression Parse(ITokenEnumerator reader, IParserContext context)
         {
-            var variableName = reader.Current;
+            var variableName = reader.Current.Value;
             var visibleVariables = context.CurrentScope.GetVisibleVariables();
             Variable variable;
             if (!visibleVariables.ContainsKey(variableName))
