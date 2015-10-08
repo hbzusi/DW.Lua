@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using DW.Lua.Extensions;
 using DW.Lua.Parsers;
 using DW.Lua.Parsers.Expression;
 using DW.Lua.Parsers.Statement;
@@ -19,7 +20,7 @@ namespace DW.Lua
             var context = new ParserContext(rootScope);
             ITokenEnumerator tokenEnumerator = Tokenizer.Parse(reader);
 
-            while (!tokenEnumerator.Finished)
+            while (tokenEnumerator.HasNext)
             {
                 var statement = ReadStatement(tokenEnumerator, context);
                 statements.Add(statement);

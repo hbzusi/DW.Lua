@@ -11,7 +11,7 @@ namespace DW.Lua.Parsers.Expression
         {
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.DoubleQuote, LuaToken.DoubleLeftSquareBracket);
             var builder = new StringBuilder();
-            while (!reader.Finished && reader.Current != LuaToken.DoubleQuote &&
+            while (reader.HasNext && reader.Current != LuaToken.DoubleQuote &&
                    reader.Current != LuaToken.DoubleRightSquareBracket)
                 builder.Append(reader.GetAndMoveNext());
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.DoubleQuote, LuaToken.DoubleRightSquareBracket);

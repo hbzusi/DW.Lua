@@ -1,4 +1,5 @@
 using DW.Lua.Exceptions;
+using DW.Lua.Extensions;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Statement;
 

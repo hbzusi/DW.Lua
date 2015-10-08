@@ -6,7 +6,7 @@ using DW.Lua.Syntax;
 
 namespace DW.Lua.Extensions
 {
-    internal static class TokenEnumeratorExtensions
+    public static class TokenEnumeratorExtensions
     {
         public static void VerifyExpectedToken(this ITokenEnumerator enumerator, IEnumerable<string> expectedTokens)
         {
@@ -35,6 +35,13 @@ namespace DW.Lua.Extensions
         {
             if (!LuaToken.IsIdentifier(enumerator.Current))
                 throw new UnexpectedTokenException(enumerator.Current);
+        }
+
+        public static string GetAndMoveNext(this ITokenEnumerator enumerator)
+        {
+            var token = enumerator.Current;
+            enumerator.MoveNext();
+            return token;
         }
     }
 }

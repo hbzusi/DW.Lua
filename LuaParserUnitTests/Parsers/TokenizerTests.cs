@@ -2,6 +2,7 @@
 using System.IO;
 using DW.Lua.Parsers;
 using NUnit.Framework;
+using DW.Lua.Extensions;
 
 namespace DW.Lua.UnitTests.Parsers
 {
@@ -24,7 +25,7 @@ namespace DW.Lua.UnitTests.Parsers
         {
             var reader = Tokenizer.Parse(new StringReader(code));
             var tokens = new List<string>();
-            while (!reader.Finished)
+            while (reader.HasNext)
                 tokens.Add(reader.GetAndMoveNext());
             return tokens.ToArray();
         }
