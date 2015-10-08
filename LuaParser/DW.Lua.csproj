@@ -49,47 +49,47 @@
     <Compile Include="Extensions\EquatableExtensions.cs" />
     <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
-    <Compile Include="Parsers\Expression\StringConstantExpressionParser.cs" />
-    <Compile Include="Parsers\ParserContext.cs" />
-    <Compile Include="Parsers\Expression\BinaryOperationExpressionParser.cs" />
-    <Compile Include="Parsers\Expression\BooleanConstantExpressionParser.cs" />
-    <Compile Include="Parsers\IParserContext.cs" />
-    <Compile Include="Parsers\IScope.cs" />
-    <Compile Include="Parsers\ITokenEnumerator.cs" />
-    <Compile Include="Parsers\Scope.cs" />
-    <Compile Include="Parsers\Statement\ForStatementParser.cs" />
-    <Compile Include="Parsers\Statement\StatementBlockParser.cs" />
+    <Compile Include="Parser\Expression\StringConstantExpressionParser.cs" />
+    <Compile Include="Parser\ParserContext.cs" />
+    <Compile Include="Parser\Expression\BinaryOperationExpressionParser.cs" />
+    <Compile Include="Parser\Expression\BooleanConstantExpressionParser.cs" />
+    <Compile Include="Parser\IParserContext.cs" />
+    <Compile Include="Parser\IScope.cs" />
+    <Compile Include="Parser\ITokenEnumerator.cs" />
+    <Compile Include="Parser\Scope.cs" />
+    <Compile Include="Parser\Statement\ForStatementParser.cs" />
+    <Compile Include="Parser\Statement\StatementBlockParser.cs" />
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />
     <Compile Include="Syntax\Expression\StringConstantExpression.cs" />
     <Compile Include="Syntax\Statement\ForStatement.cs" />
     <Compile Include="Syntax\Statement\FunctionDeclarationStatement.cs" />
     <Compile Include="Syntax\Expression\BracketedExpression.cs" />
-    <Compile Include="Parsers\Expression\BracketedExpressionParser.cs" />
-    <Compile Include="Parsers\Expression\NumericConstantExpressionParser.cs" />
-    <Compile Include="Parsers\Expression\TableInitializerExpressionParser.cs" />
-    <Compile Include="Parsers\Statement\DoEndBlockStatementParser.cs" />
-    <Compile Include="Parsers\Statement\EmptyStatementParser.cs" />
-    <Compile Include="Parsers\Statement\FunctionDeclarationStatementParser.cs" />
+    <Compile Include="Parser\Expression\BracketedExpressionParser.cs" />
+    <Compile Include="Parser\Expression\NumericConstantExpressionParser.cs" />
+    <Compile Include="Parser\Expression\TableInitializerExpressionParser.cs" />
+    <Compile Include="Parser\Statement\DoEndBlockStatementParser.cs" />
+    <Compile Include="Parser\Statement\EmptyStatementParser.cs" />
+    <Compile Include="Parser\Statement\FunctionDeclarationStatementParser.cs" />
     <Compile Include="Syntax\Expression\ConstantExpression.cs" />
     <Compile Include="Syntax\Statement\DoEndBlock.cs" />
     <Compile Include="Syntax\Keyword.cs" />
     <Compile Include="Syntax\Control\IfStatement.cs" />
     <Compile Include="Syntax\Statement\EmptyStatement.cs" />
-    <Compile Include="Parsers\Expression\ExpressionListParser.cs" />
-    <Compile Include="Parsers\Expression\ExpressionParser.cs" />
-    <Compile Include="Parsers\Expression\ExpressionParserDiscriminator.cs" />
-    <Compile Include="Parsers\Expression\FunctionCallExpressionParser.cs" />
-    <Compile Include="Parsers\Statement\AssignmentStatementParser.cs" />
+    <Compile Include="Parser\Expression\ExpressionListParser.cs" />
+    <Compile Include="Parser\Expression\ExpressionParser.cs" />
+    <Compile Include="Parser\Expression\ExpressionParserDiscriminator.cs" />
+    <Compile Include="Parser\Expression\FunctionCallExpressionParser.cs" />
+    <Compile Include="Parser\Statement\AssignmentStatementParser.cs" />
     <Compile Include="Exceptions\EndOfFileException.cs" />
-    <Compile Include="Parsers\Statement\IfStatementParser.cs" />
-    <Compile Include="Parsers\Statement\StatementParser.cs" />
-    <Compile Include="Parsers\Statement\StatementParserDiscriminator.cs" />
-    <Compile Include="Parsers\TokenEnumerator.cs" />
-    <Compile Include="Parsers\Tokenizer.cs" />
+    <Compile Include="Parser\Statement\IfStatementParser.cs" />
+    <Compile Include="Parser\Statement\StatementParser.cs" />
+    <Compile Include="Parser\Statement\StatementParserDiscriminator.cs" />
+    <Compile Include="Parser\TokenEnumerator.cs" />
+    <Compile Include="Parser\Tokenizer.cs" />
     <Compile Include="Exceptions\UnexpectedTokenException.cs" />
-    <Compile Include="Parsers\Statement\WhileStatementParser.cs" />
-    <Compile Include="Parsers\Expression\SingleVariableExpressionParser.cs" />
+    <Compile Include="Parser\Statement\WhileStatementParser.cs" />
+    <Compile Include="Parser\Expression\SingleVariableExpressionParser.cs" />
     <Compile Include="SyntaxParser.cs" />
     <Compile Include="Syntax\Statement\Assignment.cs" />
     <Compile Include="Syntax\Expression\ConstValue.cs" />
@@ -110,7 +110,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Token\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
