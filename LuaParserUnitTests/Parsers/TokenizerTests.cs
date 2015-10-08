@@ -25,8 +25,8 @@ namespace DW.Lua.UnitTests.Parsers
         {
             var reader = Tokenizer.Parse(new StringReader(code));
             var tokens = new List<string>();
-            while (reader.HasNext)
-                tokens.Add(reader.GetAndMoveNext());
+            while (reader.MoveNext())
+                tokens.Add(reader.Current.Value);
             return tokens.ToArray();
         }
     }
