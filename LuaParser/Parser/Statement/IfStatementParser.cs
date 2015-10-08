@@ -3,7 +3,7 @@ using DW.Lua.Syntax;
 using DW.Lua.Syntax.Control;
 using DW.Lua.Syntax.Statement;
 
-namespace DW.Lua.Parsers.Statement
+namespace DW.Lua.Parser.Statement
 {
     internal class IfStatementParser : StatementParser
     {

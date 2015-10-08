@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using DW.Lua.Parsers;
 using NUnit.Framework;
 using DW.Lua.Extensions;
+using DW.Lua.Language;
 
 namespace DW.Lua.UnitTests.Parsers
 {

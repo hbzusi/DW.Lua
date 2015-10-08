@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace DW.Lua.Parsers
+namespace DW.Lua.Parser
 {
     public class ParserContext : IParserContext
     {

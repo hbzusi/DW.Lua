@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace DW.Lua.Parsers.Statement
+namespace DW.Lua.Parser.Statement
 {
     /// <summary>
     /// Base class for statement parsers

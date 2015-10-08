@@ -2,7 +2,7 @@ using System;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
 
-namespace DW.Lua.Parsers.Expression
+namespace DW.Lua.Parser.Expression
 {
     public class NumericConstantExpressionParser : ExpressionParser
     {

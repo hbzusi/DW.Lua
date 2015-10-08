@@ -1,6 +1,6 @@
 ﻿using DW.Lua.Syntax;
 
-namespace DW.Lua.Parsers.Expression
+namespace DW.Lua.Parser.Expression
 {
     /// <summary>
     /// Base class for Lua expression parsers

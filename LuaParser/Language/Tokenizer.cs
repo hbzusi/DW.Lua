@@ -6,7 +6,7 @@ using DW.Lua.Extensions;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
 
-namespace DW.Lua.Parsers
+namespace DW.Lua.Language
 {
     public class Tokenizer
     {

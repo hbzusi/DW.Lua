@@ -1,4 +1,4 @@
-﻿namespace DW.Lua.Token
+﻿namespace DW.Lua.Language
 {
     public class Token
     {

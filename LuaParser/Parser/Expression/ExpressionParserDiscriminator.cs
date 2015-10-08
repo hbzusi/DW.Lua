@@ -1,7 +1,7 @@
 using DW.Lua.Exceptions;
 using DW.Lua.Syntax;
 
-namespace DW.Lua.Parsers.Expression
+namespace DW.Lua.Parser.Expression
 {
     public class ExpressionParserDiscriminator
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DW.Lua.Syntax;
 
-namespace DW.Lua.Parsers.Expression
+namespace DW.Lua.Parser.Expression
 {
     public class ExpressionListParser
     {

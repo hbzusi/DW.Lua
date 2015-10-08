@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DW.Lua.Exceptions;
-using DW.Lua.Parsers;
+using DW.Lua.Parser;
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Extensions

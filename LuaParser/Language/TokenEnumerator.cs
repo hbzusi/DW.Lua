@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DW.Lua.Exceptions;
+using DW.Lua.Parser;
 
-namespace DW.Lua.Parsers
+namespace DW.Lua.Language
 {
     public class TokenEnumerator : ITokenEnumerator
     {

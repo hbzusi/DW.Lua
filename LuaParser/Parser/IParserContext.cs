@@ -1,4 +1,4 @@
-﻿namespace DW.Lua.Parsers
+﻿namespace DW.Lua.Parser
 {
     public interface IParserContext
     {

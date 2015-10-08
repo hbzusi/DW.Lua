@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using DW.Lua.Extensions;
-using DW.Lua.Parsers.Expression;
+using DW.Lua.Parser.Expression;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Statement;
 
-namespace DW.Lua.Parsers.Statement
+namespace DW.Lua.Parser.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
