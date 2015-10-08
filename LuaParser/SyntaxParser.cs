@@ -22,7 +22,7 @@ namespace DW.Lua
             var context = new ParserContext(rootScope);
             INextAwareEnumerator<Token> tokenEnumerator = Tokenizer.Parse(reader);
 
-            while (tokenEnumerator.HasNext)
+            while (tokenEnumerator.MoveNext())
             {
                 var statement = ReadStatement(tokenEnumerator, context);
                 statements.Add(statement);

@@ -29,7 +29,7 @@ namespace DW.Lua.Parser.Statement
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
-            var statementsParser = new StatementBlockParser();
+            var statementsParser = new StatementBlockParser(Keyword.End);
             var body = statementsParser.ParseBlock(reader, context);
             reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
 

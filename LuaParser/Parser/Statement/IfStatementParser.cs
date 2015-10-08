@@ -17,9 +17,10 @@ namespace DW.Lua.Parser.Statement
             reader.VerifyExpectedTokenAndMoveNext(Keyword.Then);
 
             var ifBlockParser = new StatementBlockParser(Keyword.End, Keyword.Else);
-            var ifBlock = ifBlockParser.ParseBlock(reader, context);
+            Token delimiterToken;
+            var ifBlock = ifBlockParser.ParseBlock(reader, context, out delimiterToken);
 
-            if (reader.Current.Value == Keyword.Else)
+            if (delimiterToken.Value == Keyword.Else)
             {
                 var elseBlockParser = new StatementBlockParser(Keyword.End);
                 elseBlock = elseBlockParser.ParseBlock(reader, context);

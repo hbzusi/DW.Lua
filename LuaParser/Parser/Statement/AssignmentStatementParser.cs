@@ -32,7 +32,7 @@ namespace DW.Lua.Parser.Statement
         private IList<Variable> ReadDeclarations(INextAwareEnumerator<Token> reader)
         {
             var result = new List<Variable>();
-            while (reader.Next.Value != null)
+            while (reader.HasNext && reader.Next.Value != null)
             {
                 var variable = new Variable(reader.Current.Value);
                 result.Add(variable);

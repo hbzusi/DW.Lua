@@ -29,6 +29,12 @@ namespace DW.Lua.Parser.Statement
 
         public StatementBlock ParseBlock(INextAwareEnumerator<Token> reader, IParserContext context)
         {
+            Token terminationToken;
+            return ParseBlock(reader, context, out terminationToken);
+        }
+
+        public StatementBlock ParseBlock(INextAwareEnumerator<Token> reader, IParserContext context, out Token terminationToken)
+        {
             var statements = new List<LuaStatement>();
             while (!_terminatingTokens.Contains(reader.Current.Value))
             {
@@ -36,6 +42,7 @@ namespace DW.Lua.Parser.Statement
                 while (string.IsNullOrEmpty(reader.Current.Value) || reader.Current.Value == "\n")
                     reader.MoveNext();
             }
+            terminationToken = reader.Current;
             reader.VerifyExpectedTokenAndMoveNext(_terminatingTokens);
             return new StatementBlock(statements);
         }
