@@ -23,7 +23,7 @@ namespace DW.Lua.Parser.Expression
                 return new TableInitializerExpressionParser();
             if (reader.Current.Value.StartsWith(LuaToken.DoubleQuote))
                 return new StringConstantExpressionParser();
-            throw new UnexpectedTokenException(reader.Current.Value);
+            throw new UnexpectedTokenException(reader.Current);
         }
     }
 }

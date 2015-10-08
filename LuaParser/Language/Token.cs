@@ -2,21 +2,35 @@
 {
     public class Token
     {
-        public Token(string value, int startPosition, int endPosition, TokenType tokenType)
+        public TokenPosition Position { get; }
+
+        public Token(string value, TokenPosition position, TokenType tokenType)
         {
+            Position = position;
             Value = value;
-            StartPosition = startPosition;
-            EndPosition = endPosition;
             TokenType = tokenType;
         }
 
         public string Value { get; }
 
+        public TokenType TokenType { get; }
+    }
+
+    public struct TokenPosition
+    {
+        public TokenPosition(int lineNumber, int startPosition, int endPosition)
+        {
+            LineNumber = lineNumber;
+            StartPosition = startPosition;
+            EndPosition = endPosition;
+        }
+
         public int StartPosition { get; }
 
         public int EndPosition { get; }
 
-        public TokenType TokenType { get; }
+        public int LineNumber { get; }
+
     }
 
     public enum TokenType

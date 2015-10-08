@@ -51,7 +51,7 @@ namespace DW.Lua
             {
                 var operation = reader.GetAndMoveNext();
                 var rightSideExpression = ReadExpression(reader,context);
-                expression = new BinaryExpression(expression,rightSideExpression,operation);
+                expression = new BinaryExpression(expression,rightSideExpression,operation.Value);
             }
 
             return expression;

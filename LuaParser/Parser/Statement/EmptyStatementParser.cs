@@ -12,7 +12,7 @@ namespace DW.Lua.Parser.Statement
         public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var token = reader.GetAndMoveNext();
-            if (string.IsNullOrWhiteSpace(token) || token == LuaToken.Semicolon)
+            if (string.IsNullOrWhiteSpace(token.Value) || token.Value == LuaToken.Semicolon)
                 return new EmptyStatement();
             throw new UnexpectedTokenException(token);
         }

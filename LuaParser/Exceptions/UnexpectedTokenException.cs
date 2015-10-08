@@ -1,15 +1,16 @@
 using System;
+using DW.Lua.Language;
 
 namespace DW.Lua.Exceptions
 {
     public class UnexpectedTokenException : Exception
     {
-        public UnexpectedTokenException(string token) 
-            :base($"Token '{token}' was unexpected at this time")
+        public UnexpectedTokenException(Token token) 
+            :base($"Line {token.Position.LineNumber}: '{token.Value}' was unexpected at this time")
         { }
 
-        public UnexpectedTokenException(string token, params string[] expectedTokens)
-            : base($"Token '{token}' was unexpected at this time, expected '{string.Join("' or '", expectedTokens)}'")
+        public UnexpectedTokenException(Token token, params string[] expectedTokens)
+            : base($"Line {token.Position.LineNumber}: '{token.Value}' was unexpected at this time, expected '{string.Join("' or '", expectedTokens)}'")
         { }
     }
 }

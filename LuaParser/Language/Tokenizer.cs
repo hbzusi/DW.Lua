@@ -20,6 +20,8 @@ namespace DW.Lua.Language
             new HashSet<string>(LuaToken.TokenBigrams);
 
         private readonly INextAwareEnumerator<char> _reader;
+        private int _position;
+        private int _line = 1;
 
         private Tokenizer(TextReader reader)
         {
@@ -33,9 +35,17 @@ namespace DW.Lua.Language
             return tokens.GetNextAwareEnumerator();
         }
 
+        private bool ReaderMoveNext()
+        {
+            _position++;
+            if (_reader.Current == '\n')
+                _line++;
+            return _reader.MoveNext();
+        }
+
         private IEnumerable<Token> ReadTokens()
         {
-            while (_reader.MoveNext())
+            while (ReaderMoveNext())
             {
                 SkipNonTokens();
                 yield return ReadToken();
@@ -45,7 +55,7 @@ namespace DW.Lua.Language
         private void SkipNonTokens()
         {
             // Spin reader until either all non-tokens are skipped or enumerator is finished
-            while (IsNonToken(_reader.Current) && _reader.MoveNext())
+            while (IsNonToken(_reader.Current) && ReaderMoveNext())
             {
             }
         }
@@ -53,6 +63,7 @@ namespace DW.Lua.Language
         private Token ReadToken()
         {
             var builder = new StringBuilder();
+            var startPosition = _position;
             while (true)
             {
                 builder.Append(_reader.Current);
@@ -60,7 +71,7 @@ namespace DW.Lua.Language
                     break;
                 if (IsBigram(_reader.Current, _reader.Next))
                 {
-                    _reader.MoveNext();
+                    ReaderMoveNext();
                     builder.Append(_reader.Current);
                     break;
                 }
@@ -70,9 +81,10 @@ namespace DW.Lua.Language
                 if (_reader.HasNext && (IsNonToken(_reader.Next) || IsSingleCharToken(_reader.Next)))
                     break;
 
-                _reader.MoveNext();
+                ReaderMoveNext();
             }
-            return new Token(builder.ToString(),0,0,TokenType.Keyword);
+            var tokenPosition = new TokenPosition(_line, startPosition, _position);
+            return new Token(builder.ToString(), tokenPosition, TokenType.Keyword);
         }
 
         private static bool IsBigram(char char1, char char2)

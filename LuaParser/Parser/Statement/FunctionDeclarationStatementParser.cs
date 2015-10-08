@@ -33,7 +33,7 @@ namespace DW.Lua.Parser.Statement
             var body = statementsParser.ParseBlock(reader, context);
             reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
 
-            return new FunctionDeclarationStatement(functionName,argumentNames,body);
+            return new FunctionDeclarationStatement(functionName.Value,argumentNames,body);
         }
     }
 }
