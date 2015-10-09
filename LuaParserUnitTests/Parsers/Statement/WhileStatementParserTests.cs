@@ -1,5 +1,4 @@
-﻿using DW.Lua.Syntax;
-using DW.Lua.Syntax.Control;
+﻿using DW.Lua.Syntax.Control;
 using DW.Lua.Syntax.Expression;
 using DW.Lua.Syntax.Statement;
 using NUnit.Framework;

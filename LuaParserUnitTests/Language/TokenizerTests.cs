@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using NUnit.Framework;
+using System.Linq;
 using DW.Lua.Extensions;
 using DW.Lua.Language;
+using NUnit.Framework;
 
-namespace DW.Lua.UnitTests.Parsers
+namespace DW.Lua.UnitTests.Language
 {
     [TestFixture]
     public class TokenizerTests
@@ -24,10 +25,7 @@ namespace DW.Lua.UnitTests.Parsers
         public string[] ShouldParse(string code)
         {
             var reader = Tokenizer.Parse(new StringReader(code));
-            var tokens = new List<string>();
-            while (reader.MoveNext())
-                tokens.Add(reader.Current.Value);
-            return tokens.ToArray();
+            return reader.Enumerate().Select(t => t.Value).ToArray();
         }
     }
 }

@@ -1,8 +1,6 @@
-using DW.Lua.Extensions;
 using DW.Lua.Language;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
-using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
@@ -25,16 +23,6 @@ namespace DW.Lua.Parser.Statement
             if (reader.Current.Value == Keyword.Function)
                 return new FunctionDeclarationStatementParser();
             return new AssignmentStatementParser();
-        }
-    }
-
-    internal class ReturnStatementParser : StatementParser
-    {
-        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
-        {
-            reader.VerifyExpectedTokenAndMoveNext(Keyword.Return);
-            var returnedExpression = SyntaxParser.ReadExpression(reader, context);
-            return new ReturnStatement(returnedExpression);
         }
     }
 }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Language\TokenizerTests.cs" />
     <Compile Include="Misc\NextAwareEnumeratorTests.cs" />
     <Compile Include="Code\ReferenceCodeTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
@@ -53,7 +54,6 @@
     <Compile Include="Parsers\Statement\IfStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\WhileStatementParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Parsers\TokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Fixtures\HexDump.lua" />

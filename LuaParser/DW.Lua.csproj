@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Language\TokenClassificator.cs" />
+    <Compile Include="Language\TokenPosition.cs" />
+    <Compile Include="Language\TokenType.cs" />
     <Compile Include="Misc\HashCodeHelper.cs" />
     <Compile Include="Misc\NextAwareEnumerator.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="Parser\IScope.cs" />
     <Compile Include="Parser\Scope.cs" />
     <Compile Include="Parser\Statement\ForStatementParser.cs" />
+    <Compile Include="Parser\Statement\ReturnStatementParser.cs" />
     <Compile Include="Parser\Statement\StatementBlockParser.cs" />
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />

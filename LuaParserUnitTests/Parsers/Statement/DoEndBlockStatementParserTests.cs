@@ -1,5 +1,4 @@
-﻿using DW.Lua.Syntax;
-using DW.Lua.Syntax.Statement;
+﻿using DW.Lua.Syntax.Statement;
 using NUnit.Framework;
 
 namespace DW.Lua.UnitTests.Parsers.Statement

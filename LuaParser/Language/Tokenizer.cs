@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using DW.Lua.Extensions;
 using DW.Lua.Misc;
