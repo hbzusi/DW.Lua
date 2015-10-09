@@ -11,5 +11,6 @@
         public const string Function = "function";
         public const string For = "for";
         public const string Return = "return";
+        public const string Local = "local";
     }
 }

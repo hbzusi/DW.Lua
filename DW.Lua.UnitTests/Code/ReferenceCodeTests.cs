@@ -28,8 +28,8 @@ namespace DW.Lua.UnitTests.Code
 
         [Test]
         [TestCase("Factorial.lua")]
-        //[TestCase("Hamming.lua")]
-        //[TestCase("HexDump.lua")]
+        [TestCase("Hamming.lua")]
+        [TestCase("HexDump.lua")]
         public void Parse(string fixtureName)
         {
             SyntaxParser.Parse(GetFixtureCode(fixtureName));

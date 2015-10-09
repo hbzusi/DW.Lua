@@ -10,15 +10,15 @@ namespace DW.Lua.Parser.Statement
 {
     internal class AssignmentStatementParser : StatementParser
     {
+        private readonly bool _local;
+
+        public AssignmentStatementParser(bool local)
+        {
+            _local = local;
+        }
+
         public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            bool local = false;
-            if (reader.Current.Value == "local")
-            {
-                local = true;
-                reader.MoveNext();
-            }
-
             var variables = ReadDeclarations(reader);
             foreach (var variable in variables)
                 context.CurrentScope.AddVariable(variable);
@@ -26,7 +26,7 @@ namespace DW.Lua.Parser.Statement
             var assignedExpressionParser = new ExpressionListParser();
             var expressions = assignedExpressionParser.Parse(reader, context);
 
-            return new Assignment(variables, expressions, local);
+            return new Assignment(variables, expressions, _local);
         }
 
         private IList<Variable> ReadDeclarations(INextAwareEnumerator<Token> reader)

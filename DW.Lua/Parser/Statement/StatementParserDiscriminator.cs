@@ -1,3 +1,4 @@
+using System.Threading;
 using DW.Lua.Language;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
@@ -20,9 +21,17 @@ namespace DW.Lua.Parser.Statement
                 return new EmptyStatementParser();
             if (reader.Current.Value == Keyword.Do)
                 return new DoEndBlockStatementParser();
+
+            bool local = false;
+            if (reader.Current.Value == Keyword.Local)
+            {
+                local = true;
+                reader.MoveNext();
+            }
+
             if (reader.Current.Value == Keyword.Function)
-                return new FunctionDeclarationStatementParser();
-            return new AssignmentStatementParser();
+                return new FunctionDeclarationStatementParser(local);
+            return new AssignmentStatementParser(local);
         }
     }
 }

@@ -9,6 +9,13 @@ namespace DW.Lua.Parser.Statement
 {
     internal class FunctionDeclarationStatementParser : StatementParser
     {
+        private readonly bool _local;
+
+        public FunctionDeclarationStatementParser(bool local)
+        {
+            _local = local;
+        }
+
         public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keyword.Function);
