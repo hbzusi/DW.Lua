@@ -30,6 +30,7 @@ namespace DW.Lua.UnitTests.Code
         [TestCase("Factorial.lua")]
         [TestCase("Hamming.lua")]
         [TestCase("HexDump.lua")]
+        [TestCase("MarkovChain.lua")]
         public void Parse(string fixtureName)
         {
             SyntaxParser.Parse(GetFixtureCode(fixtureName));

@@ -34,6 +34,11 @@ namespace DW.Lua.Language
             return tokens.GetNextAwareEnumerator();
         }
 
+        /// <summary>
+        /// Advances the character enumerator, keeping track of 
+        /// number of characters and lines encountered
+        /// </summary>
+        /// <returns></returns>
         private bool ReaderMoveNext()
         {
             _position++;
