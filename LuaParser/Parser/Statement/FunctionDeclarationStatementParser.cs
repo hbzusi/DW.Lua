@@ -31,7 +31,6 @@ namespace DW.Lua.Parser.Statement
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
             var statementsParser = new StatementBlockParser(Keyword.End);
             var body = statementsParser.ParseBlock(reader, context);
-            reader.VerifyExpectedTokenAndMoveNext(Keyword.End);
 
             return new FunctionDeclarationStatement(functionName.Value,argumentNames,body);
         }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DW.Lua.Extensions;
 using DW.Lua.Misc;
 using NUnit.Framework;
@@ -23,9 +24,17 @@ namespace DW.Lua.UnitTests.Misc
         public void ShouldEnumerateSequence()
         {
             var enumerator = _testSequence.AsEnumerable().GetNextAwareEnumerator();
-            int i = 0;
-            while (enumerator.MoveNext())
-                Assert.AreEqual(_testSequence[i++], enumerator.Current);
+            CollectionAssert.AreEqual(_testSequence, enumerator.Enumerate());
+        }
+
+        [Test]
+        public void ShouldThrowOnTryingToEnumeratePastEnd()
+        {
+            var enumerator = _testSequence.AsEnumerable().GetNextAwareEnumerator();
+            for (int i = 0; i < _testSequence.Length; i++)
+                Assert.True(enumerator.MoveNext());
+            Assert.False(enumerator.MoveNext());
+            Assert.Throws<InvalidOperationException>(() => { enumerator.MoveNext(); });
         }
 
         [Test]
@@ -43,6 +52,7 @@ namespace DW.Lua.UnitTests.Misc
                 i++;
             }
         }
+
         [Test]
         public void ShouldWorkRecursively()
         {
@@ -50,7 +60,6 @@ namespace DW.Lua.UnitTests.Misc
             int i = 0;
             while (enumerator.MoveNext())
                 Assert.AreEqual(_testSequence[i++], enumerator.Current);
-
         }
     }
 }

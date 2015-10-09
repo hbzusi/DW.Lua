@@ -20,10 +20,9 @@ namespace DW.Lua.Editor
             try
             {
                 var reader = new StringReader(script);
-                var tokenEnumerator = Tokenizer.Parse(reader);
                 var block = SyntaxParser.Parse(script);
                 UpdateSyntaxTreeView(block);
-                parserStatusLabel.Text = Resources.label_tokens + string.Join(", ",tokenEnumerator);
+                parserStatusLabel.Text = Resources.label_tokens + block;
             }
             catch (Exception ex)
             {

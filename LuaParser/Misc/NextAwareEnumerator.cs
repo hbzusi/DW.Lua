@@ -26,12 +26,16 @@ namespace DW.Lua.Misc
         {
             Current = _next;
             var canAdvancePrev = HasNext;
+            if (_finished)
+                throw new InvalidOperationException("Enumeration already finished");
             if (HasNext)
             {
                 HasNext = _sourceEnumerator.MoveNext();
                 if (HasNext)
                     Next = _sourceEnumerator.Current;
             }
+            else
+                _finished = true;
             return canAdvancePrev;
         }
 
@@ -53,6 +57,8 @@ namespace DW.Lua.Misc
         }
 
         public bool HasNext { get; private set; }
+
+        private bool _finished;
 
         object IEnumerator.Current => Current;
     }

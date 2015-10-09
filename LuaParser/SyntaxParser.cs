@@ -20,11 +20,11 @@ namespace DW.Lua
             var reader = new StringReader(s);
             var rootScope = new Scope();
             var context = new ParserContext(rootScope);
-            INextAwareEnumerator<Token> tokenEnumerator = Tokenizer.Parse(reader);
+            INextAwareEnumerator<Token> enumerator = Tokenizer.Parse(reader);
 
-            while (tokenEnumerator.MoveNext())
+            while (enumerator.HasNext && enumerator.MoveNext())
             {
-                var statement = ReadStatement(tokenEnumerator, context);
+                var statement = ReadStatement(enumerator, context);
                 statements.Add(statement);
             }
 
