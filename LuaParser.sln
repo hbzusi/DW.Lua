@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DW.Lua.UnitTests", "LuaPars
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5EA4DF46-378D-4779-8510-51CD7701A8DE}"
 	ProjectSection(SolutionItems) = preProject
-		.travis.yml1 = .travis.yml1
+		.travis.yml = .travis.yml
 	EndProjectSection
 EndProject
 Global
