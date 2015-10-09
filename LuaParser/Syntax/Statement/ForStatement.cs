@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 
 namespace DW.Lua.Syntax.Statement
 {
@@ -24,7 +25,11 @@ namespace DW.Lua.Syntax.Statement
         }
         public override string ToString()
         {
-            throw new System.NotImplementedException();
+            return new StringBuilder()
+                .Append("for ").Append(string.Join(", ", Conditions)).AppendLine(" do")
+                .AppendLine(Body.ToString())
+                .AppendLine("end")
+                .ToString();
         }
 
         public override bool Equals(object obj)

@@ -19,7 +19,7 @@ namespace DW.Lua.Syntax.Expression
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return _variable.Name;
         }
 
         public override bool Equals(object obj)

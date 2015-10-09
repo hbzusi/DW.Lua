@@ -22,7 +22,7 @@ namespace DW.Lua.Editor
                 var reader = new StringReader(script);
                 var block = SyntaxParser.Parse(script);
                 UpdateSyntaxTreeView(block);
-                parserStatusLabel.Text = Resources.label_tokens + block;
+                parserStatusLabel.Text = block.ToString();
             }
             catch (Exception ex)
             {
