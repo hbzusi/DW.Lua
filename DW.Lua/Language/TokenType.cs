@@ -7,6 +7,7 @@
         BooleanOperator,
         ArithmeticOperator,
         Keyword,
-        Identifier
+        Identifier,
+        Comment
     }
 }

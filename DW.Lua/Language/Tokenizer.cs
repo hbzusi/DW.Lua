@@ -71,14 +71,26 @@ namespace DW.Lua.Language
             while (true)
             {
                 builder.Append(_reader.Current);
+
                 if (!_reader.HasNext)
                     break;
+
                 if (IsBigram(_reader.Current, _reader.Next))
                 {
                     ReaderMoveNext();
                     builder.Append(_reader.Current);
                     break;
                 }
+
+                if (_reader.Current == '-' && _reader.Next == '-')
+                {
+                    while (ReaderMoveNext() && _reader.Current != '\n')
+                        builder.Append(_reader.Current);
+                    ReaderMoveNext();
+                    var pos = new TokenPosition(_line, startPosition, _position);
+                    return new Token(builder.ToString(), pos, TokenType.Comment);
+                }
+
                 if (IsSingleCharToken(_reader.Current))
                     break;
 
