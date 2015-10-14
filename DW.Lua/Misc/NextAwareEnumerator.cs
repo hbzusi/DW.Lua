@@ -22,7 +22,7 @@ namespace DW.Lua.Misc
             _sourceEnumerator.Dispose();
         }
 
-        public bool MoveNext()
+        public virtual bool MoveNext()
         {
             Current = _next;
             var canAdvancePrev = HasNext;
@@ -61,11 +61,5 @@ namespace DW.Lua.Misc
         private bool _finished;
 
         object IEnumerator.Current => Current;
-    }
-
-    public interface INextAwareEnumerator<out T> : IEnumerator<T>
-    {
-        T Next { get; }
-        bool HasNext { get; }
     }
 }

@@ -1,5 +1,5 @@
-using DW.Lua.Language;
 using DW.Lua.Misc;
+using DW.Lua.Tokenizer;
 using JetBrains.Annotations;
 
 namespace DW.Lua.Parser.Statement

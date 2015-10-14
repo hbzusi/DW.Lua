@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DW.Lua.Exceptions;
-using DW.Lua.Language;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
+using DW.Lua.Tokenizer;
 
 namespace DW.Lua.Extensions
 {

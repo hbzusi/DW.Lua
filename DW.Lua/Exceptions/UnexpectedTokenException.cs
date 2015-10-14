@@ -1,5 +1,5 @@
 using System;
-using DW.Lua.Language;
+using DW.Lua.Tokenizer;
 
 namespace DW.Lua.Exceptions
 {

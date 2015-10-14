@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using DW.Lua.Extensions;
-using DW.Lua.Language;
 using NUnit.Framework;
 
 namespace DW.Lua.UnitTests.Language
@@ -24,7 +23,7 @@ namespace DW.Lua.UnitTests.Language
         [TestCase("local a={}", ExpectedResult = new[] {"local", "a", "=", "{", "}"})]
         public string[] ShouldParse(string code)
         {
-            var reader = Tokenizer.Parse(new StringReader(code));
+            var reader = Tokenizer.Tokenizer.Parse(new StringReader(code));
             return reader.Enumerate().Select(t => t.Value).ToArray();
         }
     }

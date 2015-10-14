@@ -43,10 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Language\TokenClassificator.cs" />
-    <Compile Include="Language\TokenPosition.cs" />
-    <Compile Include="Language\TokenType.cs" />
     <Compile Include="Misc\HashCodeHelper.cs" />
+    <Compile Include="Misc\INextAwareEnumerator.cs" />
     <Compile Include="Misc\NextAwareEnumerator.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\EquatableExtensions.cs" />
@@ -88,8 +86,6 @@
     <Compile Include="Parser\Statement\IfStatementParser.cs" />
     <Compile Include="Parser\Statement\StatementParser.cs" />
     <Compile Include="Parser\Statement\StatementParserDiscriminator.cs" />
-    <Compile Include="Language\Token.cs" />
-    <Compile Include="Language\Tokenizer.cs" />
     <Compile Include="Exceptions\UnexpectedTokenException.cs" />
     <Compile Include="Parser\Statement\WhileStatementParser.cs" />
     <Compile Include="Parser\Expression\SingleVariableExpressionParser.cs" />
@@ -109,6 +105,13 @@
     <Compile Include="Syntax\Value.cs" />
     <Compile Include="Syntax\Variable.cs" />
     <Compile Include="Syntax\Expression\VariableExpression.cs" />
+    <Compile Include="Tokenizer\ITokenizerCharEnumerator.cs" />
+    <Compile Include="Tokenizer\Token.cs" />
+    <Compile Include="Tokenizer\TokenClassificator.cs" />
+    <Compile Include="Tokenizer\Tokenizer.cs" />
+    <Compile Include="Tokenizer\TokenizerCharEnumerator.cs" />
+    <Compile Include="Tokenizer\TokenPosition.cs" />
+    <Compile Include="Tokenizer\TokenType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

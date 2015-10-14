@@ -5,7 +5,7 @@ using DW.Lua.Extensions;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
 
-namespace DW.Lua.Language
+namespace DW.Lua.Tokenizer
 {
     public class Tokenizer
     {
@@ -18,13 +18,11 @@ namespace DW.Lua.Language
         private static readonly HashSet<string> Bigrams =
             new HashSet<string>(LuaToken.TokenBigrams);
 
-        private readonly INextAwareEnumerator<char> _reader;
-        private int _position;
-        private int _line = 1;
+        private readonly ITokenizerCharEnumerator _reader;
 
         private Tokenizer(TextReader reader)
         {
-            _reader = reader.AsEnumerable().GetNextAwareEnumerator();
+            _reader = new TokenizerCharEnumerator(reader.AsEnumerable().GetEnumerator());
         }
 
         public static INextAwareEnumerator<Token> Parse(TextReader reader)
@@ -34,22 +32,9 @@ namespace DW.Lua.Language
             return tokens.GetNextAwareEnumerator();
         }
 
-        /// <summary>
-        /// Advances the character enumerator, keeping track of 
-        /// number of characters and lines encountered
-        /// </summary>
-        /// <returns></returns>
-        private bool ReaderMoveNext()
-        {
-            _position++;
-            if (_reader.Current == '\n')
-                _line++;
-            return _reader.MoveNext();
-        }
-
         private IEnumerable<Token> ReadTokens()
         {
-            while (ReaderMoveNext())
+            while (_reader.MoveNext())
             {
                 SkipNonTokens();
                 yield return ReadToken();
@@ -59,7 +44,7 @@ namespace DW.Lua.Language
         private void SkipNonTokens()
         {
             // Spin reader until either all non-tokens are skipped or enumerator is finished
-            while (IsNonToken(_reader.Current) && ReaderMoveNext())
+            while (IsNonToken(_reader.Current) && _reader.MoveNext())
             {
             }
         }
@@ -67,7 +52,7 @@ namespace DW.Lua.Language
         private Token ReadToken()
         {
             var builder = new StringBuilder();
-            var startPosition = _position;
+            var startPosition = _reader.TextPosition;
             while (true)
             {
                 builder.Append(_reader.Current);
@@ -77,17 +62,17 @@ namespace DW.Lua.Language
 
                 if (IsBigram(_reader.Current, _reader.Next))
                 {
-                    ReaderMoveNext();
+                    _reader.MoveNext();
                     builder.Append(_reader.Current);
                     break;
                 }
 
                 if (_reader.Current == '-' && _reader.Next == '-')
                 {
-                    while (ReaderMoveNext() && _reader.Current != '\n')
+                    while (_reader.MoveNext() && _reader.Current != '\n')
                         builder.Append(_reader.Current);
-                    ReaderMoveNext();
-                    var pos = new TokenPosition(_line, startPosition, _position);
+                    _reader.MoveNext();
+                    var pos = new TokenPosition(_reader.Line, startPosition, _reader.TextPosition);
                     return new Token(builder.ToString(), pos, TokenType.Comment);
                 }
 
@@ -97,9 +82,9 @@ namespace DW.Lua.Language
                 if (_reader.HasNext && (IsNonToken(_reader.Next) || IsSingleCharToken(_reader.Next)))
                     break;
 
-                ReaderMoveNext();
+                _reader.MoveNext();
             }
-            var tokenPosition = new TokenPosition(_line, startPosition, _position);
+            var tokenPosition = new TokenPosition(_reader.Line, startPosition, _reader.TextPosition);
             return new Token(builder.ToString(), tokenPosition, TokenType.Keyword);
         }
 
