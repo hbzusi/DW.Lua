@@ -15,7 +15,7 @@ namespace DW.Lua.Lexer
 
         private void AdvanceLine()
         {
-            _column = 1;
+            _column = 0;
             _line++;
         }
 
@@ -32,6 +32,6 @@ namespace DW.Lua.Lexer
             return result;
         }
 
-        public TokenPosition Position => new TokenPosition(_line,_textPosition,_column);
+        public TokenPosition Position => new TokenPosition(_line,_textPosition,_column-1);
     }
 }

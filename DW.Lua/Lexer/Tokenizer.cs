@@ -51,6 +51,7 @@ namespace DW.Lua.Lexer
 
         private Token ReadToken()
         {
+            var position = _reader.Position;
             var builder = new StringBuilder();
             while (true)
             {
@@ -71,7 +72,7 @@ namespace DW.Lua.Lexer
                     while (_reader.MoveNext() && _reader.Current != '\n')
                         builder.Append(_reader.Current);
                     _reader.MoveNext();
-                    return new Token(builder.ToString(), _reader.Position, TokenType.Comment);
+                    return new Token(builder.ToString(), position, TokenType.Comment);
                 }
 
                 if (IsSingleCharToken(_reader.Current))
@@ -82,7 +83,7 @@ namespace DW.Lua.Lexer
 
                 _reader.MoveNext();
             }
-            return new Token(builder.ToString(), _reader.Position, TokenType.Keyword);
+            return new Token(builder.ToString(), position, TokenType.Keyword);
         }
 
         private static bool IsBigram(char char1, char char2)
