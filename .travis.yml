@@ -1,15 +1,14 @@
 ## Travis CI Integration
 
 language: csharp
-csharp:
-  - monohead
+mono: 4.0.0
 sudo: false
 addons:
   apt:
     packages:
     - nunit-console
     - mono-devel
-	- mono-gmcs
+    - mono-gmcs
 script:
   - xbuild LuaParser.sln
   - nunit-console bin/Debug/LuaParserTests.dll
