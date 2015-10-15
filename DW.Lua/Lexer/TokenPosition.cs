@@ -2,18 +2,22 @@
 {
     public struct TokenPosition
     {
-        public TokenPosition(int lineNumber, int startPosition, int endPosition)
+        public TokenPosition(int lineNumber, int startPosition, int column)
         {
             LineNumber = lineNumber;
             StartPosition = startPosition;
-            EndPosition = endPosition;
+            Column = column;
         }
 
-        public int StartPosition { get; }
+        private int StartPosition { get; }
 
-        public int EndPosition { get; }
+        private int Column { get; }
 
-        public int LineNumber { get; }
+        private int LineNumber { get; }
 
+        public override string ToString()
+        {
+            return $"Ln {LineNumber} Col {Column}";
+        }
     }
 }

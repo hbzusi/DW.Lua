@@ -9,14 +9,14 @@ namespace DW.Lua.Lexer
         {
         }
 
-        public int TextPosition { get; private set; }
-        public int Line { get; private set; }
-        public int Column { get; private set; }
+        private int _textPosition;
+        private int _line = 1;
+        private int _column = 1;
 
         private void AdvanceLine()
         {
-            Column = 0;
-            Line++;
+            _column = 1;
+            _line++;
         }
 
         public override bool MoveNext()
@@ -26,9 +26,12 @@ namespace DW.Lua.Lexer
             {
                 if (Current == '\n')
                     AdvanceLine();
-                TextPosition++;
+                _textPosition++;
+                _column++;
             }
             return result;
         }
+
+        public TokenPosition Position => new TokenPosition(_line,_textPosition,_column);
     }
 }
