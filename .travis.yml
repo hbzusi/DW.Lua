@@ -6,9 +6,7 @@ sudo: false
 addons:
   apt:
     packages:
-    - nunit-console
-    - mono-devel
-    - mono-gmcs
+	- nunit-console
 script:
-  - xbuild LuaParser.sln
-  - nunit-console bin/Debug/LuaParserTests.dll
+  - xbuild DW.Lua.sln
+  - nunit-console bin/Debug/DW.Lua.Tests.dll
