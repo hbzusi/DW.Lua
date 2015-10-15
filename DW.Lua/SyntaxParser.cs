@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using DW.Lua.Extensions;
+using DW.Lua.Lexer;
 using DW.Lua.Misc;
 using DW.Lua.Parser;
 using DW.Lua.Parser.Expression;
@@ -8,7 +9,6 @@ using DW.Lua.Parser.Statement;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
 using DW.Lua.Syntax.Statement;
-using DW.Lua.Tokenizer;
 
 namespace DW.Lua
 {
@@ -20,7 +20,7 @@ namespace DW.Lua
             var reader = new StringReader(s);
             var rootScope = new Scope();
             var context = new ParserContext(rootScope);
-            INextAwareEnumerator<Token> enumerator = Tokenizer.Tokenizer.Parse(reader);
+            INextAwareEnumerator<Token> enumerator = Tokenizer.Parse(reader);
 
             while (enumerator.HasNext && enumerator.MoveNext())
             {

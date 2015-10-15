@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DW.Lua.Misc;
 
-namespace DW.Lua.Tokenizer
+namespace DW.Lua.Lexer
 {
     public class TokenizerCharEnumerator : NextAwareEnumerator<char>, ITokenizerCharEnumerator
     {

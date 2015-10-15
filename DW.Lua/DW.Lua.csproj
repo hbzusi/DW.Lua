@@ -105,18 +105,20 @@
     <Compile Include="Syntax\Value.cs" />
     <Compile Include="Syntax\Variable.cs" />
     <Compile Include="Syntax\Expression\VariableExpression.cs" />
-    <Compile Include="Tokenizer\ITokenizerCharEnumerator.cs" />
-    <Compile Include="Tokenizer\Token.cs" />
-    <Compile Include="Tokenizer\TokenClassificator.cs" />
-    <Compile Include="Tokenizer\Tokenizer.cs" />
-    <Compile Include="Tokenizer\TokenizerCharEnumerator.cs" />
-    <Compile Include="Tokenizer\TokenPosition.cs" />
-    <Compile Include="Tokenizer\TokenType.cs" />
+    <Compile Include="Lexer\Token.cs" />
+    <Compile Include="Lexer\TokenClassificator.cs" />
+    <Compile Include="Lexer\Tokenizer.cs" />
+    <Compile Include="Lexer\TokenizerCharEnumerator.cs" />
+    <Compile Include="Lexer\TokenPosition.cs" />
+    <Compile Include="Lexer\TokenType.cs" />
+    <Compile Include="Lexer\ITokenizerCharEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tokenizer\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

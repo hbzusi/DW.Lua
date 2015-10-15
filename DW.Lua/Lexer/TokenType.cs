@@ -1,4 +1,4 @@
-﻿namespace DW.Lua.Tokenizer
+﻿namespace DW.Lua.Lexer
 {
     public enum TokenType
     {

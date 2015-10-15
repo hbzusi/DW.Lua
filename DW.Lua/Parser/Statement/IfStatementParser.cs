@@ -1,10 +1,10 @@
 using DW.Lua.Extensions;
 using DW.Lua.Language;
+using DW.Lua.Lexer;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Control;
 using DW.Lua.Syntax.Statement;
-using DW.Lua.Tokenizer;
 
 namespace DW.Lua.Parser.Statement
 {

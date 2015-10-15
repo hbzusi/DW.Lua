@@ -1,9 +1,9 @@
 using System.Linq;
 using DW.Lua.Extensions;
+using DW.Lua.Lexer;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
-using DW.Lua.Tokenizer;
 
 namespace DW.Lua.Parser.Expression
 {
