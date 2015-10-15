@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DW.Lua.Extensions;
+using DW.Lua.Language;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
 using DW.Lua.Syntax.Statement;
@@ -18,7 +19,7 @@ namespace DW.Lua.Parser.Statement
 
         public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            reader.VerifyExpectedTokenAndMoveNext(Keyword.Function);
+            reader.VerifyExpectedTokenAndMoveNext(Keywords.Function);
             if (reader.Next.Value == LuaToken.Colon)
             {
                 reader.MoveNext();
@@ -36,7 +37,7 @@ namespace DW.Lua.Parser.Statement
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
             }
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
-            var statementsParser = new StatementBlockParser(Keyword.End);
+            var statementsParser = new StatementBlockParser(Keywords.End);
             var body = statementsParser.ParseBlock(reader, context);
 
             return new FunctionDeclarationStatement(functionName.Value,argumentNames,body);

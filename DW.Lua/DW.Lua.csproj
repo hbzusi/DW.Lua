@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Language\Keywords.cs" />
     <Compile Include="Misc\HashCodeHelper.cs" />
     <Compile Include="Misc\INextAwareEnumerator.cs" />
     <Compile Include="Misc\NextAwareEnumerator.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Parser\Statement\FunctionDeclarationStatementParser.cs" />
     <Compile Include="Syntax\Expression\ConstantExpression.cs" />
     <Compile Include="Syntax\Statement\DoEndBlock.cs" />
-    <Compile Include="Syntax\Keyword.cs" />
     <Compile Include="Syntax\Control\IfStatement.cs" />
     <Compile Include="Syntax\Statement\EmptyStatement.cs" />
     <Compile Include="Parser\Expression\ExpressionListParser.cs" />
