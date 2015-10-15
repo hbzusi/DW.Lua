@@ -6,7 +6,7 @@ sudo: false
 addons:
   apt:
     packages:
-	- nunit-console
+    - nunit-console
 script:
   - xbuild DW.Lua.sln
   - nunit-console bin/Debug/DW.Lua.Tests.dll
