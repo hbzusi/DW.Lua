@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using DW.Lua.Extensions;
@@ -68,12 +69,7 @@ namespace DW.Lua.Lexer
                 }
 
                 if (_reader.Current == '-' && _reader.Next == '-')
-                {
-                    while (_reader.MoveNext() && _reader.Current != '\n')
-                        builder.Append(_reader.Current);
-                    _reader.MoveNext();
-                    return new Token(builder.ToString(), position, TokenType.Comment);
-                }
+                    return new Token(ReadComment(), position, TokenType.Comment);
 
                 if (IsSingleCharToken(_reader.Current))
                     break;
@@ -100,6 +96,36 @@ namespace DW.Lua.Lexer
         private static bool IsNonToken(char chr)
         {
             return NonTokenChars.Contains(chr);
+        }
+
+        private string ReadComment()
+        {
+            Debug.Assert(_reader.Current == '-');
+            Debug.Assert(_reader.MoveNext());
+            Debug.Assert(_reader.Current == '-');
+            Debug.Assert(_reader.MoveNext());
+            var multiline = _reader.Current == '[' && _reader.HasNext && _reader.Next == '[';
+            if (multiline)
+            {
+                _reader.MoveNext();
+                _reader.MoveNext();
+            }
+
+
+            var builder = new StringBuilder();
+            if (multiline)
+            {
+                do
+                    builder.Append(_reader.Current); while (_reader.MoveNext() &&
+                                                            !(_reader.Current == ']' && _reader.HasNext &&
+                                                              _reader.Next == ']'));
+                _reader.MoveNext();
+            }
+            else
+                do
+                    builder.Append(_reader.Current);
+                while (_reader.MoveNext() && _reader.Current != '\n');
+            return builder.ToString();
         }
     }
 }

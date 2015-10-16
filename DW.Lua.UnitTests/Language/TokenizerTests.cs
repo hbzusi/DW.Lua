@@ -22,6 +22,8 @@ namespace DW.Lua.UnitTests.Language
         [TestCase("a ~= b", ExpectedResult = new[] { "a", "~=", "b" })]
         [TestCase("a =! b", ExpectedResult = new[] { "a", "=", "!", "b" })]
         [TestCase("local a={}", ExpectedResult = new[] {"local", "a", "=", "{", "}"})]
+        [TestCase("---[[ Comment\ntest", ExpectedResult = new[] { "-[[ Comment","test" })]
+        [TestCase("--[[ Comment\ntest\n--]] test", ExpectedResult = new[] { " Comment\ntest\n--", "test" })]
         public string[] ShouldParse(string code)
         {
             var reader = Tokenizer.Parse(new StringReader(code));
