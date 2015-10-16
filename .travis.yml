@@ -3,6 +3,11 @@
 language: csharp
 mono: 4.0.0
 sudo: false
+
+env:
+ global:
+  - EnableNuGetPackageRestore=true 
+
 addons:
   apt:
     packages:
