@@ -10,7 +10,7 @@ namespace DW.Lua.Parser.Expression
     {
         public override LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            var expression = new ConstantExpression(new Value { BooleanValue = Boolean.Parse(reader.Current.Value) });
+            var expression = new ConstantExpression(new LuaValue { BooleanValue = Boolean.Parse(reader.Current.Value) });
             reader.MoveNext();
             return expression;
         }

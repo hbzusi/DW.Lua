@@ -12,7 +12,7 @@ namespace DW.Lua.Parser.Expression
         {
             var constantValue = Double.Parse(reader.Current.Value);
             reader.MoveNext();
-            return new ConstantExpression(new Value {NumericValue = constantValue});
+            return new ConstantExpression(new LuaValue {NumericValue = constantValue});
         }
     }
 }

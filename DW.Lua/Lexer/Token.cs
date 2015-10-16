@@ -4,15 +4,15 @@
     {
         public TokenPosition Position { get; }
 
-        public Token(string value, TokenPosition position, TokenType tokenType)
+        public Token(string value, TokenPosition position, TokenType type)
         {
             Position = position;
             Value = value;
-            TokenType = tokenType;
+            Type = type;
         }
 
         public string Value { get; }
 
-        public TokenType TokenType { get; }
+        public TokenType Type { get; }
     }
 }

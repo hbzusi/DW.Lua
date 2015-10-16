@@ -4,9 +4,9 @@ namespace DW.Lua.UnitTests
 {
     internal static class Constants
     {
-        public static Value True => new Value {BooleanValue = true};
-        public static Value False => new Value {BooleanValue = false};
-        public static Value One => new Value {NumericValue = 1};
-        public static Value Two => new Value { NumericValue = 2 };
+        public static LuaValue True => new LuaValue {BooleanValue = true};
+        public static LuaValue False => new LuaValue {BooleanValue = false};
+        public static LuaValue One => new LuaValue {NumericValue = 1};
+        public static LuaValue Two => new LuaValue { NumericValue = 2 };
     }
 }

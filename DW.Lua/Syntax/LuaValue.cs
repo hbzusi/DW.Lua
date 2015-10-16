@@ -1,6 +1,6 @@
 namespace DW.Lua.Syntax
 {
-    public struct Value
+    public struct LuaValue
     {
         private object _value;
         public LuaType Type { get; private set; }

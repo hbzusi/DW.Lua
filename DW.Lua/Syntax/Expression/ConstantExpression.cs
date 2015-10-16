@@ -7,9 +7,9 @@ namespace DW.Lua.Syntax.Expression
 {
     public class ConstantExpression : LuaExpression, IEquatable<ConstantExpression>
     {
-        public Value Value { get; }
+        public LuaValue Value { get; }
 
-        public ConstantExpression(Value value)
+        public ConstantExpression(LuaValue value)
         {
             Value = value;
         }

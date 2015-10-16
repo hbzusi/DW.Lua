@@ -10,19 +10,19 @@ namespace DW.Lua.Syntax.Expression
         public BracketedExpression([NotNull] LuaExpression expression)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
-            Expression = expression;
+            ContainedExpression = expression;
         }
 
-        public override IEnumerable<Unit> Children => new[] {Expression};
+        public override IEnumerable<Unit> Children => new[] {ContainedExpression};
 
         public bool Equals(BracketedExpression other)
         {
-            return Expression?.Equals(other.Expression) ?? false;
+            return ContainedExpression?.Equals(other.ContainedExpression) ?? false;
         }
 
         public override string ToString()
         {
-            return $"('{Expression}')";
+            return $"('{ContainedExpression}')";
         }
 
         public override bool Equals(object obj)
@@ -32,9 +32,9 @@ namespace DW.Lua.Syntax.Expression
 
         public override int GetHashCode()
         {
-            return Expression?.GetHashCode() ?? 0;
+            return ContainedExpression?.GetHashCode() ?? 0;
         }
 
-        public LuaExpression Expression { get; }
+        public LuaExpression ContainedExpression { get; }
     }
 }
