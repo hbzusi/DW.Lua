@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using DW.Lua.Extensions;
+using DW.Lua.Language;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
 
@@ -79,7 +81,15 @@ namespace DW.Lua.Lexer
 
                 _reader.MoveNext();
             }
-            return new Token(builder.ToString(), position, TokenType.Keyword);
+            var tokenValue = builder.ToString();
+            bool dummy;
+            var tokenType = TokenType.Identifier;
+            if (Keywords.All.Contains(tokenValue))
+                tokenType = TokenType.Keyword;
+            else if(Boolean.TryParse(tokenValue, out dummy))
+                tokenType = TokenType.BooleanConstant;
+
+            return new Token(tokenValue, position, tokenType);
         }
 
         private static bool IsBigram(char char1, char char2)
