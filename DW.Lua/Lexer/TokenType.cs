@@ -8,6 +8,7 @@
         ArithmeticOperator,
         Keyword,
         Identifier,
-        Comment
+        Comment,
+        BooleanConstant
     }
 }

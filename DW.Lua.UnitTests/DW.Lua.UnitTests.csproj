@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="Language\TokenizerTests.cs" />
+    <Compile Include="Lexer\TokenizerTests.cs" />
     <Compile Include="Misc\NextAwareEnumeratorTests.cs" />
     <Compile Include="Code\ReferenceCodeTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
@@ -56,8 +56,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fixtures\HexDump.lua" />
-    <EmbeddedResource Include="Fixtures\Factorial.lua" />
+    <EmbeddedResource Include="Code\Fixtures\HexDump.lua" />
+    <EmbeddedResource Include="Code\Fixtures\Factorial.lua" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -67,10 +67,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fixtures\Hamming.lua" />
+    <EmbeddedResource Include="Code\Fixtures\Hamming.lua" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fixtures\MarkovChain.lua" />
+    <EmbeddedResource Include="Code\Fixtures\MarkovChain.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

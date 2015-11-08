@@ -13,7 +13,7 @@ namespace DW.Lua.Parser.Expression
                 return new BracketedExpressionParser();
             if (LuaToken.IsIdentifier(reader.Current.Value) && reader.Next.Value == LuaToken.LeftBracket)
                 return new FunctionCallExpressionParser();
-            if (LuaToken.IsBooleanConstant(reader.Current.Value))
+            if (reader.Current.Type == TokenType.BooleanConstant)
                 return new BooleanConstantExpressionParser();
             if (LuaToken.IsIdentifier(reader.Current.Value))
                 return new SingleVariableExpressionParser();
@@ -21,7 +21,7 @@ namespace DW.Lua.Parser.Expression
                 return new NumericConstantExpressionParser();
             if (reader.Current.Value == LuaToken.LeftCurlyBrace)
                 return new TableInitializerExpressionParser();
-            if (reader.Current.Value.StartsWith(LuaToken.DoubleQuote))
+            if (reader.Current.Type == TokenType.StringConstant)
                 return new StringConstantExpressionParser();
             throw new UnexpectedTokenException(reader.Current);
         }

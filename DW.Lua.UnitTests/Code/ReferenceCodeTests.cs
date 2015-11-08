@@ -22,7 +22,7 @@ namespace DW.Lua.UnitTests.Code
         private static class CodeTestCaseFactory
         {
             private static readonly Assembly Assembly = typeof(CodeTestCaseFactory).Assembly;
-            private const string FixturesTag = ".Fixtures.";
+            private const string FixturesTag = ".Code.Fixtures.";
 
             public static IEnumerable<TestCaseData> TestCases
             {

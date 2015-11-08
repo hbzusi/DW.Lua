@@ -43,7 +43,7 @@ namespace DW.Lua.Syntax
             return token == "true" || token == "false";
         }
 
-        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|\"";
+        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|\".";
         public static readonly string NonTokenCharsString = "\t\r ";
 
         public static readonly string[] TokenBigrams =
@@ -51,7 +51,8 @@ namespace DW.Lua.Syntax
             "==",
             "~=",
             "&&",
-            "||"
+            "||",
+            ".."
         };
 
         public static readonly string[] BinaryOperations = {"+", "-", "*", "/", "=="};

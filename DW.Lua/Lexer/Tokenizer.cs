@@ -111,7 +111,6 @@ namespace DW.Lua.Lexer
                 _reader.MoveNext();
             }
 
-
             var builder = new StringBuilder();
             if (multiline)
             {

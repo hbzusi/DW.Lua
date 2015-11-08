@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using DW.Lua.Extensions;
 using DW.Lua.Lexer;
 using NUnit.Framework;
 
-namespace DW.Lua.UnitTests.Language
+namespace DW.Lua.UnitTests.Lexer
 {
     [TestFixture]
     public class TokenizerTests
