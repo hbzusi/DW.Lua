@@ -73,6 +73,9 @@ namespace DW.Lua.Lexer
                 if (_reader.Current == '-' && _reader.Next == '-')
                     return new Token(ReadComment(), position, TokenType.Comment);
 
+                if (_reader.Current == '"')
+                    return new Token(ReadStringConstant(), position, TokenType.StringConstant);
+
                 if (IsSingleCharToken(_reader.Current))
                     break;
 
@@ -90,6 +93,17 @@ namespace DW.Lua.Lexer
                 tokenType = TokenType.BooleanConstant;
 
             return new Token(tokenValue, position, tokenType);
+        }
+
+        private string ReadStringConstant()
+        {
+            Verify(_reader.Current == '"');
+            var sb = new StringBuilder();
+            while (_reader.MoveNext() && _reader.Current != '"')
+                sb.Append(_reader.Current);
+            if (_reader.HasNext)
+                _reader.MoveNext();
+            return sb.ToString();
         }
 
         private static bool IsBigram(char char1, char char2)
@@ -110,10 +124,10 @@ namespace DW.Lua.Lexer
 
         private string ReadComment()
         {
-            Debug.Assert(_reader.Current == '-');
-            Debug.Assert(_reader.MoveNext());
-            Debug.Assert(_reader.Current == '-');
-            Debug.Assert(_reader.MoveNext());
+            Verify(_reader.Current == '-');
+            Verify(_reader.MoveNext());
+            Verify(_reader.Current == '-');
+            Verify(_reader.MoveNext());
             var multiline = _reader.Current == '[' && _reader.HasNext && _reader.Next == '[';
             if (multiline)
             {
@@ -135,6 +149,12 @@ namespace DW.Lua.Lexer
                     builder.Append(_reader.Current);
                 while (_reader.MoveNext() && _reader.Current != '\n');
             return builder.ToString();
+        }
+
+        private void Verify(bool assumption)
+        {
+            if (!assumption)
+                throw new Exception("Assumption failed");
         }
     }
 }

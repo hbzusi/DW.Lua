@@ -29,12 +29,15 @@ namespace DW.Lua.Parser.Statement
             reader.VerifyExpectedToken(LuaToken.LeftBracket);
 
             var argumentNames = new List<string>();
+            reader.MoveNext();
             while (reader.Current.Value != LuaToken.RightBracket)
             {
-                reader.MoveNext();
                 argumentNames.Add(reader.Current.Value);
                 reader.MoveNext();
                 reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.RightBracket);
+                if (reader.Current.Value == LuaToken.RightBracket)
+                    break;
+                reader.MoveNext();
             }
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
             var statementsParser = new StatementBlockParser(Keywords.End);

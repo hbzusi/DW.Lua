@@ -23,6 +23,7 @@ namespace DW.Lua.UnitTests.Lexer
         [TestCase("local a={}", ExpectedResult = new[] {"local", "a", "=", "{", "}"})]
         [TestCase("---[[ Comment\ntest", ExpectedResult = new[] { "-[[ Comment","test" })]
         [TestCase("--[[ Comment\ntest\n--]] test", ExpectedResult = new[] { " Comment\ntest\n--", "test" })]
+        [TestCase("\"test\"", ExpectedResult = new[] { "test" })]
         public string[] ShouldParse(string code)
         {
             var reader = Tokenizer.Parse(new StringReader(code));

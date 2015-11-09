@@ -33,7 +33,9 @@ namespace DW.Lua
 
         public static LuaStatement ReadStatement(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            while (string.IsNullOrEmpty(reader.Current.Value) || reader.Current.Value == "\n")
+            while (string.IsNullOrEmpty(reader.Current.Value) 
+                || reader.Current.Value == "\n"
+                || reader.Current.Type == TokenType.Comment)
                 reader.MoveNext();
             var statementDiscriminator = new StatementParserDiscriminator();
             var statementParser = statementDiscriminator.Identify(reader);

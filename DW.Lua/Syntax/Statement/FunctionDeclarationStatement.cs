@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using DW.Lua.Extensions;
 using JetBrains.Annotations;
 
@@ -40,7 +41,10 @@ namespace DW.Lua.Syntax.Statement
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return new StringBuilder().Append("function(")
+                .Append(string.Join(",", ArgumentNames)).AppendLine(")")
+                .AppendLine(FunctionBody.ToString()).AppendLine("end")
+                .ToString();
         }
 
         public override bool Equals(object obj)
