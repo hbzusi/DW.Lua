@@ -26,5 +26,10 @@ namespace DW.Lua.Syntax
         {
             return Name.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

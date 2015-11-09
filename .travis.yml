@@ -1,6 +1,7 @@
 ## Travis CI Integration
 
 language: csharp
+solution: DW.Lua.sln
 mono: 4.0.0
 sudo: false
 
@@ -13,5 +14,6 @@ addons:
     packages:
     - nunit-console
 script:
-  - xbuild DW.Lua.sln
-  - nunit-console bin/Debug/DW.Lua.Tests.dll
+  - nuget restore DW.Lua.sln
+  - xbuild /p:Configuration=Release DW.Lua.sln
+  - nunit-console bin/Release/DW.Lua.Tests.dll
