@@ -2,7 +2,7 @@
 
 language: csharp
 solution: DW.Lua.sln
-mono: 4.0.0
+mono: latest
 sudo: false
 
 env:
