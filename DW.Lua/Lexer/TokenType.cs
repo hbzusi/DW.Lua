@@ -6,6 +6,8 @@
         NumericConstant,
         BooleanOperator,
         ArithmeticOperator,
+        TableCall,
+        TableSelfCall,
         Keyword,
         Identifier,
         Comment,

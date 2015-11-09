@@ -24,7 +24,8 @@ namespace DW.Lua.UnitTests.Lexer
         [TestCase("---[[ Comment\ntest", ExpectedResult = new[] { "-[[ Comment","test" })]
         [TestCase("--[[ Comment\ntest\n--]] test", ExpectedResult = new[] { " Comment\ntest\n--", "test" })]
         [TestCase("\"test\"", ExpectedResult = new[] { "test" })]
-        public string[] ShouldParse(string code)
+        [TestCase("12345", ExpectedResult = new[] { "12345" })]
+        public string[] ShouldTokenize(string code)
         {
             var reader = Tokenizer.Parse(new StringReader(code));
             return reader.Enumerate().Select(t => t.Value).ToArray();
