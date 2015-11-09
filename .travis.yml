@@ -16,4 +16,4 @@ addons:
 script:
   - nuget restore DW.Lua.sln
   - xbuild /p:Configuration=Release DW.Lua.sln
-  - nunit-console bin/Release/DW.Lua.UnitTests.dll
+  - nunit-console DW.Lua.UnitTests/bin/Release/DW.Lua.UnitTests.dll
