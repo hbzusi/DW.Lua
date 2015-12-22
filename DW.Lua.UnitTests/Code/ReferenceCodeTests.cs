@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -43,6 +44,7 @@ namespace DW.Lua.UnitTests.Code
                     .Replace(FixturesTag, "");
             }
 
+            [ExcludeFromCodeCoverage]
             private static string GetFixtureCode(string resourceName)
             {
                 string result;
