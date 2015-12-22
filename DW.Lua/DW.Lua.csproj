@@ -84,7 +84,7 @@
     <Compile Include="Parser\Statement\AssignmentStatementParser.cs" />
     <Compile Include="Exceptions\EndOfFileException.cs" />
     <Compile Include="Parser\Statement\IfStatementParser.cs" />
-    <Compile Include="Parser\Statement\StatementParser.cs" />
+    <Compile Include="Parser\Statement\IStatementParser.cs" />
     <Compile Include="Parser\Statement\StatementParserDiscriminator.cs" />
     <Compile Include="Exceptions\UnexpectedTokenException.cs" />
     <Compile Include="Parser\Statement\WhileStatementParser.cs" />

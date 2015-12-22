@@ -7,9 +7,9 @@ using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class ReturnStatementParser : StatementParser
+    internal class ReturnStatementParser : IStatementParser
     {
-        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public virtual LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keywords.Return);
             var returnedExpression = SyntaxParser.ReadExpression(reader, context);

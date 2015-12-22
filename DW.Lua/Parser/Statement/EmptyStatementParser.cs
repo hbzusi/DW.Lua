@@ -7,9 +7,9 @@ using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class EmptyStatementParser : StatementParser
+    internal class EmptyStatementParser : IStatementParser
     {
-        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public virtual LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var token = reader.GetAndMoveNext();
             if (string.IsNullOrWhiteSpace(token.Value) || token.Value == LuaToken.Semicolon)

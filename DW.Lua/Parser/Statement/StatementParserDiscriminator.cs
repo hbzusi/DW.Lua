@@ -8,7 +8,7 @@ namespace DW.Lua.Parser.Statement
 {
     internal class StatementParserDiscriminator
     {
-        public StatementParser Identify(INextAwareEnumerator<Token> reader)
+        public IStatementParser Identify(INextAwareEnumerator<Token> reader)
         {
             if (reader.Current.Value == Keywords.If)
                 return new IfStatementParser();
