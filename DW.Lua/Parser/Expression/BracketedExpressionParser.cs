@@ -6,9 +6,9 @@ using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class BracketedExpressionParser : ExpressionParser
+    public class BracketedExpressionParser : IExpressionParser
     {
-        public override LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public virtual LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedToken(LuaToken.LeftBracket);
             reader.MoveNext();

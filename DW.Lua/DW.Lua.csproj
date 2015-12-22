@@ -78,7 +78,7 @@
     <Compile Include="Syntax\Control\IfStatement.cs" />
     <Compile Include="Syntax\Statement\EmptyStatement.cs" />
     <Compile Include="Parser\Expression\ExpressionListParser.cs" />
-    <Compile Include="Parser\Expression\ExpressionParser.cs" />
+    <Compile Include="Parser\Expression\IExpressionParser.cs" />
     <Compile Include="Parser\Expression\ExpressionParserDiscriminator.cs" />
     <Compile Include="Parser\Expression\FunctionCallExpressionParser.cs" />
     <Compile Include="Parser\Statement\AssignmentStatementParser.cs" />

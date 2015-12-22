@@ -7,7 +7,7 @@ namespace DW.Lua.Parser.Expression
 {
     public class ExpressionParserDiscriminator
     {
-        public ExpressionParser Identify(INextAwareEnumerator<Token> reader)
+        public IExpressionParser Identify(INextAwareEnumerator<Token> reader)
         {
             if (reader.Current.Value == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();

@@ -7,7 +7,7 @@ namespace DW.Lua.Parser.Expression
     /// <summary>
     /// Base class for Lua expression parsers
     /// </summary>
-    public abstract class ExpressionParser
+    public interface IExpressionParser
     {
         /// <summary>
         /// Parses an expression from reader
@@ -16,6 +16,6 @@ namespace DW.Lua.Parser.Expression
         /// <param name="reader"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public abstract LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context);
+        LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context);
     }
 }
