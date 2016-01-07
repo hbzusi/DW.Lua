@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace DW.Lua.Misc
 {
@@ -10,15 +11,15 @@ namespace DW.Lua.Misc
 
         public static int CombineHashCodes(int seed, IEnumerable<object> objects)
         {
-            return objects.Where(o => o != null).Select(obj => obj.GetHashCode()).Aggregate(seed, Combine);
-        }
-
-        private static int Combine(int hash1, int hash2)
-        {
-            unchecked
+            var hash = seed;
+            foreach (var o in objects)
             {
-                return 17*hash1 + 19*hash2;
+                unchecked
+                {
+                    hash = 17*hash + 19*o.GetHashCode();
+                }
             }
+            return hash;
         }
     }
 }
