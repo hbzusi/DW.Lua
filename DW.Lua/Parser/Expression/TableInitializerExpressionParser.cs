@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DW.Lua.Extensions;
 using DW.Lua.Lexer;
 using DW.Lua.Misc;
@@ -13,14 +14,16 @@ namespace DW.Lua.Parser.Expression
         {
             reader.VerifyExpectedToken(LuaToken.LeftCurlyBrace);
             reader.MoveNext();
-            var expressions = new List<LuaExpression>();
-            while (reader.Current.Value != LuaToken.RightCurlyBrace)
+            var expressions = Enumerable.Empty<LuaExpression>();
+            if (reader.Current.Value != LuaToken.RightCurlyBrace)
             {
-                expressions.Add(SyntaxParser.ReadExpression(reader, context));
-                reader.VerifyExpectedToken(LuaToken.RightCurlyBrace, LuaToken.Comma);
+                var parser = new ExpressionListParser();
+                expressions = parser.Parse(reader, context);
+                reader.VerifyExpectedToken(LuaToken.RightCurlyBrace);
+                reader.MoveNext();
             }
-            reader.VerifyExpectedToken(LuaToken.RightCurlyBrace);
-            reader.MoveNext();
+            else
+                reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightCurlyBrace);
             return new TableInitializerExpression(expressions);
         }
     }

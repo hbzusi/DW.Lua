@@ -3,7 +3,7 @@ using DW.Lua.Syntax;
 
 namespace DW.Lua.Parser
 {
-    class Scope : IScope
+    public class Scope : IScope
     {
         private readonly Dictionary<string,Variable> _definedVariables = new Dictionary<string, Variable>();
 

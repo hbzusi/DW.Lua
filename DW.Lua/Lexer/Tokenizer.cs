@@ -103,8 +103,6 @@ namespace DW.Lua.Lexer
             var sb = new StringBuilder();
             while (_reader.MoveNext() && _reader.Current != '"')
                 sb.Append(_reader.Current);
-            if (_reader.HasNext)
-                _reader.MoveNext();
             return sb.ToString();
         }
 

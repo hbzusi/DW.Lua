@@ -27,6 +27,8 @@ namespace DW.Lua.Parser.Expression
                 return new SingleVariableExpressionParser();
             if (LuaToken.IsNumericConstant(reader.Current.Value))
                 return new NumericConstantExpressionParser();
+            if (reader.Current.Value == LuaToken.LeftCurlyBrace)
+                return new TableInitializerExpressionParser();
             throw new UnexpectedTokenException(reader.Current);
         }
     }

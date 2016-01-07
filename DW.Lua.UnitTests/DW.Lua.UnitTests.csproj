@@ -46,12 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Lexer\TokenizerTests.cs" />
     <Compile Include="Misc\NextAwareEnumeratorTests.cs" />
     <Compile Include="Code\ReferenceCodeTests.cs" />
     <Compile Include="Parsers\Expression\FunctionCallExpressionParserTests.cs" />
     <Compile Include="Parsers\Expression\StringConstantExpressionParserTests.cs" />
     <Compile Include="Parsers\Expression\TableIndexExpressionParserTests.cs" />
+    <Compile Include="Parsers\Expression\TableInitializerExpressionParserTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\DoEndBlockStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\FunctionDeclarationStatementParserTests.cs" />
