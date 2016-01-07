@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DW.Lua.Syntax.Expression
 {
-    public class VariableExpression : LuaExpression
+    public class VariableExpression : LuaExpression, IEquatable<VariableExpression>
     {
         private readonly Variable _variable;
 
@@ -17,6 +17,11 @@ namespace DW.Lua.Syntax.Expression
             get { yield break; }
         }
 
+        public bool Equals(VariableExpression other)
+        {
+            return other != null && Equals(_variable, other._variable);
+        }
+
         public override string ToString()
         {
             return _variable.Name;
@@ -24,7 +29,7 @@ namespace DW.Lua.Syntax.Expression
 
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            return obj is VariableExpression && Equals((VariableExpression) obj);
         }
 
         public override int GetHashCode()

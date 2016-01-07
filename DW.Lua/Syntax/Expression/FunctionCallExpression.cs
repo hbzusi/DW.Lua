@@ -8,10 +8,15 @@ using JetBrains.Annotations;
 
 namespace DW.Lua.Syntax.Expression
 {
-    internal class FunctionCallExpression : LuaExpression, IEquatable<FunctionCallExpression>
+    public class FunctionCallExpression : LuaExpression, IEquatable<FunctionCallExpression>
     {
-
         public FunctionCallExpression(string name, IEnumerable<LuaExpression> parameters)
+        {
+            FunctionName = name;
+            Parameters = parameters.ToList();
+        }
+
+        public FunctionCallExpression(string name, params LuaExpression[] parameters)
         {
             FunctionName = name;
             Parameters = parameters.ToList();

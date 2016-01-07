@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using DW.Lua.Syntax;
+using DW.Lua.Syntax.Expression;
+using DW.Lua.Syntax.Statement;
 using NUnit.Framework;
 
 namespace DW.Lua.UnitTests.Parsers.Expression
@@ -12,15 +11,23 @@ namespace DW.Lua.UnitTests.Parsers.Expression
         [Test]
         public static void ShouldParseNoArgumentsCall()
         {
-            SyntaxParser.Parse("a = b()");
-            Assert.Inconclusive("Need to check return value");
+            var expected = new StatementBlock(new Assignment(new Variable("a"),
+                new FunctionCallExpression("b", Enumerable.Empty<LuaExpression>()), false));
+            var actual = SyntaxParser.Parse("a = b()");
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public static void ShouldParseMultipleArgumentsCall()
         {
-            SyntaxParser.Parse("a = b(c,d,e)");
-            Assert.Inconclusive("Need to check return value");
+            var expected = new StatementBlock(new Assignment(new Variable("a"),
+                new FunctionCallExpression("b",
+                    new VariableExpression(new Variable("c")),
+                    new VariableExpression(new Variable("d")),
+                    new VariableExpression(new Variable("e"))
+                    ), false));
+            var actual = SyntaxParser.Parse("a = b(c,d,e)");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

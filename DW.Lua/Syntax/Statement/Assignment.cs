@@ -17,6 +17,13 @@ namespace DW.Lua.Syntax.Statement
             Local = local;
         }
 
+        public Assignment(IAssignmentTarget target, LuaExpression expression, bool local)
+        {
+            _targets = new List<IAssignmentTarget> {target};
+            _expressions = new List<LuaExpression> {expression};
+            Local = local;
+        }
+
         public IList<IAssignmentTarget> Targets => _targets.AsReadOnly();
 
         public IList<LuaExpression> Expressions => _expressions;
