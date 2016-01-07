@@ -49,6 +49,7 @@
     <Compile Include="Lexer\TokenizerTests.cs" />
     <Compile Include="Misc\NextAwareEnumeratorTests.cs" />
     <Compile Include="Code\ReferenceCodeTests.cs" />
+    <Compile Include="Parsers\Expression\TableIndexExpressionParserTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\DoEndBlockStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\FunctionDeclarationStatementParserTests.cs" />

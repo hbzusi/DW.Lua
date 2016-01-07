@@ -52,6 +52,7 @@
     <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
     <Compile Include="Parser\Expression\StringConstantExpressionParser.cs" />
+    <Compile Include="Parser\Expression\TableIndexExpressionParser.cs" />
     <Compile Include="Parser\ParserContext.cs" />
     <Compile Include="Parser\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parser\Expression\BooleanConstantExpressionParser.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Syntax\Expression\TableInitializerExpression.cs" />
     <Compile Include="Syntax\LuaToken.cs" />
     <Compile Include="Syntax\LuaType.cs" />
+    <Compile Include="Syntax\TableIndexExpression.cs" />
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\LuaValue.cs" />
     <Compile Include="Syntax\Variable.cs" />

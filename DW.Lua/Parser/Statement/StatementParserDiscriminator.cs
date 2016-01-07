@@ -6,9 +6,9 @@ using DW.Lua.Syntax;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class StatementParserDiscriminator
+    internal static class StatementParserDiscriminator
     {
-        public IStatementParser Identify(INextAwareEnumerator<Token> reader)
+        public static IStatementParser Identify(INextAwareEnumerator<Token> reader)
         {
             if (reader.Current.Value == Keywords.If)
                 return new IfStatementParser();
@@ -32,6 +32,13 @@ namespace DW.Lua.Parser.Statement
 
             if (reader.Current.Value == Keywords.Function)
                 return new FunctionDeclarationStatementParser(local);
+
+            if (SyntaxParser.CurrentTokenIsTableIndexer(reader))
+            {
+                
+            }
+            // If nothing else, the statement is probably an assignment statement
+
             return new AssignmentStatementParser(local);
         }
     }

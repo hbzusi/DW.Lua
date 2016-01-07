@@ -5,9 +5,9 @@ using DW.Lua.Syntax;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class ExpressionParserDiscriminator
+    public static class ExpressionParserDiscriminator
     {
-        public IExpressionParser Identify(INextAwareEnumerator<Token> reader)
+        public static IExpressionParser Identify(INextAwareEnumerator<Token> reader)
         {
             if (reader.Current.Value == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();

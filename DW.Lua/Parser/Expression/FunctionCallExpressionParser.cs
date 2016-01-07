@@ -7,9 +7,9 @@ using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class FunctionCallExpressionParser : IExpressionParser
+    public sealed class FunctionCallExpressionParser : IExpressionParser
     {
-        public virtual LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var name = reader.Current.Value;
             reader.MoveNext();

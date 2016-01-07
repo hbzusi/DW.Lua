@@ -37,16 +37,15 @@ namespace DW.Lua
                 || reader.Current.Value == "\n"
                 || reader.Current.Type == TokenType.Comment)
                 reader.MoveNext();
-            var statementDiscriminator = new StatementParserDiscriminator();
-            var statementParser = statementDiscriminator.Identify(reader);
+
+            var statementParser = StatementParserDiscriminator.Identify(reader);
             return statementParser.Parse(reader, context);
         }
 
 
         public static LuaExpression ReadExpression(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            var expressionDiscriminator = new ExpressionParserDiscriminator();
-            var expressionParser = expressionDiscriminator.Identify(reader);
+            var expressionParser = ExpressionParserDiscriminator.Identify(reader);
             var expression = expressionParser.Parse(reader, context);
 
             if (LuaToken.IsBinaryOperation(reader.Current.Value))
@@ -57,6 +56,13 @@ namespace DW.Lua
             }
 
             return expression;
+        }
+
+        
+        public static bool CurrentTokenIsTableIndexer(INextAwareEnumerator<Token> reader)
+        {
+            return reader.Current.Type == TokenType.Identifier && reader.HasNext &&
+                   reader.Next.Type == TokenType.TableIndexer;
         }
     }
 }
