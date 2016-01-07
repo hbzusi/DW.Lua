@@ -14,10 +14,13 @@ namespace DW.Lua.Syntax
         public const string Semicolon = ";";
         public const string LeftBracket = "(";
         public const string RightBracket = ")";
+        public const string LeftSquareBracket = "[";
         public const string LeftCurlyBrace = "{";
         public const string RightCurlyBrace = "}";
 
         public const string DoubleQuote = "\"";
+
+        public const string Dot = ".";
 
         public const string DoubleLeftSquareBracket = "[[";
         public const string DoubleRightSquareBracket = "]]";

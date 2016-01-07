@@ -7,6 +7,7 @@
         BooleanOperator,
         ArithmeticOperator,
         TableIndexer,
+        TableShortcutIndexer,
         Keyword,
         Identifier,
         Comment,
