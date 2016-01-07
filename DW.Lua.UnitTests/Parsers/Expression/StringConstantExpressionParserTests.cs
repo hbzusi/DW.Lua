@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DW.Lua.Syntax;
+using DW.Lua.Syntax.Expression;
+using DW.Lua.Syntax.Statement;
 using NUnit.Framework;
 
 namespace DW.Lua.UnitTests.Parsers.Expression
@@ -12,13 +15,19 @@ namespace DW.Lua.UnitTests.Parsers.Expression
         [Test]
         public static void ShouldParseStringAssignment()
         {
-            SyntaxParser.Parse("a = \"TEST\"");
+            var expected = new StatementBlock(new Assignment(new Variable("a"),
+                new StringConstantExpression("TEST"), false));
+            var actual = SyntaxParser.Parse("a = \"TEST\"");
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public static void ShouldParseMultilineStringAssignment()
         {
-            SyntaxParser.Parse("a = [[TEST1\nTEST2]]");
+            var expected = new StatementBlock(new Assignment(new Variable("a"),
+                new StringConstantExpression("TEST1\nTEST2"), false));
+            var actual = SyntaxParser.Parse("a = [[TEST1\nTEST2]]");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

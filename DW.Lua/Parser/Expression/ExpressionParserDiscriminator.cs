@@ -9,6 +9,8 @@ namespace DW.Lua.Parser.Expression
     {
         public static IExpressionParser Identify(INextAwareEnumerator<Token> reader)
         {
+            if (reader.Current.Type == TokenType.StringConstant)
+                return new StringConstantExpressionParser();
             if (reader.Current.Value == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();
             if (LuaToken.IsIdentifier(reader.Current.Value) && reader.HasNext &&
@@ -22,8 +24,6 @@ namespace DW.Lua.Parser.Expression
                 return new NumericConstantExpressionParser();
             if (reader.Current.Value == LuaToken.LeftCurlyBrace)
                 return new TableInitializerExpressionParser();
-            if (reader.Current.Type == TokenType.StringConstant)
-                return new StringConstantExpressionParser();
             throw new UnexpectedTokenException(reader.Current);
         }
     }

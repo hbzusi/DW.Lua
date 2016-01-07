@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace DW.Lua.Syntax.Expression
 {
-    public class StringConstantExpression : LuaExpression
+    public class StringConstantExpression : LuaExpression, IEquatable<StringConstantExpression>
     {
         private readonly string _value;
 
@@ -11,7 +12,16 @@ namespace DW.Lua.Syntax.Expression
             _value = value;
         }
 
-        public override IEnumerable<Unit> Children { get { yield break; } }
+        public override IEnumerable<Unit> Children
+        {
+            get { yield break; }
+        }
+
+        public bool Equals(StringConstantExpression other)
+        {
+            return other != null && string.Equals(_value, other._value);
+        }
+
         public override string ToString()
         {
             return "[[" + _value + "]]";
@@ -19,12 +29,12 @@ namespace DW.Lua.Syntax.Expression
 
         public override bool Equals(object obj)
         {
-            throw new System.NotImplementedException();
+            return obj is StringConstantExpression && Equals((StringConstantExpression) obj);
         }
 
         public override int GetHashCode()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
