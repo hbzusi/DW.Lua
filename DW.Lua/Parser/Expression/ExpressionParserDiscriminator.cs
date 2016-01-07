@@ -11,7 +11,8 @@ namespace DW.Lua.Parser.Expression
         {
             if (reader.Current.Value == LuaToken.LeftBracket)
                 return new BracketedExpressionParser();
-            if (LuaToken.IsIdentifier(reader.Current.Value) && reader.Next.Value == LuaToken.LeftBracket)
+            if (LuaToken.IsIdentifier(reader.Current.Value) && reader.HasNext &&
+                reader.Next.Value == LuaToken.LeftBracket)
                 return new FunctionCallExpressionParser();
             if (reader.Current.Type == TokenType.BooleanConstant)
                 return new BooleanConstantExpressionParser();

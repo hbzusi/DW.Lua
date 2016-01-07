@@ -7,6 +7,8 @@ namespace DW.Lua.Misc
     public class NextAwareEnumerator<T> : INextAwareEnumerator<T>
     {
         private readonly IEnumerator<T> _sourceEnumerator;
+
+        private bool _finished;
         private T _next;
 
         public NextAwareEnumerator(IEnumerator<T> sourceEnumerator)
@@ -50,15 +52,14 @@ namespace DW.Lua.Misc
         {
             get
             {
-                if (!HasNext) throw new InvalidOperationException("Sequence does not have next element");
+                if (!HasNext)
+                    throw new InvalidOperationException("Sequence does not have next element");
                 return _next;
             }
             private set { _next = value; }
         }
 
         public bool HasNext { get; private set; }
-
-        private bool _finished;
 
         object IEnumerator.Current => Current;
     }

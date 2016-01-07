@@ -13,7 +13,7 @@ namespace DW.Lua.Parser.Expression
         {
             var name = reader.Current.Value;
             reader.MoveNext();
-            reader.VerifyExpectedToken(LuaToken.LeftBracket);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.LeftBracket);
 
             var parametersParser = new ExpressionListParser();
 
