@@ -57,7 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Code\DisabledFixtures\HexDump.lua" />
+    <EmbeddedResource Include="Code\Fixtures\HexDump.lua" />
     <EmbeddedResource Include="Code\Fixtures\Factorial.lua" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -68,11 +68,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Code\DisabledFixtures\Hamming.lua" />
+    <EmbeddedResource Include="Code\Fixtures\Hamming.lua" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Code\DisabledFixtures\MarkovChain.lua" />
+    <EmbeddedResource Include="Code\Fixtures\MarkovChain.lua" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
