@@ -7,17 +7,17 @@ namespace DW.Lua.Syntax.Statement
 {
     public class Assignment : LuaStatement, IEquatable<Assignment>
     {
-        private readonly List<Variable> _variables;
+        private readonly List<IAssignmentTarget> _targets;
         private readonly List<LuaExpression> _expressions;
 
-        public Assignment(IEnumerable<Variable> variables, IEnumerable<LuaExpression> expressions, bool local)
+        public Assignment(IEnumerable<IAssignmentTarget> targets, IEnumerable<LuaExpression> expressions, bool local)
         {
-            _variables = variables.ToList();
+            _targets = targets.ToList();
             _expressions = expressions.ToList();
             Local = local;
         }
 
-        public IList<Variable> Variables => _variables.AsReadOnly();
+        public IList<IAssignmentTarget> Targets => _targets.AsReadOnly();
 
         public IList<LuaExpression> Expressions => _expressions;
 
@@ -27,13 +27,13 @@ namespace DW.Lua.Syntax.Statement
 
         public bool Equals(Assignment other)
         {
-            return other != null && Local.Equals(other.Local) && Variables.SequenceEqual(other.Variables) &&
+            return other != null && Local.Equals(other.Local) && Targets.SequenceEqual(other.Targets) &&
                    Expressions.SequenceEqual(other.Expressions);
         }
 
         public override string ToString()
         {
-            return string.Join(",", Variables) + "=" + string.Join(",", Expressions);
+            return string.Join(",", Targets) + "=" + string.Join(",", Expressions);
         }
 
         public override bool Equals(object obj)
@@ -45,7 +45,7 @@ namespace DW.Lua.Syntax.Statement
         {
             unchecked
             {
-                var hash = Variables.Aggregate(29, (current, variable) => current*19 + variable.GetHashCode());
+                var hash = Targets.Aggregate(29, (current, variable) => current*19 + variable.GetHashCode());
                 hash = Expressions.Aggregate(hash, (current, expression) => current*17 + expression.GetHashCode());
                 hash += Local.GetHashCode();
                 return hash;
