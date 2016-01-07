@@ -8,7 +8,7 @@ using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class AssignmentStatementParser : IStatementParser
+    internal sealed class AssignmentStatementParser : IStatementParser
     {
         private readonly bool _local;
 
@@ -17,7 +17,7 @@ namespace DW.Lua.Parser.Statement
             _local = local;
         }
 
-        public virtual LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var variables = ReadDeclarations(reader);
             foreach (var variable in variables)

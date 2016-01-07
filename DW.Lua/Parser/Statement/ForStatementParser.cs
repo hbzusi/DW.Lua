@@ -9,9 +9,9 @@ using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class ForStatementParser : IStatementParser
+    internal sealed class ForStatementParser : IStatementParser
     {
-        public virtual LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keywords.For);
             var scope = context.AcquireScope();

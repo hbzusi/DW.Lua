@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using DW.Lua.Editor.Properties;
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Editor
@@ -18,7 +17,6 @@ namespace DW.Lua.Editor
             var script = codeBox.Text;
             try
             {
-                var reader = new StringReader(script);
                 var block = SyntaxParser.Parse(script);
                 UpdateSyntaxTreeView(block);
                 parserStatusLabel.Text = block.ToString();

@@ -1,4 +1,3 @@
-using System.Threading;
 using DW.Lua.Language;
 using DW.Lua.Lexer;
 using DW.Lua.Misc;

@@ -6,9 +6,9 @@ using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class BooleanConstantExpressionParser : IExpressionParser
+    public sealed class BooleanConstantExpressionParser : IExpressionParser
     {
-        public virtual LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var expression = new ConstantExpression(new LuaValue { BooleanValue = Boolean.Parse(reader.Current.Value) });
             reader.MoveNext();

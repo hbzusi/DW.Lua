@@ -23,7 +23,7 @@ namespace DW.Lua.Syntax.Statement
 
         public bool Local { get; }
 
-        public override IEnumerable<Unit> Children => (Expressions ?? new LuaExpression[0]);
+        public override IEnumerable<Unit> Children => Expressions ?? new LuaExpression[0];
 
         public bool Equals(Assignment other)
         {

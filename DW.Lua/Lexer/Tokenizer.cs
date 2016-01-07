@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 using DW.Lua.Extensions;
@@ -151,6 +150,7 @@ namespace DW.Lua.Lexer
             return builder.ToString();
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void Verify(bool assumption)
         {
             if (!assumption)

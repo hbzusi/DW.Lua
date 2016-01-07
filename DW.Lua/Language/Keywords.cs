@@ -6,6 +6,7 @@ namespace DW.Lua.Language
 {
     public static class Keywords
     {
+        // ReSharper disable UnusedMember.Global
         public const string If = "if";
         public const string Then = "then";
         public const string End = "end";
@@ -18,6 +19,7 @@ namespace DW.Lua.Language
         public const string Local = "local";
         public const string And = "and";
         public const string Or = "or";
+        // ReSharper restore UnusedMember.Global
 
         static Keywords()
         {

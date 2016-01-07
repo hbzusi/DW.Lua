@@ -7,9 +7,9 @@ using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class TableInitializerExpressionParser : IExpressionParser
+    public sealed class TableInitializerExpressionParser : IExpressionParser
     {
-        public virtual LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedToken(LuaToken.LeftCurlyBrace);
             reader.MoveNext();

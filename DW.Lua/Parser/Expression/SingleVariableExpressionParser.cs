@@ -5,9 +5,9 @@ using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class SingleVariableExpressionParser : IExpressionParser
+    public sealed class SingleVariableExpressionParser : IExpressionParser
     {
-        public virtual LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var variableName = reader.Current.Value;
             var visibleVariables = context.CurrentScope.GetVisibleVariables();
