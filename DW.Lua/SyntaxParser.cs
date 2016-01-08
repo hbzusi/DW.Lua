@@ -20,7 +20,7 @@ namespace DW.Lua
             var reader = new StringReader(s);
             var rootScope = new Scope();
             var context = new ParserContext(rootScope);
-            INextAwareEnumerator<Token> enumerator = Tokenizer.Parse(reader);
+            var enumerator = Tokenizer.Parse(reader);
 
             while (enumerator.HasNext && enumerator.MoveNext())
             {
@@ -33,9 +33,9 @@ namespace DW.Lua
 
         public static LuaStatement ReadStatement(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            while (string.IsNullOrEmpty(reader.Current.Value) 
-                || reader.Current.Value == "\n"
-                || reader.Current.Type == TokenType.Comment)
+            while (string.IsNullOrEmpty(reader.Current.Value)
+                   || reader.Current.Value == "\n"
+                   || reader.Current.Type == TokenType.Comment)
                 reader.MoveNext();
 
             var statementParser = StatementParserDiscriminator.Identify(reader);
@@ -51,14 +51,14 @@ namespace DW.Lua
             if (LuaToken.IsBinaryOperation(reader.Current.Value))
             {
                 var operation = reader.GetAndMoveNext();
-                var rightSideExpression = ReadExpression(reader,context);
-                expression = new BinaryExpression(expression,rightSideExpression,operation.Value);
+                var rightSideExpression = ReadExpression(reader, context);
+                expression = new BinaryExpression(expression, rightSideExpression, operation.Value);
             }
 
             return expression;
         }
 
-        
+
         public static bool CurrentTokenIsTableIndexer(INextAwareEnumerator<Token> reader)
         {
             return reader.Current.Type == TokenType.Identifier && reader.HasNext &&

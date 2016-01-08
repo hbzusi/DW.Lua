@@ -43,7 +43,7 @@ namespace DW.Lua.Parser.Statement
             var statementsParser = new StatementBlockParser(Keywords.End);
             var body = statementsParser.ParseBlock(reader, context);
 
-            return new FunctionDeclarationStatement(functionName.Value,argumentNames,body);
+            return new FunctionDeclarationStatement(functionName.Value, argumentNames, body);
         }
     }
 }

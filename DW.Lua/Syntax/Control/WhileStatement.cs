@@ -9,14 +9,14 @@ namespace DW.Lua.Syntax.Control
 {
     public class WhileStatement : LuaStatement, IEquatable<WhileStatement>
     {
-        public LuaExpression Condition { get; }
-        public StatementBlock Body { get; }
-
         public WhileStatement(LuaExpression condition, StatementBlock body)
         {
             Condition = condition;
             Body = body;
         }
+
+        public LuaExpression Condition { get; }
+        public StatementBlock Body { get; }
 
         public override IEnumerable<Unit> Children
         {

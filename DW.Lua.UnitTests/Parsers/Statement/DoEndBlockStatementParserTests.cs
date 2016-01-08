@@ -12,7 +12,7 @@ namespace DW.Lua.UnitTests.Parsers.Statement
             var expected =
                 new StatementBlock(new DoEndBlock(new StatementBlock(new EmptyStatement(), new EmptyStatement())));
             var actual = SyntaxParser.Parse("do ; ; end");
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

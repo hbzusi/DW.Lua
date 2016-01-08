@@ -10,6 +10,12 @@ namespace DW.Lua.UnitTests.Parsers.Statement
     public class IfStatementParserTests
     {
         [Test]
+        public void ShouldFailOnEndAfterIf()
+        {
+            Assert.Throws<UnexpectedTokenException>(() => SyntaxParser.Parse("if true end"));
+        }
+
+        [Test]
         public void ShouldParseIfElseThen()
         {
             var conditionExpression = new BracketedExpression(new ConstantExpression(Constants.True));
@@ -28,12 +34,6 @@ namespace DW.Lua.UnitTests.Parsers.Statement
             var ifStatement = new IfStatement(conditionExpression, emptyStatementBlock);
             var expected = new StatementBlock(ifStatement);
             Assert.AreEqual(expected, SyntaxParser.Parse("if (false) then ; end"));
-        }
-
-        [Test]
-        public void ShouldFailOnEndAfterIf()
-        {
-            Assert.Throws<UnexpectedTokenException>(() => SyntaxParser.Parse("if true end"));
         }
     }
 }

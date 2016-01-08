@@ -7,14 +7,17 @@ namespace DW.Lua.Syntax.Statement
 {
     public class DoEndBlock : LuaStatement, IEquatable<DoEndBlock>
     {
-        public StatementBlock Body { get; }
-
         public DoEndBlock(StatementBlock body)
         {
             Body = body;
         }
 
-        public override IEnumerable<Unit> Children { get { yield return Body; } }
+        public StatementBlock Body { get; }
+
+        public override IEnumerable<Unit> Children
+        {
+            get { yield return Body; }
+        }
 
         public bool Equals(DoEndBlock other)
         {

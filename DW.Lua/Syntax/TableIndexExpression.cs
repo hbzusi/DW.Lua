@@ -16,7 +16,16 @@ namespace DW.Lua.Syntax
 
         public LuaExpression IndexExpression { get; }
 
-        public override IEnumerable<Unit> Children { get { yield return IndexExpression; } }
+        public override IEnumerable<Unit> Children
+        {
+            get { yield return IndexExpression; }
+        }
+
+        public bool Equals(TableIndexExpression other)
+        {
+            return other != null && Equals(TableVariable, other.TableVariable) &&
+                   Equals(IndexExpression, other.IndexExpression);
+        }
 
         public override string ToString()
         {
@@ -25,13 +34,7 @@ namespace DW.Lua.Syntax
 
         public override bool Equals(object other)
         {
-            return other is TableIndexExpression && Equals((TableIndexExpression)other);
-        }
-
-        public bool Equals(TableIndexExpression other)
-        {
-            return other != null && Equals(TableVariable, other.TableVariable) &&
-                   Equals(IndexExpression, other.IndexExpression);
+            return other is TableIndexExpression && Equals((TableIndexExpression) other);
         }
 
         public override int GetHashCode()

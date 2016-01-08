@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using DW.Lua.Syntax;
 
@@ -31,7 +30,7 @@ namespace DW.Lua.Editor
         {
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
-            InsertSyntaxTreeViewNode(unit,null);
+            InsertSyntaxTreeViewNode(unit, null);
             treeView1.ExpandAll();
             treeView1.EndUpdate();
         }
@@ -41,12 +40,11 @@ namespace DW.Lua.Editor
             var newNode = node?.Nodes.Add(unit.GetType().Name) ?? treeView1.Nodes.Add(unit.GetType().Name);
 
             foreach (var child in unit.Children)
-                InsertSyntaxTreeViewNode(child,newNode);
+                InsertSyntaxTreeViewNode(child, newNode);
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
         }
     }
 }

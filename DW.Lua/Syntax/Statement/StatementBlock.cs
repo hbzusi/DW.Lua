@@ -10,7 +10,9 @@ namespace DW.Lua.Syntax.Statement
     {
         private readonly List<LuaStatement> _statements;
 
-        public StatementBlock(params LuaStatement[] statements) : this(statements.AsEnumerable()) { }
+        public StatementBlock(params LuaStatement[] statements) : this(statements.AsEnumerable())
+        {
+        }
 
         public StatementBlock(IEnumerable<LuaStatement> statements)
         {
@@ -28,7 +30,7 @@ namespace DW.Lua.Syntax.Statement
 
         public override string ToString()
         {
-            return String.Join("\n", _statements);
+            return string.Join("\n", _statements);
         }
 
         public override bool Equals(object obj)

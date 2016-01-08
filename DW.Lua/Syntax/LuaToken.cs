@@ -25,6 +25,20 @@ namespace DW.Lua.Syntax
         public const string DoubleLeftSquareBracket = "[[";
         public const string DoubleRightSquareBracket = "]]";
 
+        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|\".";
+        public static readonly string NonTokenCharsString = "\t\r ";
+
+        public static readonly string[] TokenBigrams =
+        {
+            "==",
+            "~=",
+            "&&",
+            "||",
+            ".."
+        };
+
+        public static readonly string[] BinaryOperations = {"+", "-", "*", "/", "=="};
+
         public static bool IsIdentifier(string token)
         {
             return IsLetter(token[0]) && token.Skip(1).All(IsLetterOrDigit);
@@ -45,19 +59,5 @@ namespace DW.Lua.Syntax
         {
             return token == "true" || token == "false";
         }
-
-        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|\".";
-        public static readonly string NonTokenCharsString = "\t\r ";
-
-        public static readonly string[] TokenBigrams =
-        {
-            "==",
-            "~=",
-            "&&",
-            "||",
-            ".."
-        };
-
-        public static readonly string[] BinaryOperations = {"+", "-", "*", "/", "=="};
     }
 }

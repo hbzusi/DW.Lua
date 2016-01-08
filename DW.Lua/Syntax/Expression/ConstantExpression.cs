@@ -7,12 +7,12 @@ namespace DW.Lua.Syntax.Expression
 {
     public class ConstantExpression : LuaExpression, IEquatable<ConstantExpression>
     {
-        public LuaValue Value { get; }
-
         public ConstantExpression(LuaValue value)
         {
             Value = value;
         }
+
+        public LuaValue Value { get; }
 
         public override IEnumerable<Unit> Children => new Unit[0];
 
