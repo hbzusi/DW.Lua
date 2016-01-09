@@ -24,7 +24,10 @@ namespace DW.Lua.Syntax.Expression
 
         public override string ToString()
         {
-            return "[[" + _value + "]]";
+            if (_value.Contains("\n"))
+                return $"[[{_value}]]";
+            else
+                return $"\"{_value}\"";
         }
 
         public override bool Equals(object obj)

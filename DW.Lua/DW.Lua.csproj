@@ -65,6 +65,7 @@
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />
     <Compile Include="Syntax\Expression\StringConstantExpression.cs" />
+    <Compile Include="Syntax\Expression\TableFunctionCallExpression.cs" />
     <Compile Include="Syntax\IAssignmentTarget.cs" />
     <Compile Include="Syntax\Statement\ForStatement.cs" />
     <Compile Include="Syntax\Statement\FunctionDeclarationStatement.cs" />

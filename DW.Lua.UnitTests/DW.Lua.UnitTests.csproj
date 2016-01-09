@@ -52,6 +52,7 @@
     <Compile Include="Code\ReferenceCodeTests.cs" />
     <Compile Include="Parsers\Expression\FunctionCallExpressionParserTests.cs" />
     <Compile Include="Parsers\Expression\StringConstantExpressionParserTests.cs" />
+    <Compile Include="Parsers\Expression\TableFunctionCallExpressionParserTests.cs" />
     <Compile Include="Parsers\Expression\TableIndexExpressionParserTests.cs" />
     <Compile Include="Parsers\Expression\TableInitializerExpressionParserTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
