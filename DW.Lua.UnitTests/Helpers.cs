@@ -15,6 +15,7 @@ namespace DW.Lua.UnitTests
         internal static LuaExpression ParseExpression(string expressionString)
         {
             var tokensStream = Tokenizer.Parse(new StringReader(expressionString));
+            tokensStream.MoveNext();
             var context = new ParserContext(new Scope());
             return SyntaxParser.ReadExpression(tokensStream, context);
         }

@@ -22,7 +22,7 @@ namespace DW.Lua.Parser.Statement
             if (reader.Current.Value == Keywords.Do)
                 return new DoEndBlockStatementParser();
 
-            bool local = false;
+            var local = false;
             if (reader.Current.Value == Keywords.Local)
             {
                 local = true;
@@ -34,7 +34,6 @@ namespace DW.Lua.Parser.Statement
 
             if (SyntaxParser.CurrentTokenIsTableIndexer(reader))
             {
-                
             }
             // If nothing else, the statement is probably an assignment statement
 

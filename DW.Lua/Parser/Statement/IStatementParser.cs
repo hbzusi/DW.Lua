@@ -5,7 +5,7 @@ using DW.Lua.Syntax;
 namespace DW.Lua.Parser.Statement
 {
     /// <summary>
-    /// Base class for statement parsers
+    ///     Base class for statement parsers
     /// </summary>
     internal interface IStatementParser
     {

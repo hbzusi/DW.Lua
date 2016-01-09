@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DW.Lua.Exceptions;
-using DW.Lua.Extensions;
+﻿using DW.Lua.Exceptions;
 using DW.Lua.Lexer;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;

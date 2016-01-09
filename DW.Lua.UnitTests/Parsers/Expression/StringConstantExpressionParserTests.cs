@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DW.Lua.Syntax;
+﻿using DW.Lua.Syntax;
 using DW.Lua.Syntax.Expression;
 using DW.Lua.Syntax.Statement;
 using NUnit.Framework;

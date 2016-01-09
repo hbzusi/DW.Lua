@@ -91,7 +91,7 @@ namespace DW.Lua.Lexer
             var tokenType = TokenType.Identifier;
             if (Keywords.All.Contains(tokenValue))
                 tokenType = TokenType.Keyword;
-            else if(Boolean.TryParse(tokenValue, out dummy))
+            else if (bool.TryParse(tokenValue, out dummy))
                 tokenType = TokenType.BooleanConstant;
 
             return new Token(tokenValue, position, tokenType);
@@ -165,8 +165,7 @@ namespace DW.Lua.Lexer
             }
             else
                 do
-                    builder.Append(_reader.Current);
-                while (_reader.MoveNext() && _reader.Current != '\n');
+                    builder.Append(_reader.Current); while (_reader.MoveNext() && _reader.Current != '\n');
             return builder.ToString();
         }
 

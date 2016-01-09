@@ -8,6 +8,7 @@ namespace DW.Lua.Parser
     {
         [CanBeNull]
         IScope Parent { get; }
+
         IDictionary<string, Variable> DefinedVariables { get; }
         IDictionary<string, Variable> GetVisibleVariables();
         void AddVariable(Variable variable);

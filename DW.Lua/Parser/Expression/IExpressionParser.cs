@@ -5,13 +5,13 @@ using DW.Lua.Syntax;
 namespace DW.Lua.Parser.Expression
 {
     /// <summary>
-    /// Base class for Lua expression parsers
+    ///     Base class for Lua expression parsers
     /// </summary>
     public interface IExpressionParser
     {
         /// <summary>
-        /// Parses an expression from reader
-        /// Advances the TokenEnumerator one past last expression token
+        ///     Parses an expression from reader
+        ///     Advances the TokenEnumerator one past last expression token
         /// </summary>
         /// <param name="reader"></param>
         /// <param name="context"></param>

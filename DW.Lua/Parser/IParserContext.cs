@@ -2,8 +2,8 @@
 {
     public interface IParserContext
     {
-        void AddError(string error);
         IScope CurrentScope { get; }
+        void AddError(string error);
         IScope AcquireScope();
         void ReleaseScope(IScope scope);
     }

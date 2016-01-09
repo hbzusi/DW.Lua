@@ -25,7 +25,7 @@ namespace DW.Lua.Parser.Statement
             var statementsParser = new StatementBlockParser(Keywords.End);
             var bodyBlock = statementsParser.ParseBlock(reader, context);
             context.ReleaseScope(scope);
-            return new ForStatement(conditions,bodyBlock);
+            return new ForStatement(conditions, bodyBlock);
         }
     }
 }

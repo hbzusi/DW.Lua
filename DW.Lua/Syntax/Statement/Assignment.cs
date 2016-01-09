@@ -7,8 +7,8 @@ namespace DW.Lua.Syntax.Statement
 {
     public class Assignment : LuaStatement, IEquatable<Assignment>
     {
-        private readonly List<IAssignmentTarget> _targets;
         private readonly List<LuaExpression> _expressions;
+        private readonly List<IAssignmentTarget> _targets;
 
         public Assignment(IEnumerable<IAssignmentTarget> targets, IEnumerable<LuaExpression> expressions, bool local)
         {

@@ -5,7 +5,7 @@ namespace DW.Lua.Parser
 {
     public class Scope : IScope
     {
-        private readonly Dictionary<string,Variable> _definedVariables = new Dictionary<string, Variable>();
+        private readonly Dictionary<string, Variable> _definedVariables = new Dictionary<string, Variable>();
 
         public Scope(IScope parent = null)
         {

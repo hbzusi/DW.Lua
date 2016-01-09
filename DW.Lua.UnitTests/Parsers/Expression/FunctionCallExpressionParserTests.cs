@@ -11,22 +11,20 @@ namespace DW.Lua.UnitTests.Parsers.Expression
         [Test]
         public static void ShouldParseNoArgumentsCall()
         {
-            var expected = new StatementBlock(new Assignment(new Variable("a"),
-                new FunctionCallExpression("b", Enumerable.Empty<LuaExpression>()), false));
-            var actual = SyntaxParser.Parse("a = b()");
+            var expected = new FunctionCallExpression("b", Enumerable.Empty<LuaExpression>());
+            var actual = Helpers.ParseExpression("b()");
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public static void ShouldParseMultipleArgumentsCall()
         {
-            var expected = new StatementBlock(new Assignment(new Variable("a"),
+            var expected =
                 new FunctionCallExpression("b",
                     new VariableExpression(new Variable("c")),
                     new VariableExpression(new Variable("d")),
-                    new VariableExpression(new Variable("e"))
-                    ), false));
-            var actual = SyntaxParser.Parse("a = b(c,d,e)");
+                    new VariableExpression(new Variable("e")));
+            var actual = Helpers.ParseExpression("b(c,d,e)");
             Assert.AreEqual(expected, actual);
         }
     }

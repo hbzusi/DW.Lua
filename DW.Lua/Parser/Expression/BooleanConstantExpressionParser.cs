@@ -1,4 +1,3 @@
-using System;
 using DW.Lua.Lexer;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
@@ -10,7 +9,7 @@ namespace DW.Lua.Parser.Expression
     {
         public LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            var expression = new ConstantExpression(new LuaValue { BooleanValue = Boolean.Parse(reader.Current.Value) });
+            var expression = new ConstantExpression(new LuaValue {BooleanValue = bool.Parse(reader.Current.Value)});
             reader.MoveNext();
             return expression;
         }

@@ -1,30 +1,35 @@
+using System;
 using System.Collections.Generic;
 
 namespace DW.Lua.Syntax.Statement
 {
     internal class ReturnStatement : LuaStatement
     {
-        public LuaExpression ReturnedExpression { get; }
-
         public ReturnStatement(LuaExpression returnedExpression)
         {
             ReturnedExpression = returnedExpression;
         }
 
-        public override IEnumerable<Unit> Children { get { yield return ReturnedExpression; } }
+        public LuaExpression ReturnedExpression { get; }
+
+        public override IEnumerable<Unit> Children
+        {
+            get { yield return ReturnedExpression; }
+        }
+
         public override string ToString()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override bool Equals(object obj)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override int GetHashCode()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

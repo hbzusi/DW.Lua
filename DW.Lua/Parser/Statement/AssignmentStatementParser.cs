@@ -37,7 +37,7 @@ namespace DW.Lua.Parser.Statement
                 var variable = new Variable(reader.Current.Value);
                 result.Add(variable);
                 reader.MoveNext();
-                reader.VerifyExpectedToken(LuaToken.Comma,LuaToken.EqualsSign);
+                reader.VerifyExpectedToken(LuaToken.Comma, LuaToken.EqualsSign);
                 if (reader.Current.Value == LuaToken.EqualsSign)
                     break;
                 reader.MoveNext();

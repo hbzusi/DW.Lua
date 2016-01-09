@@ -37,7 +37,7 @@ namespace DW.Lua.Syntax.Expression
             return
                 new StringBuilder().Append(FunctionName)
                     .Append("(")
-                    .Append(String.Join(",", Parameters))
+                    .Append(string.Join(",", Parameters))
                     .Append(")")
                     .ToString();
         }

@@ -12,12 +12,19 @@ namespace DW.Lua.UnitTests.Misc
         private readonly int[] _testSequence = Enumerable.Range(1, 10).Select(x => x*5).ToArray();
 
         [Test]
-        public void StockEnumeratorShouldEnumerateSequence()
+        public void NextShouldBeAheadOfPrev()
         {
-            var enumerator = _testSequence.GetEnumerator();
-            int i = 0;
+            var enumerator = _testSequence.AsEnumerable().GetNextAwareEnumerator();
+            var i = 0;
             while (enumerator.MoveNext())
-                Assert.AreEqual(_testSequence[i++], enumerator.Current);
+            {
+                Assert.AreEqual(_testSequence[i], enumerator.Current);
+                if (enumerator.HasNext)
+                    Assert.AreEqual(_testSequence[i + 1], enumerator.Next);
+                else
+                    Assert.AreEqual(_testSequence.Last(), enumerator.Current);
+                i++;
+            }
         }
 
         [Test]
@@ -31,33 +38,28 @@ namespace DW.Lua.UnitTests.Misc
         public void ShouldThrowOnTryingToEnumeratePastEnd()
         {
             var enumerator = _testSequence.AsEnumerable().GetNextAwareEnumerator();
-            for (int i = 0; i < _testSequence.Length; i++)
+            for (var i = 0; i < _testSequence.Length; i++)
                 Assert.True(enumerator.MoveNext());
             Assert.False(enumerator.MoveNext());
             Assert.Throws<InvalidOperationException>(() => { enumerator.MoveNext(); });
         }
 
         [Test]
-        public void NextShouldBeAheadOfPrev()
+        public void ShouldWorkRecursively()
         {
-            var enumerator = _testSequence.AsEnumerable().GetNextAwareEnumerator();
-            int i = 0;
+            var enumerator =
+                new NextAwareEnumerator<int>(
+                    new NextAwareEnumerator<int>(_testSequence.AsEnumerable().GetNextAwareEnumerator()));
+            var i = 0;
             while (enumerator.MoveNext())
-            {
-                Assert.AreEqual(_testSequence[i], enumerator.Current);
-                if (enumerator.HasNext)
-                    Assert.AreEqual(_testSequence[i + 1], enumerator.Next);
-                else
-                    Assert.AreEqual(_testSequence.Last(), enumerator.Current);
-                i++;
-            }
+                Assert.AreEqual(_testSequence[i++], enumerator.Current);
         }
 
         [Test]
-        public void ShouldWorkRecursively()
+        public void StockEnumeratorShouldEnumerateSequence()
         {
-            var enumerator = new NextAwareEnumerator<int>(new NextAwareEnumerator<int>(_testSequence.AsEnumerable().GetNextAwareEnumerator()));
-            int i = 0;
+            var enumerator = _testSequence.GetEnumerator();
+            var i = 0;
             while (enumerator.MoveNext())
                 Assert.AreEqual(_testSequence[i++], enumerator.Current);
         }

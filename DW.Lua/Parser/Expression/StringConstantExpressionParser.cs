@@ -1,4 +1,3 @@
-using System.Text;
 using DW.Lua.Extensions;
 using DW.Lua.Lexer;
 using DW.Lua.Misc;
