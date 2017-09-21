@@ -45,7 +45,7 @@ namespace DW.Lua
 
         public static LuaExpression ReadExpression(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            var expressionParser = ExpressionParserDiscriminator.Identify(reader);
+            var expressionParser = ExpressionParserDiscriminator.Identify(reader, context);
             var expression = expressionParser.Parse(reader, context);
 
             if (LuaToken.IsBinaryOperation(reader.Current.Value))
@@ -56,13 +56,6 @@ namespace DW.Lua
             }
 
             return expression;
-        }
-
-
-        public static bool CurrentTokenIsTableIndexer(INextAwareEnumerator<Token> reader)
-        {
-            return reader.Current.Type == TokenType.Identifier && reader.HasNext &&
-                   reader.Next.Type == TokenType.TableIndexer;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DW.Lua.Exceptions;
+using DW.Lua.Extensions;
 using DW.Lua.Lexer;
 using DW.Lua.Misc;
 using DW.Lua.Syntax;
@@ -22,6 +23,7 @@ namespace DW.Lua.Parser.Expression
             {
                 reader.MoveNext();
                 indexerExpression = SyntaxParser.ReadExpression(reader, context);
+                reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightSquareBracket);
             }
             else
                 throw new UnexpectedTokenException(reader.Current, LuaToken.Dot, LuaToken.LeftSquareBracket);

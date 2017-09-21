@@ -3,7 +3,7 @@ using DW.Lua.Syntax.Expression;
 using DW.Lua.Syntax.Statement;
 using NUnit.Framework;
 
-namespace DW.Lua.UnitTests.Parsers.Expression
+namespace DW.Lua.UnitTests.Parsers.Statement
 {
     public static class TableInitializerExpressionParserTests
     {

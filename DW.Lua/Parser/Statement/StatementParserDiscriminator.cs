@@ -31,10 +31,7 @@ namespace DW.Lua.Parser.Statement
 
             if (reader.Current.Value == Keywords.Function)
                 return new FunctionDeclarationStatementParser(local);
-
-            if (SyntaxParser.CurrentTokenIsTableIndexer(reader))
-            {
-            }
+            
             // If nothing else, the statement is probably an assignment statement
 
             return new AssignmentStatementParser(local);

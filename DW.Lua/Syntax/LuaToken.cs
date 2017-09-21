@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using static System.Char;
 using static System.Double;
 
@@ -15,6 +16,7 @@ namespace DW.Lua.Syntax
         public const string LeftBracket = "(";
         public const string RightBracket = ")";
         public const string LeftSquareBracket = "[";
+        public const string RightSquareBracket = "]";
         public const string LeftCurlyBrace = "{";
         public const string RightCurlyBrace = "}";
 

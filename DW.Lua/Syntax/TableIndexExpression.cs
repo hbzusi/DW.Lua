@@ -4,7 +4,7 @@ using DW.Lua.Misc;
 
 namespace DW.Lua.Syntax
 {
-    public class TableIndexExpression : LuaExpression, IEquatable<TableIndexExpression>
+    public class TableIndexExpression : LuaExpression, IEquatable<TableIndexExpression>, IAssignmentTarget
     {
         public TableIndexExpression(Variable tableVariable, LuaExpression indexExpression)
         {
