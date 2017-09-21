@@ -20,7 +20,7 @@ namespace DW.Lua
             var reader = new StringReader(s);
             var rootScope = new Scope();
             var context = new ParserContext(rootScope);
-            INextAwareEnumerator<Token> enumerator = Tokenizer.Parse(reader);
+            var enumerator = Tokenizer.Parse(reader);
 
             while (enumerator.HasNext && enumerator.MoveNext())
             {
@@ -33,27 +33,26 @@ namespace DW.Lua
 
         public static LuaStatement ReadStatement(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            while (string.IsNullOrEmpty(reader.Current.Value) 
-                || reader.Current.Value == "\n"
-                || reader.Current.Type == TokenType.Comment)
+            while (string.IsNullOrEmpty(reader.Current.Value)
+                   || reader.Current.Value == "\n"
+                   || reader.Current.Type == TokenType.Comment)
                 reader.MoveNext();
-            var statementDiscriminator = new StatementParserDiscriminator();
-            var statementParser = statementDiscriminator.Identify(reader);
+
+            var statementParser = StatementParserDiscriminator.Identify(reader);
             return statementParser.Parse(reader, context);
         }
 
 
         public static LuaExpression ReadExpression(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            var expressionDiscriminator = new ExpressionParserDiscriminator();
-            var expressionParser = expressionDiscriminator.Identify(reader);
+            var expressionParser = ExpressionParserDiscriminator.Identify(reader, context);
             var expression = expressionParser.Parse(reader, context);
 
             if (LuaToken.IsBinaryOperation(reader.Current.Value))
             {
                 var operation = reader.GetAndMoveNext();
-                var rightSideExpression = ReadExpression(reader,context);
-                expression = new BinaryExpression(expression,rightSideExpression,operation.Value);
+                var rightSideExpression = ReadExpression(reader, context);
+                expression = new BinaryExpression(expression, rightSideExpression, operation.Value);
             }
 
             return expression;

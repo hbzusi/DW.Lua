@@ -7,13 +7,13 @@ using DW.Lua.Syntax.Expression;
 
 namespace DW.Lua.Parser.Expression
 {
-    public class FunctionCallExpressionParser : ExpressionParser
+    public sealed class FunctionCallExpressionParser : IExpressionParser
     {
-        public override LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaExpression Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             var name = reader.Current.Value;
             reader.MoveNext();
-            reader.VerifyExpectedToken(LuaToken.LeftBracket);
+            reader.VerifyExpectedTokenAndMoveNext(LuaToken.LeftBracket);
 
             var parametersParser = new ExpressionListParser();
 

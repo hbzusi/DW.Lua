@@ -15,6 +15,8 @@ namespace DW.Lua.Syntax.Expression
 
         public override IEnumerable<Unit> Children => new[] {ContainedExpression};
 
+        public LuaExpression ContainedExpression { get; }
+
         public bool Equals(BracketedExpression other)
         {
             return ContainedExpression?.Equals(other.ContainedExpression) ?? false;
@@ -34,7 +36,5 @@ namespace DW.Lua.Syntax.Expression
         {
             return ContainedExpression?.GetHashCode() ?? 0;
         }
-
-        public LuaExpression ContainedExpression { get; }
     }
 }

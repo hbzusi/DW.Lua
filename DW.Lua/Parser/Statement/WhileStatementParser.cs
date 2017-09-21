@@ -7,9 +7,9 @@ using DW.Lua.Syntax.Control;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class WhileStatementParser : StatementParser
+    internal sealed class WhileStatementParser : IStatementParser
     {
-        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keywords.While);
             var conditionExpression = SyntaxParser.ReadExpression(reader, context);

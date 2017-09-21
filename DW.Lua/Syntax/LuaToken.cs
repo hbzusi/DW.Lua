@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using static System.Char;
 using static System.Double;
 
@@ -14,13 +15,31 @@ namespace DW.Lua.Syntax
         public const string Semicolon = ";";
         public const string LeftBracket = "(";
         public const string RightBracket = ")";
+        public const string LeftSquareBracket = "[";
+        public const string RightSquareBracket = "]";
         public const string LeftCurlyBrace = "{";
         public const string RightCurlyBrace = "}";
 
         public const string DoubleQuote = "\"";
 
+        public const string Dot = ".";
+
         public const string DoubleLeftSquareBracket = "[[";
         public const string DoubleRightSquareBracket = "]]";
+
+        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|\".";
+        public static readonly string NonTokenCharsString = "\t\r ";
+
+        public static readonly string[] TokenBigrams =
+        {
+            "==",
+            "~=",
+            "&&",
+            "||",
+            ".."
+        };
+
+        public static readonly string[] BinaryOperations = {"+", "-", "*", "/", "=="};
 
         public static bool IsIdentifier(string token)
         {
@@ -42,19 +61,5 @@ namespace DW.Lua.Syntax
         {
             return token == "true" || token == "false";
         }
-
-        public const string SingleCharTokensString = "{}()[]+-/*=\n,:&|\".";
-        public static readonly string NonTokenCharsString = "\t\r ";
-
-        public static readonly string[] TokenBigrams =
-        {
-            "==",
-            "~=",
-            "&&",
-            "||",
-            ".."
-        };
-
-        public static readonly string[] BinaryOperations = {"+", "-", "*", "/", "=="};
     }
 }

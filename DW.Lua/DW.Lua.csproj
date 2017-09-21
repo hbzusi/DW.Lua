@@ -52,6 +52,7 @@
     <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
     <Compile Include="Parser\Expression\StringConstantExpressionParser.cs" />
+    <Compile Include="Parser\Expression\TableIndexExpressionParser.cs" />
     <Compile Include="Parser\ParserContext.cs" />
     <Compile Include="Parser\Expression\BinaryOperationExpressionParser.cs" />
     <Compile Include="Parser\Expression\BooleanConstantExpressionParser.cs" />
@@ -64,6 +65,8 @@
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />
     <Compile Include="Syntax\Expression\StringConstantExpression.cs" />
+    <Compile Include="Syntax\Expression\TableFunctionCallExpression.cs" />
+    <Compile Include="Syntax\IAssignmentTarget.cs" />
     <Compile Include="Syntax\Statement\ForStatement.cs" />
     <Compile Include="Syntax\Statement\FunctionDeclarationStatement.cs" />
     <Compile Include="Syntax\Expression\BracketedExpression.cs" />
@@ -78,13 +81,13 @@
     <Compile Include="Syntax\Control\IfStatement.cs" />
     <Compile Include="Syntax\Statement\EmptyStatement.cs" />
     <Compile Include="Parser\Expression\ExpressionListParser.cs" />
-    <Compile Include="Parser\Expression\ExpressionParser.cs" />
+    <Compile Include="Parser\Expression\IExpressionParser.cs" />
     <Compile Include="Parser\Expression\ExpressionParserDiscriminator.cs" />
     <Compile Include="Parser\Expression\FunctionCallExpressionParser.cs" />
     <Compile Include="Parser\Statement\AssignmentStatementParser.cs" />
     <Compile Include="Exceptions\EndOfFileException.cs" />
     <Compile Include="Parser\Statement\IfStatementParser.cs" />
-    <Compile Include="Parser\Statement\StatementParser.cs" />
+    <Compile Include="Parser\Statement\IStatementParser.cs" />
     <Compile Include="Parser\Statement\StatementParserDiscriminator.cs" />
     <Compile Include="Exceptions\UnexpectedTokenException.cs" />
     <Compile Include="Parser\Statement\WhileStatementParser.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Syntax\Expression\TableInitializerExpression.cs" />
     <Compile Include="Syntax\LuaToken.cs" />
     <Compile Include="Syntax\LuaType.cs" />
+    <Compile Include="Syntax\TableIndexExpression.cs" />
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\LuaValue.cs" />
     <Compile Include="Syntax\Variable.cs" />

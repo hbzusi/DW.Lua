@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -11,18 +11,10 @@ namespace DW.Lua.UnitTests.Code
     [TestFixture]
     public class ReferenceCodeTests
     {
-
-        [Test]
-        [TestCaseSource(typeof(CodeTestCaseFactory),nameof(CodeTestCaseFactory.TestCases))]
-        public void Parse(string code)
-        {
-            SyntaxParser.Parse(code);
-        }
-
         private static class CodeTestCaseFactory
         {
-            private static readonly Assembly Assembly = typeof(CodeTestCaseFactory).Assembly;
             private const string FixturesTag = ".Code.Fixtures.";
+            private static readonly Assembly Assembly = typeof (CodeTestCaseFactory).Assembly;
 
             public static IEnumerable<TestCaseData> TestCases
             {
@@ -34,7 +26,6 @@ namespace DW.Lua.UnitTests.Code
                         select
                             new TestCaseData(code).SetName("Should parse: " + GetFixtureDisplayName(fixtureName));
                 }
-
             }
 
             private static string GetFixtureDisplayName(string fixtureName)
@@ -43,14 +34,15 @@ namespace DW.Lua.UnitTests.Code
                     .Replace(FixturesTag, "");
             }
 
+            [ExcludeFromCodeCoverage]
             private static string GetFixtureCode(string resourceName)
             {
                 string result;
 
-                using (Stream stream = Assembly.GetManifestResourceStream(resourceName))
+                using (var stream = Assembly.GetManifestResourceStream(resourceName))
                 {
                     if (stream != null)
-                        using (StreamReader reader = new StreamReader(stream))
+                        using (var reader = new StreamReader(stream))
                             result = reader.ReadToEnd();
                     else
                     {
@@ -59,6 +51,13 @@ namespace DW.Lua.UnitTests.Code
                 }
                 return result;
             }
+        }
+
+        [Test]
+        [TestCaseSource(typeof (CodeTestCaseFactory), nameof(CodeTestCaseFactory.TestCases))]
+        public void Parse(string code)
+        {
+            SyntaxParser.Parse(code);
         }
     }
 }

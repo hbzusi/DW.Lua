@@ -8,7 +8,7 @@ using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class StatementBlockParser : StatementParser
+    internal sealed class StatementBlockParser : IStatementParser
     {
         private readonly HashSet<string> _terminatingTokens;
 
@@ -22,7 +22,7 @@ namespace DW.Lua.Parser.Statement
             _terminatingTokens = new HashSet<string>(terminatingTokens);
         }
 
-        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             return ParseBlock(reader, context);
         }
@@ -33,7 +33,8 @@ namespace DW.Lua.Parser.Statement
             return ParseBlock(reader, context, out terminationToken);
         }
 
-        public StatementBlock ParseBlock(INextAwareEnumerator<Token> reader, IParserContext context, out Token terminationToken)
+        public StatementBlock ParseBlock(INextAwareEnumerator<Token> reader, IParserContext context,
+            out Token terminationToken)
         {
             var statements = new List<LuaStatement>();
             while (!_terminatingTokens.Contains(reader.Current.Value))

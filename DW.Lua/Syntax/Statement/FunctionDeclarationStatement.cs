@@ -11,15 +11,6 @@ namespace DW.Lua.Syntax.Statement
     {
         private readonly List<string> _argumentNames;
 
-        [NotNull]
-        public string FunctionName { get; }
-
-        [NotNull]
-        public IList<string> ArgumentNames => _argumentNames.AsReadOnly();
-
-        [NotNull]
-        public StatementBlock FunctionBody { get; }
-
         public FunctionDeclarationStatement([NotNull] string functionName, [NotNull] IEnumerable<string> argumentNames,
             [NotNull] StatementBlock functionBody)
         {
@@ -31,7 +22,19 @@ namespace DW.Lua.Syntax.Statement
             FunctionBody = functionBody;
         }
 
-        public override IEnumerable<Unit> Children { get { yield return FunctionBody; } }
+        [NotNull]
+        public string FunctionName { get; }
+
+        [NotNull]
+        public IList<string> ArgumentNames => _argumentNames.AsReadOnly();
+
+        [NotNull]
+        public StatementBlock FunctionBody { get; }
+
+        public override IEnumerable<Unit> Children
+        {
+            get { yield return FunctionBody; }
+        }
 
         public bool Equals([CanBeNull] FunctionDeclarationStatement other)
         {

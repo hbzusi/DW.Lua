@@ -9,7 +9,8 @@ namespace DW.Lua.Extensions
 {
     public static class TokenEnumeratorExtensions
     {
-        public static void VerifyExpectedToken(this INextAwareEnumerator<Token> enumerator, IEnumerable<string> expectedTokens)
+        public static void VerifyExpectedToken(this INextAwareEnumerator<Token> enumerator,
+            IEnumerable<string> expectedTokens)
         {
             VerifyExpectedToken(enumerator, expectedTokens.ToArray());
         }
@@ -20,13 +21,15 @@ namespace DW.Lua.Extensions
             VerifyExpectedTokenAndMoveNext(enumerator, expectedTokens.ToArray());
         }
 
-        public static void VerifyExpectedToken(this INextAwareEnumerator<Token> enumerator, params string[] expectedTokens)
+        public static void VerifyExpectedToken(this INextAwareEnumerator<Token> enumerator,
+            params string[] expectedTokens)
         {
             if (!expectedTokens.Contains(enumerator.Current.Value))
                 throw new UnexpectedTokenException(enumerator.Current, expectedTokens);
         }
 
-        public static void VerifyExpectedTokenAndMoveNext(this INextAwareEnumerator<Token> enumerator, params string[] expectedTokens)
+        public static void VerifyExpectedTokenAndMoveNext(this INextAwareEnumerator<Token> enumerator,
+            params string[] expectedTokens)
         {
             enumerator.VerifyExpectedToken(expectedTokens);
             enumerator.MoveNext();

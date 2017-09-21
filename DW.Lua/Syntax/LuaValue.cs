@@ -8,13 +8,13 @@ namespace DW.Lua.Syntax
         public double NumericValue
         {
             get { return (double) _value; }
-            set
-            {
-                SetValue(LuaType.Number, value);
-            }
+            set { SetValue(LuaType.Number, value); }
         }
 
-        public bool BooleanValue { set {SetValue(LuaType.Boolean, value);} }
+        public bool BooleanValue
+        {
+            set { SetValue(LuaType.Boolean, value); }
+        }
 
         private void SetValue(LuaType luaType, object value)
         {

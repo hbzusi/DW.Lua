@@ -6,6 +6,21 @@ namespace DW.Lua.Language
 {
     public static class Keywords
     {
+        private static readonly List<string> AllKeywords;
+
+        static Keywords()
+        {
+            var fieldInfos = typeof (Keywords).GetFields(BindingFlags.Public |
+                                                         BindingFlags.Static | BindingFlags.FlattenHierarchy);
+            AllKeywords =
+                fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly)
+                    .Select(f => f.GetRawConstantValue())
+                    .OfType<string>()
+                    .ToList();
+        }
+
+        public static IList<string> All => AllKeywords.AsReadOnly();
+        // ReSharper disable UnusedMember.Global
         public const string If = "if";
         public const string Then = "then";
         public const string End = "end";
@@ -18,20 +33,6 @@ namespace DW.Lua.Language
         public const string Local = "local";
         public const string And = "and";
         public const string Or = "or";
-
-        static Keywords()
-        {
-            FieldInfo[] fieldInfos = typeof (Keywords).GetFields(BindingFlags.Public |
-                                                                 BindingFlags.Static | BindingFlags.FlattenHierarchy);
-            AllKeywords =
-                fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly)
-                    .Select(f => f.GetRawConstantValue())
-                    .OfType<string>()
-                    .ToList();
-        }
-
-        private static readonly List<string> AllKeywords;
-
-        public static IList<string> All => AllKeywords.AsReadOnly();
+        // ReSharper restore UnusedMember.Global
     }
 }

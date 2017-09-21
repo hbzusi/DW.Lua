@@ -12,6 +12,8 @@ namespace DW.Lua.Parser.Expression
             var expressions = new List<LuaExpression>();
             do
             {
+                if (reader.Current.Value == LuaToken.RightBracket)
+                    break;
                 expressions.Add(SyntaxParser.ReadExpression(reader, context));
             } while (reader.Current.Value == LuaToken.Comma && reader.MoveNext());
             return expressions;

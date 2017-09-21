@@ -11,9 +11,11 @@ namespace DW.Lua.UnitTests.Parsers.Statement
         [Test]
         public void ShouldParseWhileBlock()
         {
-            var expected = new StatementBlock(new WhileStatement(new ConstantExpression(Constants.True),new StatementBlock(new EmptyStatement())));
+            var expected =
+                new StatementBlock(new WhileStatement(new ConstantExpression(Constants.True),
+                    new StatementBlock(new EmptyStatement())));
             var actual = SyntaxParser.Parse("while true do ; end");
-            Assert.AreEqual(expected,actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

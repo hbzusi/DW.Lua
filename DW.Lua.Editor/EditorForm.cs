@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using DW.Lua.Editor.Properties;
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Editor
@@ -18,7 +16,6 @@ namespace DW.Lua.Editor
             var script = codeBox.Text;
             try
             {
-                var reader = new StringReader(script);
                 var block = SyntaxParser.Parse(script);
                 UpdateSyntaxTreeView(block);
                 parserStatusLabel.Text = block.ToString();
@@ -33,7 +30,7 @@ namespace DW.Lua.Editor
         {
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
-            InsertSyntaxTreeViewNode(unit,null);
+            InsertSyntaxTreeViewNode(unit, null);
             treeView1.ExpandAll();
             treeView1.EndUpdate();
         }
@@ -43,12 +40,11 @@ namespace DW.Lua.Editor
             var newNode = node?.Nodes.Add(unit.GetType().Name) ?? treeView1.Nodes.Add(unit.GetType().Name);
 
             foreach (var child in unit.Children)
-                InsertSyntaxTreeViewNode(child,newNode);
+                InsertSyntaxTreeViewNode(child, newNode);
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
         }
     }
 }

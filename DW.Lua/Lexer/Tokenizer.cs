@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 using DW.Lua.Extensions;
@@ -73,8 +72,11 @@ namespace DW.Lua.Lexer
                 if (_reader.Current == '-' && _reader.Next == '-')
                     return new Token(ReadComment(), position, TokenType.Comment);
 
+                if (_reader.Current == '[' && _reader.Next == '[')
+                    return new Token(ReadMultiLineStringConstant(), position, TokenType.StringConstant);
+
                 if (_reader.Current == '"')
-                    return new Token(ReadStringConstant(), position, TokenType.StringConstant);
+                    return new Token(ReadSingleLineStringConstant(), position, TokenType.StringConstant);
 
                 if (IsSingleCharToken(_reader.Current))
                     break;
@@ -89,21 +91,38 @@ namespace DW.Lua.Lexer
             var tokenType = TokenType.Identifier;
             if (Keywords.All.Contains(tokenValue))
                 tokenType = TokenType.Keyword;
-            else if(Boolean.TryParse(tokenValue, out dummy))
+            else if (bool.TryParse(tokenValue, out dummy))
                 tokenType = TokenType.BooleanConstant;
 
             return new Token(tokenValue, position, tokenType);
         }
 
-        private string ReadStringConstant()
+        private string ReadSingleLineStringConstant()
         {
             Verify(_reader.Current == '"');
             var sb = new StringBuilder();
             while (_reader.MoveNext() && _reader.Current != '"')
                 sb.Append(_reader.Current);
-            if (_reader.HasNext)
-                _reader.MoveNext();
             return sb.ToString();
+        }
+
+        private string ReadMultiLineStringConstant()
+        {
+            Verify(_reader.Current == '[');
+            _reader.MoveNext();
+            Verify(_reader.Current == '[');
+            _reader.MoveNext();
+            var valueBuilder = new StringBuilder();
+            while (!(_reader.Current == ']' && _reader.HasNext && _reader.Next == ']'))
+            {
+                valueBuilder.Append(_reader.Current);
+                if (!_reader.MoveNext())
+                    break;
+            }
+            Verify(_reader.Current == ']');
+            Verify(_reader.MoveNext());
+            Verify(_reader.Current == ']');
+            return valueBuilder.ToString();
         }
 
         private static bool IsBigram(char char1, char char2)
@@ -146,11 +165,12 @@ namespace DW.Lua.Lexer
             }
             else
                 do
-                    builder.Append(_reader.Current);
-                while (_reader.MoveNext() && _reader.Current != '\n');
+                    builder.Append(_reader.Current); while (_reader.MoveNext() && _reader.Current != '\n');
             return builder.ToString();
         }
 
+        // ReSharper disable once UnusedParameter.Local
+        // TODO: make a method similar to VerifyExpectedToken
         private void Verify(bool assumption)
         {
             if (!assumption)

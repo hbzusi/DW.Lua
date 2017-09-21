@@ -8,7 +8,7 @@ using DW.Lua.Syntax.Statement;
 
 namespace DW.Lua.Parser.Statement
 {
-    internal class FunctionDeclarationStatementParser : StatementParser
+    internal sealed class FunctionDeclarationStatementParser : IStatementParser
     {
         private readonly bool _local;
 
@@ -17,7 +17,7 @@ namespace DW.Lua.Parser.Statement
             _local = local;
         }
 
-        public override LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
+        public LuaStatement Parse(INextAwareEnumerator<Token> reader, IParserContext context)
         {
             reader.VerifyExpectedTokenAndMoveNext(Keywords.Function);
             if (reader.Next.Value == LuaToken.Colon)
@@ -43,7 +43,7 @@ namespace DW.Lua.Parser.Statement
             var statementsParser = new StatementBlockParser(Keywords.End);
             var body = statementsParser.ParseBlock(reader, context);
 
-            return new FunctionDeclarationStatement(functionName.Value,argumentNames,body);
+            return new FunctionDeclarationStatement(functionName.Value, argumentNames, body);
         }
     }
 }

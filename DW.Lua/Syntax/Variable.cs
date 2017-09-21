@@ -3,7 +3,7 @@ using DW.Lua.Extensions;
 
 namespace DW.Lua.Syntax
 {
-    public class Variable : IEquatable<Variable>
+    public class Variable : IEquatable<Variable>, IAssignmentTarget
     {
         public Variable(string name)
         {

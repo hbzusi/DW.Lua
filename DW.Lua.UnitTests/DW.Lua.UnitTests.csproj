@@ -46,19 +46,51 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Lexer\TokenizerTests.cs" />
     <Compile Include="Misc\NextAwareEnumeratorTests.cs" />
     <Compile Include="Code\ReferenceCodeTests.cs" />
+    <Compile Include="Parsers\Expression\FunctionCallExpressionParserTests.cs" />
+    <Compile Include="Parsers\Expression\StringConstantExpressionParserTests.cs" />
+    <Compile Include="Parsers\Expression\TableFunctionCallExpressionParserTests.cs" />
     <Compile Include="Parsers\Statement\AssignmentStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\DoEndBlockStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\FunctionDeclarationStatementParserTests.cs" />
     <Compile Include="Parsers\Statement\IfStatementParserTests.cs" />
+    <Compile Include="Parsers\Statement\TableIndexExpressionParserTests.cs" />
+    <Compile Include="Parsers\Statement\TableInitializerExpressionParserTests.cs" />
     <Compile Include="Parsers\Statement\WhileStatementParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Code\DisabledFixtures\HexDump.lua" />
-    <EmbeddedResource Include="Code\Fixtures\Factorial.lua" />
+    <EmbeddedResource Include="Code\Fixtures\all.lua" />
+    <EmbeddedResource Include="Code\Fixtures\api.lua" />
+    <EmbeddedResource Include="Code\Fixtures\attrib.lua" />
+    <EmbeddedResource Include="Code\Fixtures\big.lua" />
+    <EmbeddedResource Include="Code\Fixtures\bitwise.lua" />
+    <EmbeddedResource Include="Code\Fixtures\calls.lua" />
+    <EmbeddedResource Include="Code\Fixtures\closure.lua" />
+    <EmbeddedResource Include="Code\Fixtures\code.lua" />
+    <EmbeddedResource Include="Code\Fixtures\constructs.lua" />
+    <EmbeddedResource Include="Code\Fixtures\coroutine.lua" />
+    <EmbeddedResource Include="Code\Fixtures\db.lua" />
+    <EmbeddedResource Include="Code\Fixtures\errors.lua" />
+    <EmbeddedResource Include="Code\Fixtures\events.lua" />
+    <EmbeddedResource Include="Code\Fixtures\files.lua" />
+    <EmbeddedResource Include="Code\Fixtures\gc.lua" />
+    <EmbeddedResource Include="Code\Fixtures\goto.lua" />
+    <EmbeddedResource Include="Code\Fixtures\literals.lua" />
+    <EmbeddedResource Include="Code\Fixtures\locals.lua" />
+    <EmbeddedResource Include="Code\Fixtures\main.lua" />
+    <EmbeddedResource Include="Code\Fixtures\math.lua" />
+    <EmbeddedResource Include="Code\Fixtures\nextvar.lua" />
+    <EmbeddedResource Include="Code\Fixtures\pm.lua" />
+    <EmbeddedResource Include="Code\Fixtures\sort.lua" />
+    <EmbeddedResource Include="Code\Fixtures\strings.lua" />
+    <EmbeddedResource Include="Code\Fixtures\tpack.lua" />
+    <EmbeddedResource Include="Code\Fixtures\utf8.lua" />
+    <EmbeddedResource Include="Code\Fixtures\vararg.lua" />
+    <EmbeddedResource Include="Code\Fixtures\verybig.lua" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -67,12 +99,7 @@
       <Name>DW.Lua</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Code\DisabledFixtures\Hamming.lua" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Code\DisabledFixtures\MarkovChain.lua" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
