@@ -31,7 +31,15 @@ namespace DW.Lua.Parser.Statement
 
             if (reader.Current.Value == Keywords.Function)
                 return new FunctionDeclarationStatementParser(local);
-            
+
+            if (LuaToken.IsIdentifier(reader.Current.Value) && reader.HasNext
+                && reader.Next.Value == LuaToken.LeftBracket)
+                return new FunctionCallStatementParser();
+
+            if (LuaToken.IsIdentifier(reader.Current.Value) && reader.HasNext
+                && reader.Next.Value == LuaToken.Colon)
+                return new MethodCallStatementParser();
+
             // If nothing else, the statement is probably an assignment statement
 
             return new AssignmentStatementParser(local);

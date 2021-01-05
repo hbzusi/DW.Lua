@@ -41,7 +41,13 @@ namespace DW.Lua.Parser.Statement
             {
                 statements.Add(SyntaxParser.ReadStatement(reader, context));
                 while (string.IsNullOrEmpty(reader.Current.Value) || reader.Current.Value == "\n")
-                    reader.MoveNext();
+                {
+                    if (!reader.MoveNext())
+                    {
+                        terminationToken = null;
+                        return new StatementBlock(statements);
+                    }
+                }
             }
             terminationToken = reader.Current;
             reader.VerifyExpectedTokenAndMoveNext(_terminatingTokens);

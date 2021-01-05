@@ -25,6 +25,7 @@ namespace DW.Lua.Language
         public const string Then = "then";
         public const string End = "end";
         public const string Else = "else";
+        public const string ElseIf = "elseif";
         public const string While = "while";
         public const string Do = "do";
         public const string Function = "function";
@@ -33,6 +34,8 @@ namespace DW.Lua.Language
         public const string Local = "local";
         public const string And = "and";
         public const string Or = "or";
+        public const string Nil = "nil";
+        public const string Not = "not";
         // ReSharper restore UnusedMember.Global
     }
 }

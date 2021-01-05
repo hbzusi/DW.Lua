@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using DW.Lua.Extensions;
 using DW.Lua.Language;
 using DW.Lua.Lexer;
@@ -25,8 +26,15 @@ namespace DW.Lua.Parser.Statement
                 reader.MoveNext();
                 reader.MoveNext();
             }
-            var functionName = reader.GetAndMoveNext();
-            reader.VerifyExpectedToken(LuaToken.LeftBracket);
+            var functionName = reader.GetAndMoveNext().Value;
+            reader.VerifyExpectedToken(LuaToken.LeftBracket, LuaToken.Dot);
+            while (reader.Current.Value == LuaToken.Dot
+                    && reader.MoveNext()
+                    && LuaToken.IsIdentifier(reader.Current.Value))
+            {
+                var name = reader.GetAndMoveNext().Value;
+                functionName = $"{functionName}.{name}";
+            }
 
             var argumentNames = new List<string>();
             reader.MoveNext();
@@ -40,10 +48,12 @@ namespace DW.Lua.Parser.Statement
                 reader.MoveNext();
             }
             reader.VerifyExpectedTokenAndMoveNext(LuaToken.RightBracket);
+            var scope = context.AcquireScope();
+            argumentNames.ForEach(a => scope.AddVariable(new Variable(a)));
             var statementsParser = new StatementBlockParser(Keywords.End);
             var body = statementsParser.ParseBlock(reader, context);
-
-            return new FunctionDeclarationStatement(functionName.Value, argumentNames, body);
+            context.ReleaseScope(scope);
+            return new FunctionDeclarationStatement(functionName, argumentNames, body);
         }
     }
 }

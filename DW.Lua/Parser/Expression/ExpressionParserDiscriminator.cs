@@ -25,6 +25,9 @@ namespace DW.Lua.Parser.Expression
             if (LuaToken.IsIdentifier(reader.Current.Value) && reader.HasNext &&
                 reader.Next.Value == LuaToken.LeftBracket)
                 return new FunctionCallExpressionParser();
+            if (LuaToken.IsIdentifier(reader.Current.Value) && reader.HasNext &&
+                reader.Next.Value == LuaToken.Colon)
+                return new MethodCallExpressionParser();
             if (reader.Current.Type == TokenType.BooleanConstant)
                 return new BooleanConstantExpressionParser();
             if (LuaToken.IsIdentifier(reader.Current.Value))
@@ -41,11 +44,12 @@ namespace DW.Lua.Parser.Expression
     {
         public static IExpressionParser Identify(INextAwareEnumerator<Token> reader, IParserContext context)
         {
-            var tableExpression = new TableIndexExpressionParser().Parse(reader, context);
-            if (reader.HasNext && reader.Next.Value == LuaToken.LeftBracket)
-                return new FunctionCallExpressionParser();
+            return new TableIndexExpressionParser();
+            //var tableExpression = new TableIndexExpressionParser().Parse(reader, context);
+            //if (reader.HasNext && reader.Next.Value == LuaToken.LeftBracket)
+            //    return new FunctionCallExpressionParser();
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 

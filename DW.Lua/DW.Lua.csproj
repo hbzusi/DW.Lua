@@ -51,6 +51,8 @@
     <Compile Include="Extensions\EquatableExtensions.cs" />
     <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TokenEnumeratorExtensions.cs" />
+    <Compile Include="Parser\Expression\MethodCallExpressionParser.cs" />
+    <Compile Include="Parser\Expression\TableFieldInitializerExpressionListParser.cs" />
     <Compile Include="Parser\Expression\StringConstantExpressionParser.cs" />
     <Compile Include="Parser\Expression\TableIndexExpressionParser.cs" />
     <Compile Include="Parser\ParserContext.cs" />
@@ -60,13 +62,17 @@
     <Compile Include="Parser\IScope.cs" />
     <Compile Include="Parser\Scope.cs" />
     <Compile Include="Parser\Statement\ForStatementParser.cs" />
+    <Compile Include="Parser\Statement\MethodCallStatementParser.cs" />
+    <Compile Include="Parser\Statement\FunctionCallStatementParser.cs" />
     <Compile Include="Parser\Statement\ReturnStatementParser.cs" />
     <Compile Include="Parser\Statement\StatementBlockParser.cs" />
     <Compile Include="Syntax\Control\WhileStatement.cs" />
     <Compile Include="Syntax\Expression\BinaryExpression.cs" />
     <Compile Include="Syntax\Expression\StringConstantExpression.cs" />
     <Compile Include="Syntax\Expression\TableFunctionCallExpression.cs" />
+    <Compile Include="Syntax\Expression\TableFieldInitializerExpression.cs" />
     <Compile Include="Syntax\IAssignmentTarget.cs" />
+    <Compile Include="Syntax\Statement\ExpressionStatement.cs" />
     <Compile Include="Syntax\Statement\ForStatement.cs" />
     <Compile Include="Syntax\Statement\FunctionDeclarationStatement.cs" />
     <Compile Include="Syntax\Expression\BracketedExpression.cs" />
@@ -103,7 +109,7 @@
     <Compile Include="Syntax\Expression\TableInitializerExpression.cs" />
     <Compile Include="Syntax\LuaToken.cs" />
     <Compile Include="Syntax\LuaType.cs" />
-    <Compile Include="Syntax\TableIndexExpression.cs" />
+    <Compile Include="Syntax\Expression\TableIndexExpression.cs" />
     <Compile Include="Syntax\Unit.cs" />
     <Compile Include="Syntax\LuaValue.cs" />
     <Compile Include="Syntax\Variable.cs" />

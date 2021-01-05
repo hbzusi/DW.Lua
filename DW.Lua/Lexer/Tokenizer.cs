@@ -78,6 +78,12 @@ namespace DW.Lua.Lexer
                 if (_reader.Current == '"')
                     return new Token(ReadSingleLineStringConstant(), position, TokenType.StringConstant);
 
+                if (_reader.Current == '-' && char.IsDigit(_reader.Next))
+                {
+                    _reader.MoveNext();
+                    continue;
+                }
+
                 if (IsSingleCharToken(_reader.Current))
                     break;
 
@@ -102,7 +108,21 @@ namespace DW.Lua.Lexer
             Verify(_reader.Current == '"');
             var sb = new StringBuilder();
             while (_reader.MoveNext() && _reader.Current != '"')
+            {
                 sb.Append(_reader.Current);
+                if (!_reader.HasNext)
+                {
+                    break;
+                }
+
+                if (_reader.Current != '\\' || _reader.Next != '"')
+                {
+                    continue;
+                }
+
+                sb.Append('"');
+                _reader.MoveNext();
+            }
             return sb.ToString();
         }
 

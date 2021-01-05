@@ -15,5 +15,19 @@ namespace DW.Lua.Extensions
             while (enumerator.MoveNext())
                 yield return enumerator.Current;
         }
+
+        public static IEnumerable<T> Prepend<T>(this IEnumerable<T> source, T first)
+        {
+            yield return first;
+            if (source is null)
+            {
+                yield break;
+            }
+
+            foreach (var next in source)
+            {
+                yield return next;
+            }
+        }
     }
 }

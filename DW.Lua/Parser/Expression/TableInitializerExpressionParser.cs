@@ -17,7 +17,7 @@ namespace DW.Lua.Parser.Expression
             var expressions = Enumerable.Empty<LuaExpression>();
             if (reader.Current.Value != LuaToken.RightCurlyBrace)
             {
-                var parser = new ExpressionListParser();
+                var parser = new TableFieldInitializerExpressionListParser();
                 expressions = parser.Parse(reader, context);
                 reader.VerifyExpectedToken(LuaToken.RightCurlyBrace);
                 reader.MoveNext();

@@ -5,6 +5,10 @@ namespace DW.Lua.Syntax
         private object _value;
         public LuaType Type { get; private set; }
 
+        public static LuaValue Nil = new LuaValue { _value = "nil", Type = LuaType.Nil };
+
+        public static LuaValue False = new LuaValue { _value = false, Type = LuaType.Boolean };
+
         public double NumericValue
         {
             get { return (double) _value; }
