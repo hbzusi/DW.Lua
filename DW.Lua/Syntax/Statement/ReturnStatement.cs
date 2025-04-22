@@ -19,17 +19,17 @@ namespace DW.Lua.Syntax.Statement
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return "return " + ReturnedExpression;
         }
 
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            return ReferenceEquals(this, obj) || (obj is ReturnStatement other) && ReturnedExpression.Equals(other.ReturnedExpression);
         }
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return ReturnedExpression.GetHashCode();
         }
     }
 }

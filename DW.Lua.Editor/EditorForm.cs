@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+
 using DW.Lua.Syntax;
 
 namespace DW.Lua.Editor
@@ -37,14 +38,26 @@ namespace DW.Lua.Editor
 
         private void InsertSyntaxTreeViewNode(Unit unit, TreeNode node)
         {
-            var newNode = node?.Nodes.Add(unit.GetType().Name) ?? treeView1.Nodes.Add(unit.GetType().Name);
+            var name = unit.GetType().Name;
+            var newNode = node?.Nodes.Add(name) ?? treeView1.Nodes.Add(name);
+            newNode.Tag = unit;
 
             foreach (var child in unit.Children)
+            {
                 InsertSyntaxTreeViewNode(child, newNode);
+            }
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (e.Node?.Tag is Unit u)
+            {
+                parserStatusLabel.Text = u.ToString();
+            }
+            else
+            {
+                parserStatusLabel.Text = "Empty";
+            }
         }
     }
 }
